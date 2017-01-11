@@ -114,10 +114,6 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
     .controller('View1Ctrl', ['$scope', 'demandaService','treeService', function ($scope, demandaService, treeService) {
         $scope.demanda = {};
 
-        // demandaService.get(902).success(function (response) {
-        //     $scope.demanda = response.resultado;
-        // });
-
         demandaService.get('500').success(function (response) {
             montarArvore(response.resultado);
         });
@@ -213,11 +209,70 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
 
     .factory('treeService',['$filter',  function ($filter) {
 
+        function getCursorTemplate() {
+            var result = new primitives.orgdiagram.TemplateConfig();
+            result.name = "CursorTemplate";
+
+            result.itemSize = new primitives.common.Size(120, 100);
+            result.minimizedItemSize = new primitives.common.Size(3, 3);
+            result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
+            result.cursorPadding = new primitives.common.Thickness(3, 3, 50, 8);
+
+            var cursorTemplate = jQuery("<div></div>")
+                .css({
+                    position: "absolute",
+                    overflow: "hidden",
+                    width: (result.itemSize.width + result.cursorPadding.left + result.cursorPadding.right) + "px",
+                    height: (result.itemSize.height + result.cursorPadding.top + result.cursorPadding.bottom) + "px"
+                });
+
+            var cursorBorder = jQuery("<div></div>")
+                .css({
+                    width: (result.itemSize.width + result.cursorPadding.left + 1) + "px",
+                    height: (result.itemSize.height + result.cursorPadding.top + 1) + "px"
+                }).addClass("bp-item bp-corner-all bp-cursor-frame");
+            cursorTemplate.append(cursorBorder);
+
+            var bootStrapVerticalButtonsGroup = jQuery("<div></div>")
+                .css({
+                    position: "absolute",
+                    overflow: "hidden",
+                    top: result.cursorPadding.top + "px",
+                    left: (result.itemSize.width + result.cursorPadding.left + 10) + "px",
+                    width: "35px",
+                    height: (result.itemSize.height + 1) + "px"
+                }).addClass("btn-group btn-group-vertical");
+
+            bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="info" type="button"><i class="icon-info-sign"></i></button>');
+            bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="edit" type="button"><i class="icon-edit"></i></button>');
+            bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="remove" type="button"><i class="icon-remove"></i></button>');
+
+            cursorTemplate.append(bootStrapVerticalButtonsGroup);
+
+            result.cursorTemplate = cursorTemplate.wrap('<div>').parent().html();
+
+            return result;
+        }
+
+        function onMouseClick(event, data) {
+            var target = jQuery(event.originalEvent.target);
+            if (target.hasClass("btn") || target.parent(".btn").length > 0) {
+                var button = target.hasClass("btn") ? target : target.parent(".btn");
+                var buttonname = button.data("buttonname");
+
+                var message = "User clicked '" + buttonname + "' button for item '" + data.context.title + "'.";
+                message += (data.parentItem != null ? " Parent item '" + data.parentItem.title + "'" : "");
+                alert(message);
+
+                data.cancel = true;
+            }
+        }
+
         function getTemplate() {
             var result = new primitives.orgdiagram.TemplateConfig();
             result.name = "contactTemplate";
 
-            result.itemSize = new primitives.common.Size(200, 120);
+            result.itemSize = new primitives.common.Size(500, 100);
             result.minimizedItemSize = new primitives.common.Size(5, 5);
             result.minimizedItemCornerRadius = 5;
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
@@ -230,6 +285,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 + '<div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;">'
                 + '<img name="photo" src="{{itemConfig.image}}" style="height: 60px; width:50px;" />'
                 + '</div>'
+                + '<div><button ng-click="onButtonClick()"></button></div>'
                 + '<div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;">{{itemConfig.phone}}</div>'
                 + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a name="email" href="mailto::{{itemConfig.email}}" target="_top">{{itemConfig.email}}</a></div>'
                 + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a ng-click= "onButtonClick()" name="email">--- Link ---</a></div>'
@@ -278,16 +334,36 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
          * @param encaminhamentos realizados para a demanda.
          */
         function setupTree(encaminhamentos) {
-            var options = {};
+            var options = new primitives.orgdiagram.Config();
             options.items = montarEncaminhamento(encaminhamentos);
             options.cursorItem = 0;
             options.highlightItem = 0;
-            options.templates = [getTemplate()];
+            options.templates = [getCursorTemplate()];
+
+            options.onMouseClick = onMouseClick;
+            options.defaultTemplateName = "CursorTemplate";
             return options;
         }
         
         return {
-            setupTree: setupTree
+            setupTree: function (encaminhamentos) {
+                jQuery(document).ready(function () {
+                    var options = new primitives.orgdiagram.Config();
+                    options.hasSelectorCheckbox = primitives.common.Enabled.False;
+                    options.hasButtons = primitives.common.Enabled.False;
+                    options.onMouseClick = onMouseClick;
+                    options.templates = [getCursorTemplate()];
+                    options.defaultTemplateName = "CursorTemplate";
+
+                    var items = montarEncaminhamento(encaminhamentos);
+
+                    options.items = items;
+                    options.cursorItem = 0;
+
+                    jQuery("#centerpanel").orgDiagram(options);
+                });
+
+            }
         }
     }])
 ;
