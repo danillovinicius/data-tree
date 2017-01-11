@@ -1,0 +1,16 @@
+HOW TO 
+
+Instalando o GULP global (caso não tenha instalado ainda)
+npm install -g gulp
+
+
+Instalando o gulp no repositorio atual e identificando as dependendias de dev
+npm install gulp --save-dev
+
+Instalar os plugins que serão utilizados:
+npm install jsdoc angular-jsdoc gulp-uglify gulp-concat gulp-jshint gulp-shell --save-dev
+
+Isto criará uma pasta chamada node_modules dentro do checkout. NÃO VERSIONE ESTA PASTA
+
+executar o deploy minificado para a pasta dist
+gulp app app-min main main-min app-starter app-starter-min

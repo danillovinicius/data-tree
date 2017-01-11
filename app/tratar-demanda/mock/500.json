@@ -1,0 +1,114 @@
+{
+  "resultado": [
+    {
+      "id": 481,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "Departamento de Ouvidoria Geral do SUS"
+      },
+      "redeDestino": {
+        "id": 79,
+        "sigla": "OHFAII",
+        "nome": "Ouvidoria Hospital Federal 2 do Acre II"
+      },
+      "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      },
+      "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
+    },
+    {
+      "id": 483,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "Departamento de Ouvidoria Geral do SUS"
+      },
+      "redeDestino": {
+        "id": 79,
+        "sigla": "OMA",
+        "nome": "Ouvidoria Municipal de Acrelandia"
+      },
+      "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      },
+      "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
+    },
+    {
+      "id": 484,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "Departamento de Ouvidoria Geral do SUS"
+      },
+      "redeDestino": {
+        "id": 79,
+        "sigla": "OHAII",
+        "nome": "Ouvidoria Hospital do Acre"
+      },
+      "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      },
+      "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
+    },
+    {
+      "id": 485,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "Departamento de Ouvidoria Geral do SUS"
+      },
+      "redeDestino": {
+        "id": 79,
+        "sigla": "ORSDF",
+        "nome": "Ouvidoria Regional de Saúde do DF"
+      },
+      "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      },
+      "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
+    },
+    {
+      "id": 482,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "Departamento de Ouvidoria Geral do SUS"
+      },
+      "redeDestino": {
+        "id": 79,
+        "sigla": "ORA",
+        "nome": "Ouvidoria Regional AC"
+      },
+      "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      },
+      "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
+    }
+  ]
+}

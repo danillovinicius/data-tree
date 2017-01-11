@@ -1,0 +1,224 @@
+@charset "utf-8";
+
+/* HEADER */
+
+.acessibilidade{
+    background-color:#333333 !important;
+    color:#fff !important;
+}
+.acessibilidade #barra-brasil {
+    background: url("../images/lgo/barra-brasil-v3-bgx.png") no-repeat scroll center bottom #000;
+}
+.acessibilidade #barra-brasil .ai {
+    background: url("../images/lgo/ai.png") no-repeat scroll 0 4px #000;
+}
+.acessibilidade #barra-brasil .brasilgov {
+    background: url("../images/lgo/brasil.png") no-repeat scroll 0 4px #000;
+}
+.acessibilidade #topo_geral {
+    background: linear-gradient(to bottom, #151515 0%, #423E3E 100%) repeat-x scroll 0 0 transparent;
+}
+.acessibilidade .box_botoes_acessibilidade {
+    background-color: #000000;
+}
+.acessibilidade .box_botoes_acessibilidade {
+    background-color: #000000;
+    box-shadow: 1px 5px 10px 1px #3E3A3A;
+}
+.acessibilidade .logo {
+    color: #FFFFFF;
+    text-shadow: 0 3px 3px #333030;
+}
+.acessibilidade .titulo_sistema {
+    text-shadow: 0 3px 3px #333030;
+}
+.acessibilidade #BoxMenuPrincipal {
+    background: linear-gradient(to bottom, #000000 0%, #262323 100%) repeat scroll 0 0 transparent;
+    border-top: 1px solid #000;
+    box-shadow: 1px 5px 10px 1px #414141;
+}
+
+/* CONTEUDO */
+
+.acessibilidade section p {
+    color: #000;
+}
+.acessibilidade .BoxAreaLogin_titulo {
+    background: linear-gradient(to bottom, #070606 0%, #403C3C 100%) repeat scroll 0 0 transparent;
+    border-radius: 8px 8px 0 0;
+    float: left;
+    margin: 0;
+    width: 100%;
+}
+.acessibilidade #BoxAreaLogin_Informacoes_Contato {
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 1px 5px 10px 1px #868686;
+}
+.acessibilidade .BoxAreaLogin_content {
+    background-color: #000;
+}
+.acessibilidade #BoxAreaLogin_EsqueceuEmail a{
+    color: #ffcc00;
+}
+.acessibilidade .buttonAzul {
+    background: linear-gradient(to bottom, #000000 0%, #3E3A3A 100%) repeat scroll 0 0 transparent;
+    box-shadow: 1px 5px 10px 1px #8D8D8D;
+    color: #FFFFFF;
+}
+.acessibilidade .buttonAzul:hover {
+    background: linear-gradient(to bottom, #3E3A3A 0%, #000000 100%) repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+}
+.acessibilidade .box strong.title {
+    border-bottom: 2px solid #fff;
+    color: #fff;
+}
+.acessibilidade .box h1,
+.acessibilidade .box h2,
+.acessibilidade .box h3,
+.acessibilidade .box h4,
+.acessibilidade .box h5,
+.acessibilidade .box h6{
+    color: #ffcc00;
+}
+
+.acessibilidade .box a.btn-link{
+    color: #ffcc00;
+    text-decoration: underline; 
+}
+.acessibilidade .box a.btn-link:hover{
+    text-decoration: none; 
+}
+.acessibilidade .box .tab-content strong{
+    color: #fff !important;
+}
+.acessibilidade .sf-menu a {
+    border-left: 0 solid #333333;
+    border-right: 0 solid #255C92;
+}
+.acessibilidade .sf-menu li:hover
+, .acessibilidade .sf-menu li.sfHover
+, .acessibilidade .sf-menu a:focus
+, .acessibilidade .sf-menu a:hover
+, .acessibilidade .sf-menu a:active {
+    background-color: #333333;
+}
+.acessibilidade .sf-menu li li{
+    background: none repeat scroll 0 0 #333333;
+    border-bottom: 1px solid #333333;
+    border-right: 1px solid #333333;
+    border-left: 1px solid #333333;
+}
+
+/* FOOTER */
+
+.acessibilidade #BoxRodapePrincipal {
+    background: linear-gradient(to bottom, #000000 0%, #242424 100%) repeat scroll 0 0 transparent;
+    border-top: 1px solid #fff;
+}
+
+
+
+.acessibilidade .conteudo-box{
+    background: #000 !important;
+    -webkit-box-shadow: 1px 5px 10px 1px #686767;
+    box-shadow: 1px 5px 10px 1px #686767;
+}
+.acessibilidade strong.title{
+    color: #68C9FF;
+    border-bottom: 2px solid  #68C9FF;
+}
+.acessibilidade strong.title small{
+    color: #f1f1f1;
+}
+.acessibilidade pre,
+.acessibilidade pre code,
+.acessibilidade .tabbable .tab-content{
+    background: #292929;
+    color: #fff;
+}
+.acessibilidade pre span,
+.acessibilidade pre code span{
+    color: #fff;
+}
+.acessibilidade .nav-tabs>.active>a,
+.acessibilidade .nav-tabs>.active>a:hover{    
+    background: #292929;
+    border: 1px solid #333;
+    color: #fff;
+}
+.acessibilidade .accordion-body {
+    background: rgba(241, 241, 241, 0);
+}
+.acessibilidade .well,
+.acessibilidade .section .container .dropdown-menu{
+    background-color: #1D1D1D !important;
+}
+.acessibilidade input,
+.acessibilidade select,
+.acessibilidade textarea{
+    background-color: rgba(63, 63, 63, 1);
+    color: #fff;
+}
+.acessibilidade .modal-backdrop{
+    background: #333;
+}
+.acessibilidade .modal-header .close{
+    color: #ffcc00;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    text-shadow: 0 1px 0 #1c1c1c;
+}
+.acessibilidade .modal,
+.acessibilidade .modal-footer,
+.acessibilidade .pager a{
+    background-color: #000;
+}
+.acessibilidade .pagination a:hover,
+.acessibilidade .pagination li.active a,
+.acessibilidade .pager a:hover{
+    background: rgba(2, 2, 2, 1);
+    color: rgba(255, 255, 255, 0.87);
+}
+.acessibilidade .nav>li>a:hover{
+    background: #292929;
+}
+.acessibilidade .nav-pills>.active>a, 
+.acessibilidade .nav-pills>.active>a:hover{
+    color: #fff;
+}
+.acessibilidade #modal-config-user h3,
+.acessibilidade #modal-config-user label{
+    color: #B9C5CC;
+}
+
+.acessibilidade #BoxMenuPrincipal .nav>li>a:hover, 
+.acessibilidade #BoxMenuPrincipal .nav>li.open>a{
+    background: #242424 !important;
+    border: 1px solid #ffcc00;
+    color: #ffcc00;
+    padding: 8px 9px 10px;
+}
+.acessibilidade #BoxMenuPrincipal .dropdown-menu a{
+    background: #242424 !important;
+    padding: 9px 10px 11px;
+}
+.acessibilidade #BoxMenuPrincipal .dropdown-menu a:hover{
+    background: #000 !important;
+    color: #ffcc00;
+}
+.acessibilidade #BoxMenuPrincipal .dropdown-menu {
+    background: #242424;
+    border: 1px solid #ffcc00;
+}
+
+.acessibilidade .panel {
+    background-color: #474747;
+}
+.acessibilidade table tr:nth-child(even) {
+    background: #313030 !important;
+}
+
+.acessibilidade  table.ms-grid {
+    background-color: #797979;
+}

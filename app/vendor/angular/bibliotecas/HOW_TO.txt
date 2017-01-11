@@ -1,0 +1,14 @@
+HOW TO 
+
+Instalando o GULP global (caso não tenha instalado ainda)
+npm install -g gulp
+
+
+Instalando o gulp no repositorio atual e identificando as dependendias de dev
+npm install gulp --save-dev
+
+npm install gulp-uglify gulp-concat gulp-jshint
+
+
+Após a instalação, executar a tarefa de minificação:
+gulp angular jQuery domReady general

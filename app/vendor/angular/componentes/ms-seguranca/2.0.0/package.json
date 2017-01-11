@@ -1,0 +1,12 @@
+{
+  "author": "arquitetura.datasus@saude.gov.br",
+  "name": "ms-seguranca",
+  "version": "2.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.10",
+    "gulp-uglify": "~1.0.2",
+    "gulp-concat": "~2.4.2",
+    "gulp-jshint": "~1.9.0"
+  }
+}

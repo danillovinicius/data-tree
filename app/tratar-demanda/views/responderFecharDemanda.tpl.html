@@ -1,0 +1,491 @@
+<style>
+    .font-red{
+        color: red;
+    }
+    .font-blue{
+        color: #075681;
+    }
+    .italico{
+        font-style: italic;
+        text-decoration: underline;
+    }
+    .tamanho-12{
+        font-size: 12px;
+    }
+    .quebraTexto {
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+</style>
+
+<div class="container" ui-view>
+
+    <div class="row" ng-init="init();">
+        <div class="span12">
+            <strong class="title">{{tituloPagina}}</strong>
+        </div>
+    </div>
+
+    <div class="box conteudo-box">
+
+        <form name="form">
+
+            <div class="span12">
+
+                <div class="row">
+                    <div class="span2">
+                        <label>
+                            {{'pioridade'| translate}}:
+                        </label>
+                    </div>
+                    <div class="span3">
+                        <select id="pioridade"
+                                ng-model="nodeSelecionado.node.demanda.prioridade.descricao"
+                                ng-disabled="true">
+                            <option ng-selected="nodeSelecionado.node.demanda.prioridade.descricao">
+                                {{nodeSelecionado.node.demanda.prioridade.descricao}}
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="span2">
+                        <label>
+                            {{'prazo-resposta'| translate}}:
+                        </label>
+                    </div>
+
+                    <div class="span3">
+                        <div class="control">
+                            <div class="input-group">
+                                <input
+                                        type="text"
+                                        show-button-bar="false"
+                                        ng-model="nodeSelecionado.node.demanda.dataLimiteDemanda"
+                                        datepicker-popup="dd/MM/yyyy"
+                                        show-weeks="false"
+                                        is-open="CONFIG.OPEN_DATE_PICKET"
+                                        id="datepicker" class="form-control"
+                                        readonly="true"/>
+
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn" ng-disabled="true">
+                                        <span class="ms-icone-calendario"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1% !Important;">
+                    <div class="span3">
+                        <a ng-click="visualizarTipificacao();">
+                            <label>{{'label-veja-tipificacao'| translate}}</label>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span12">
+                        <h3>{{'label-encaminhamentos'| translate}}</h3>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="span12">
+
+                        <div class="span4">
+                            <!-- arvore  -->
+                            <div data-angular-treeview="true"
+                                 data-tree-id="tree"
+                                 data-tree-model="arvore"
+                                 data-node-id="treeId"
+                                 data-node-label="node"
+                                 data-node-children="children"
+                                 ng-click="selecionarEncaminhamento($event);">
+                            </div>
+                        </div>
+
+                        <div class="span8">
+                            <fieldset class="filder">
+                                <legend ng-show="exibirOpcoesRedeOrigem();">
+                                    <div class="checkbox inline">
+                                        <label class="hand">
+                                            <input type="checkbox"
+                                                   ng-model="nodeSelecionado.node.solicitaResposta"
+                                                   ng-checked="nodeSelecionado.node.solicitaResposta == 'S'"/>
+                                            {{'solicitar-resposta' | translate}}
+                                        </label>
+                                    </div>
+                                </legend>
+
+                                <div>
+                                    <div class="radio inline">
+                                        <label class="inline">{{'tipo-encaminhamento'| translate}}:</label>
+                                    </div>
+                                    <div class="radio inline">
+                                        <label class="inline hand">
+                                            <input type="radio"
+                                                   name="tipoEncaminhamento"
+                                                   ng-model="nodeSelecionado.node.tipoEncaminhamento"
+                                                   value="P"
+                                                   ng-disabled="true"/>
+                                            {{'providencia'| translate}}
+                                        </label>
+                                    </div>
+
+                                    <div class="radio inline">
+                                        <label class="inline hand">
+                                            <input type="radio"
+                                                   name="tipoEncaminhamento"
+                                                   ng-model="nodeSelecionado.node.tipoEncaminhamento"
+                                                   value="C"
+                                                   ng-disabled="true"/>
+                                            {{'conhecimento'| translate}}
+                                        </label>
+                                    </div>
+
+                                    <div class="pull-right"
+                                         style="margin-right: 2%; margin-top: 1%;">
+                                        <label>
+                                            <a ng-if="exibirOpcoesRedeOrigem()"
+                                               style="color: #444444 !Important;"
+                                               ng-click="inativarEncaminhamentos();">
+                                                <icon class="ms-icone-fechado"
+                                                      ng-show="nodeSelecionado.node.ativo == 'N'"></icon>
+                                                <icon class="ms-icone-aberto"
+                                                      ng-show="nodeSelecionado.node.ativo == 'S'"></icon>
+                                            </a>
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="span12">
+                                    <hr class="gray-hr">
+                                </div>
+                                <div class="row span12">
+                                    <div class="pull-right">
+                                        <label>{{nodeSelecionado.nivel}}</label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <strong>{{(!nodeSelecionado.node.redeDestino.isSubRede)
+                                                ? nodeSelecionado.node.redeDestino.ouvidoria.nome
+                                                : nodeSelecionado.node.redeDestino.subrede.nome}}</strong>
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <label>{{'responsavel'|translate}}:
+                                            {{nodeSelecionado.node.usuarioResponsavel.nome}}</label>
+                                        <hr class="gray-hr">
+                                    </div>
+                                    <div class="row">
+                                        <div ng-repeat="historico in nodeSelecionado.historicos">
+                                            <div class="row">
+
+                                                <a ng-click="historico.visualizar = !historico.visualizar">
+                                                    <label style="{{historico.style}}">
+                                                        <span ng-if="!historico.visualizar"
+                                                              class="ms-icone-direita-triangulo"
+                                                              style="vertical-align: middle"/>
+                                                        <span ng-if="historico.visualizar"
+                                                              class="ms-icone-desce-triangulo"
+                                                              style="vertical-align: middle"/>
+                                                        {{historico.statusEncaminhamentoDemanda.descricao}} por:
+                                                        {{historico.usuarioResponsavel.nome}} em
+                                                        {{historico.dataEncaminhamento | date}}
+                                                    </label>
+                                                </a>
+
+                                                <label class="pull-right"
+                                                       ng-show="exibirOpcoesRedeOrigem()"
+                                                       style="margin-top:-3%;"
+                                                       tooltip="{{exibirTooltipQuantidadeArquivos(historico)}}"
+                                                       ng-if="historico.arquivos.length">
+                                                    <icon class="ms-icone-clip"></icon>
+                                                </label>
+
+                                                <label class="pull-right"
+                                                       ng-show="!exibirOpcoesRedeOrigem()"
+                                                       style="margin-top:-3%;"
+                                                       tooltip="{{'MH196' | translate}}"
+                                                       ng-if="historico.arquivos.length">
+                                                    <icon class="ms-icone-clip"></icon>
+                                                </label>
+
+                                                <div class="row" ng-show="historico.visualizar">
+                                                    <blockquote class="quebraTexto" style="text-align: justify;">
+                                                        <p style="{{historico.style}}" ng-show="!historico.mostrarTudo">
+                                                            {{getTamanhoDoBloco(historico.comentarioParecer)}}
+                                                            <a ng-show="historico.comentarioParecer.length > 250"
+                                                               ng-click="historico.mostrarTudo=!historico.mostrarTudo"
+                                                               style="font-size: 1.3em !Important;">...</a>
+                                                        </p>
+
+                                                        <p style="{{historico.style}}" ng-show="historico.mostrarTudo">
+                                                            {{historico.comentarioParecer}}
+                                                        </p>
+                                                    </blockquote>
+                                                </div>
+
+                                                <div class="row" ng-show="historico.visualizar">
+                                                    <label style="{{historico.style}}; padding: 0 0 0 15px;">{{!historico.arquivos
+                                                        ? 0 + ' anexos' : historico.arquivos.length + ' ' +
+                                                        'anexos'}}</label>
+                                                </div>
+
+                                                <div class="row" ng-show="historico.visualizar"
+                                                     style="{{historico.style}}; padding: 0 0 0 15px;">
+
+                                                    <div style="{{historico.style}}"
+                                                         ng-if="!historico.arquivos || historico.arquivos.length <= 0">
+                                                        <label>Nenhum arquivo encontrado</label>
+                                                    </div>
+
+                                                    <div ng-repeat="arquivo in historico.arquivos">
+                                                        <div class="span2" style="{{historico.style}}"
+                                                             ng-show="historico.visualizar">
+                                                            <a ng-if="arquivo.id"
+                                                               ng-href="{{getUrlDownload(arquivo.id)}}">
+                                                                <icon style="font-size: 5em; color: black;"
+                                                                      ng-class="definirTipoArquivo(arquivo)"></icon>
+                                                                <label style="word-wrap: break-word">
+                                                                    {{arquivo.nomeArquivo}}
+                                                                </label>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="span12">
+                                    <hr class="gray-hr">
+                                </div>
+                                <div class="span12">
+
+                                    <div class="row">
+                                        <label class="obrigatorio">{{'label-comentario-parecer'| translate}}</label>
+
+                                        <div style="position: absolute; margin-top: 1%; margin-left: 1%;">
+
+                                            <label ng-show="!exibirOpcoesRedeOrigem() && nodeSelecionado.responder && !habilitarComentarioParecer">
+                                                {{'label-clique-aqui-para'| translate}}
+                                              <span tooltip="{{'MH197' | translate}}">
+                                                <a ng-class="{'inactive' : desbilitarAcoesTela()}" class="negrito"
+                                                   ng-click="responder();">{{'link-responder'| translate}}</a>,
+                                              </span>
+                                              <span tooltip="{{'MH198' | translate}}">
+                                                <a ng-class="{'inactive' : desbilitarAcoesTela()}" class="negrito" ng-click="devolver();">
+                                                    {{'link-devolver-nao-pertinente'| translate}}
+                                                </a>
+                                              </span>
+                                              <span ng-if="nivelSubRede != 3" tooltip="{{'MH199' | translate}}">
+                                                {{'label-ou'| translate}}
+                                                <a ng-class="{'inactive' : desbilitarAcoesTela()}" class="negrito"
+                                                   ng-click="encaminhar();" ng-if="nivelSubRede != 3">
+                                                    {{'link-encaminhar'| translate}}</a>
+                                              </span>
+
+                                            </label>
+
+                                            <label ng-show="!exibirOpcoesRedeOrigem() && nodeSelecionado.aceitar && !habilitarComentarioParecer">
+                                                {{'label-clique-aqui-para'| translate}}
+                                                <a ng-class="{'inactive' : desbilitarAcoesTela()}" class="negrito"
+                                                   ng-click="aceitar();">{{'link-aceitar'| translate}}</a>
+                                                <span>{{'label-ou'| translate}}
+                                                  <a ng-class="{'inactive' : desbilitarAcoesTela()}" class="negrito"
+                                                     ng-click="reencaminhar();">{{'link-reencaminhar'| translate}}</a>
+                                                </span>
+                                            </label>
+
+                                            <label ng-show="exibirOpcoesRedeOrigem() && !habilitarComentarioParecer">
+                                                {{'label-clique-aqui-para'| translate}}
+                                                <a ng-class="{'inactive' : !status_aberto || nodeSelecionado.node.ativo == 'N'}" class="negrito" ng-click="fechar();">{{'link-fechar'| translate}}</a>,
+                                                <a ng-class="{'inactive' : !status_aberto || nodeSelecionado.node.ativo == 'N'}" class="negrito" ng-click="reencaminhar();">{{'link-reencaminhar'| translate}}</a>
+                                                <span>{{'label-ou'| translate}}
+                                                  <a ng-class="{'inactive' : !status_aberto || nodeSelecionado.node.ativo == 'N'}" class="negrito" ng-click="encaminhar();">{{'link-encaminhar'| translate}}</a>
+                                                </span>
+                                            </label>
+
+                                        </div>
+
+                                        <textarea ng-show="exibirOpcoesRedeOrigem();"
+                                                  class="pre-scrollable text-area"
+                                                  style="width: 100%;"
+                                                  id="idComentarioParecerFechamento"
+                                                  validator="[required]"
+                                                  ng-model="resposta"
+                                                  ng-disabled="!habilitarComentarioParecer" maxlength="4000">
+                                        </textarea>
+
+                                        <textarea ng-hide="exibirOpcoesRedeOrigem();"
+                                                  class="pre-scrollable text-area"
+                                                  style="width: 100%;"
+                                                  id="idComentarioParecer"
+                                                  validator="[required]"
+                                                  ng-model="resposta"
+                                                  ng-disabled="!habilitarComentarioParecer">
+                                        </textarea>
+                                    </div>
+
+                                    <div ng-show="nodeSelecionado.node.tipoEncaminhamento == 'P'">
+                                        <div class="row">
+                                            <label>
+                                                <a ng-show="status_aberto" ng-click="visualizarAnexarArquivo = !visualizarAnexarArquivo; carregarArquivosDemadaEncaminhamento();">
+                                                    {{'link-clique-aqui-anexar-arquivo'| translate}}
+                                                    <span ng-if="!visualizarAnexarArquivo"
+                                                          class="ms-icone-direita-triangulo"
+                                                          style="vertical-align: middle"/>
+                                                    <span ng-if="visualizarAnexarArquivo"
+                                                          class="ms-icone-desce-triangulo"
+                                                          style="vertical-align: middle"/>
+                                                </a>
+                                            </label>
+                                        </div>
+
+                                        <div class="row" ng-show="visualizarAnexarArquivo">
+                                            <div class="span2">
+                                                <label for="arquivo">
+                                                    <strong>{{'arquivo' | translate}}:</strong>
+                                                </label>
+                                            </div>
+                                            <div class="span8" tooltip="{{'MH116' | translate}}">
+                                                <input type="file"
+                                                       ng-file-select="$parent.addFileEncaminhamento($files)"
+                                                       ng-model="$parent.arquivoTemporario"
+                                                       id="file-input"/>
+                                            </div>
+
+                                            <div class="btn-form-left">
+                                                <a class="btn btn-primary"
+                                                   tooltip="{{'MH093' | translate}}"
+                                                   ng-click="anexarArquivo();">
+                                                    {{'MH093' | translate}}
+                                                </a>
+                                            </div>
+
+                                            <div class="row span12" style="margin-top: 1% !Important;">
+
+                                                <table class="table ms-grid">
+                                                    <thead>
+                                                    <th class="text-center">{{'nome-arquivo' | translate}}</th>
+                                                    <th class="text-center">{{'acoes' | translate}}</th>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-if="!arquivos || arquivos.length <= 0">
+                                                        <td colspan="2">Nenhum arquivo encontrado</td>
+                                                    </tr>
+                                                    <tr ng-repeat="arquivo in arquivos">
+                                                        <td>
+                                                            <a tooltip="{{'MH096' | translate}}"
+                                                               ng-if="arquivo.id"
+                                                               ng-href="{{getUrlDownload(arquivo.id)}}">
+                                                                <label>{{arquivo.nomeArquivo}}</label>
+                                                            </a>
+                                                            <a ng-if="!arquivo.id"
+                                                               ng-click="downloadArquivo(arquivo)"
+                                                               tooltip="{{'MH096' | translate}}">
+                                                                <label>{{arquivo.nomeArquivo}}</label>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class='btn btn-sm'
+                                                               tooltip="{{'MH153' | translate}}"
+                                                               ng-click="removerArquivo($index)">
+                                                                <icon class="ms-icone-lixeira"></icon>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="exibirOpcoesRedeOrigem();">
+                                        <hr class="gray-hr">
+                                        <div>
+                                            <label>{{'label-email-enviado-cidadao' | translate}}</label>
+
+                                            <div ng-repeat="email in arquivosEmails | orderBy:'dataUpload'">
+                                                <a tooltip="{{'MH096' | translate}}"
+                                                   ng-if="email.id"
+                                                   ng-href="{{getUrlDownload(email.id)}}">
+                                                    <label>{{email.dataUpload  | date:'dd/MM/yyyy'}} - {{email.nomeArquivo}}</label>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="span12">
+                            <hr class="gray-hr">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span12">
+                        <div class="btn-form-right">
+
+                            <a class="btn"
+                               ng-show="exibirOpcoesRedeOrigem();"
+                               ng-click="abrirPreviaEmail();"
+                               ng-disabled="status_aberto"
+                               tooltip="{{'MH211' | translate}}">
+                                {{'btn-enviar-cidadao'| translate}}
+                            </a>
+
+                            <a class="btn" ng-click="abrirModalHistoricoDeTramite();">
+                                {{'historico-tramite'| translate}}
+                            </a>
+
+                            <a class="btn" tooltip="{{'MH174'| translate}}"
+                               ng-show="!exibirOpcoesRedeOrigem();"
+                               ng-click="emAnaliseResponderEncaminhamentoDemanda()"
+                               ng-disabled="nodeSelecionado.node.tipoEncaminhamento == 'C'"
+                               tooltip="{{'MH200' | translate}}">{{'em-analise'| translate}}
+                            </a>
+
+                            <a class="btn" tooltip="{{'MH174'| translate}}"
+                               ng-show="exibirOpcoesRedeOrigem();"
+                               ng-click="emAnaliseFecharDemanda();"
+                               ng-disabled="nodeSelecionado.node.tipoEncaminhamento == 'C' || !status_aberto"
+                               tooltip="{{'MH200' | translate}}">{{'em-analise'| translate}}
+                            </a>
+
+                            <a class="btn"
+                               tooltip="{{'MH057'| translate}}"
+                               ng-disabled="!status_aberto"
+                               ng-click="cancelar()">
+                                {{'MH057'| translate}}
+                            </a>
+                            <a ng-click="tratarEncaminhamentoDemanda()"
+                               tooltip="{{'MH201'| translate}}"
+                               ng-show="!exibirOpcoesRedeOrigem();"
+                               class="btn btn-primary">
+                                {{'salvar'| translate}}
+                            </a>
+
+                            <a ng-click="salvarFechamentoDemanda()"
+                               tooltip="{{'MH212'| translate}}"
+                               ng-disabled="!status_aberto"
+                               ng-show="exibirOpcoesRedeOrigem();"
+                               class="btn btn-primary">
+                                {{'salvar'| translate}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

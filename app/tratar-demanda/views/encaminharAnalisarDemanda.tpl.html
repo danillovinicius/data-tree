@@ -1,0 +1,594 @@
+<style>
+    .font-red {
+        color: red;
+    }
+
+    .font-blue {
+        color: #075681;
+    }
+
+    .italico {
+        font-style: italic;
+        text-decoration: underline;
+    }
+
+    .quebraTexto {
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .tamanho-12 {
+        font-size: 12px;
+    }
+
+</style>
+
+<div class="container" ui-view ng-hide="mostrarModal">
+
+    <div class="row">
+        <div class="span12">
+            <p class="text-capitalize"><strong class="title"> Tratar Demanda </strong></p>
+        </div>
+    </div>
+    <div class="span12 box conteudo-box">
+
+        <div id="centerpanel" class="span12" style="overflow: hidden; padding: 0px; margin: 0px; border: 0px;">
+            <div bp-org-diagram
+                 data-options="myOptions"
+                 data-on-highlight-changed="onMyHighlightChanged()"
+                 data-on-cursor-changed="onMyCursorChanged()"
+                 style="height: 430px;">
+            </div>
+        </div>
+
+
+        <div class="span12">
+            <hr class="gray-hr">
+        </div>
+
+        <div class="span12">
+        <h3>{{myOptions.cursorItem}}</h3>
+        <p>Highlight: {{myOptions.highlightItem}}</p>
+
+            <div class="span12" ng-repeat="item in myOptions.items">
+                <!--<p>Highlight: {{item | json}}</p>-->
+            </div>
+
+        <button ng-click="setCursorItem(200)">Cursor</button>
+        <!--<button ng-click="$parent.setHighlightItem(item.id)">Highlight</button>-->
+        <!--<button ng-click="$parent.deleteItem($index)">Delete</button>-->
+        <!--<button ng-click="$parent.addItem($index + 1, item.id)">Add Child</button>-->
+        <!--<button ng-click="addItem(0, null)">New</button>-->
+
+        <div ng-repeat="item in myOptions.items">
+            <p>{{item.status}}</p>
+        </div>
+        </div>
+
+
+        <div class="span12" style="background: white">
+            <fieldset class="filder">
+                <legend class="lengendOuvidor">
+                    <div class="checkbox inline">
+                        <label class="hand">
+                            <input type="checkbox"
+                                   ng-change="alterarSolicitacaoResposta(nodeSelecionado.node);"
+                                   ng-model="respostaSolicitada"
+                                   ng-checked="nodeSelecionado.node.solicitaResposta == 'S'"/>
+                            {{solicitar-resposta}}
+                        </label>
+                    </div>
+                    {{nodeSelecionado.bloquearCamposDepoisDeSalvar}}
+                </legend>
+
+                <div class="row">
+                    <div class="span12">
+                        <div id="mensagemNaoAprovacao"/>
+                    </div>
+                </div>
+
+                <div class="span12">
+                    <div class="radio inline">
+                        <label class="inline">{{'Tipo Encaminhamento'}}:</label>
+                    </div>
+                    <div class="radio inline">
+                        <label class="inline hand">
+                            <input type="radio"
+                                   name="tipoEncaminhamento"
+                                   ng-model="nodeSelecionado.node.tipoEncaminhamento"
+                                   value="P"
+                                   ng-change="alterarTipoEncaminhamento(nodeSelecionado.node)"/>
+                            {{'Providencia'}}
+                        </label>
+                    </div>
+
+                    <div class="radio inline">
+                        <label class="inline hand">
+                            <input type="radio"
+                                   name="tipoEncaminhamento"
+                                   ng-model="nodeSelecionado.node.tipoEncaminhamento"
+                                   value="C"
+                                   ng-change="alterarTipoEncaminhamento(nodeSelecionado.node)"/>
+                            {{'Conhecimento'}}
+                        </label>
+                    </div>
+                    <div class="inline pull-right hand" ng-if="!nodeSelecionado.bloquearCampos">
+
+                        <button type="button"
+                                ng-click="removeEncaminhamento(nodeSelecionado)">
+                            <span class="btn ms-icone-lixeira"> </span>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="span12">
+                    <hr class="gray-hr">
+                </div>
+                <div class="row span12">
+                    <div class="pull-right">
+                        <label>1</label>
+                    </div>
+                    <div>
+                        <label><strong>Ouvidoria Federal do Hospital Sara de Brasilia</strong></label>
+                    </div>
+                    <div class="row">
+                        <label>Responsável: Phillip da Silva e Sousa</label>
+                    </div>
+                </div>
+                <div class="span12">
+                    <hr class="gray-hr">
+                </div>
+                <div class="span12 quebraTexto">
+                    <label>Phasellus vel metus ut purus vulputate efficitur. Aliquam vel dolor mollis, sollicitudin erat
+                        non, fermentum ipsum. In est nibh, ullamcorper vitae scelerisque quis, accumsan at diam. Etiam
+                        nec porttitor mauris. Morbi id tortor magna. Donec sit amet tortor id libero fermentum
+                        fermentum. Donec sit amet leo massa. Maecenas ut volutpat mauris. Quisque malesuada, augue sed
+                        porttitor euismod, ligula enim condimentum nisi, vel laoreet lorem sem ac eros. Proin porttitor
+                        in justo id facilisis. Fusce pretium, felis vitae vulputate auctor, lorem urna lobortis turpis,
+                        non tincidunt ipsum purus eu diam.</label>
+                </div>
+                <div class="span12">
+                    <hr class="gray-hr">
+                </div>
+                <div class="span12">
+                    <div class="row">
+                        <label>{{nodeSelecionado.node.arquivos.length + ' ' + 'anexos'}}</label>
+                    </div>
+                    <div class="row">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr ng-if="!nodeSelecionado.node.arquivos ||nodeSelecionado.node.arquivos.length <= 0">
+                                <td colspan="2"><label> Nenhum arquivo encontrado</label></td>
+                            </tr>
+                            <tr ng-repeat="arquivo in nodeSelecionado.node.arquivos">
+                                <td>
+                                    <a ng-if="arquivo.id"
+                                       tooltip="{{MH205}}"
+                                       ng-href="{{getUrlDownload(arquivo.id)}}">
+                                        <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                                    </a>
+
+                                    <a ng-if="!arquivo.id"
+                                       ng-click="downloadArquivo(arquivo)"
+                                       tooltip="{{MH205}}">
+                                        <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                                    </a>
+                                </td>
+                                <td ng-if="!nodeSelecionado.bloquearCampos">
+                                    <button type="button"
+                                            class="close"
+                                            ng-click="removerArquivo(arquivo)"
+                                            aria-hidden="true"
+                                            aria-label="Fechar">&times;
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="span12">
+                    <div class="pull-right">
+                        <button type="button" ng-if="exibeOpcaoFecharDemanda"
+                                ng-disabled="!nodeSelecionado.exiteResposta"
+                                ng-click="responder(nodeSelecionado.node);" class="btn btn-primary">
+                            {{responder-demanda}}
+                        </button>
+                        <button type="button" ng-click="gerarDocumentoEncaminhamento(nodeSelecionado.node)"
+                                ng-disabled="nodeSelecionado.bloquearCampos" class="btn btn-default">
+                            {{gerar-documento-encaminhamento}}
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <br/>
+
+                <div class="btn-form-right">
+                    <button type="button" class="btn btn-default" ng-click="emAnalise()">em analise</button>
+                    <button type="button" class="btn btn-danger" ng-click="cancelar()">Cancelar</button>
+                    <button ng-show="acao == 'E'" ng-click="salvarEncaminhamento()" type="button"
+                            class="btn btn-primary">
+                        salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="span12 box conteudo-box" ng-init="acao = 'E'">
+        <!-- Analisar Demanda -->
+        <div class="span12" ng-if="acao == 'A'">
+            <label>
+                <strong class="title">
+                    <small>Analisar Demanda</small>
+                </strong>
+            </label>
+        </div>
+
+        <div class="span12" ng-if="acao == 'E'">
+            <label>
+                <strong class="title">
+                    <small>Encaminhar Demanda</small>
+                </strong>
+            </label>
+        </div>
+
+        <div class="row span12">
+            <div class="span1 radio inline">
+                <label class="inline">acao:</label>
+            </div>
+            <div class="span1 radio inline">
+                <label class="inline hand">
+                    <input ng-disabled="bloquear.acao.reencaminhamento" type="radio" name="acao" ng-model="acao"
+                           value="E" checked/> encaminhar
+                </label>
+            </div>
+            <div class="span1 radio inline" ng-show="exibeOpcaoAnalisar">
+                <label class="inline hand">
+                    <input ng-disabled="bloquear.acao.reencaminhamento" type="radio" name="acao" ng-model="acao"
+                           ng-click="clear(); recuperarTipificacoes();" value="A"/> analisar
+                </label>
+            </div>
+        </div>
+
+        <div class="span12">
+            <hr class="gray-hr">
+        </div>
+
+        <!-- Encaminhar Demanda -->
+
+
+        <div class="span12" ng-if="acao == 'E' ">
+            <div class="row" ng-if="showCampoPrioridade">
+                <div class="span2">
+                    <label for="pioridade" class="obrigatorio">
+                        <strong>pioridade:</strong>
+                    </label>
+                </div>
+                <div class="span3">
+                    <select id="pioridade"
+                            ng-options="p.id as p.descricao for p in PIORIDADES_ENUM"
+                            ng-model="filtro.tipoPrioridade"
+                            validator="[required]"
+                            ng-change="calcularDataLimitePrazoDaDemanda()"
+                            ng-disabled="bloquear.acao.reencaminhamento || bloquearFiltroPioridade">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">
+                    <label for="prazoResposta" class="obrigatorio">
+                        <strong>prazo resposta:</strong>
+                    </label>
+                </div>
+
+                <div class="span3">
+                    <div class="control">
+                        <div class="input-group">
+                            <input type="text"
+                                   show-button-bar="false"
+                                   ng-model="filtro.prazoResposta"
+                                   datepicker-popup="dd/MM/yyyy"
+                                   min="CONFIG.MIN_DATE"
+                                   max="CONFIG.MAX_DATE"
+                                   show-weeks="false"
+                                   is-open="CONFIG.OPEN_DATE_PICKET"
+                                   placeholder="  /  /    "
+                                   id="datepicker"
+                                   class="form-control"
+                                   validator="[required]"
+                                   readonly="true"/>
+
+                            <div class="input-group-btn">
+                                <button type="button" class="btn"
+                                        ng-click="openDatePicker($event)"
+                                        ng-disabled="bloquear.acao.reencaminhamento || (isPrazoSelecionado && prazoDemanda.tipoConfiguracaoPrazo != 'U') || (prazoDemanda.tipoConfiguracaoPrazo == 'U' && prazoDemanda.calendarioEditavel == 'N')">
+                                    <span class="ms-icone-calendario"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row margin-top-double">
+                <div class="span12" style="background-color: #64A3CB;">
+                    <h4 style="text-align: center; color: white;">rede destino / para-analise-providencia</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span12">
+                    <fieldset class="filder span12">
+                        <legend><strong>rede destino</strong></legend>
+
+                        <div class="row">
+                            <div class="span1">
+                                <label for="esfera">
+                                    <strong>esfera:</strong>
+                                </label>
+                            </div>
+                            <div class="span2">
+                                <select id="esfera"
+                                        ng-disabled="bloquear.acao.reencaminhamento"
+                                        ng-options="esfera.id as esfera.descricao for esfera in esferas | orderBy:'descricao'"
+                                        ng-model="filtroRedeDestino.esfera">
+                                    <option value="">-- Selecione --</option>
+                                </select>
+                            </div>
+
+                            <div class="span1">
+                                <label for="tipo">
+                                    <strong>tipo:</strong>
+                                </label>
+                            </div>
+                            <div class="span3">
+                                <select id="tipo"
+                                        ng-disabled="bloquear.acao.reencaminhamento"
+                                        ng-options="tipo.id as tipo.descricao for tipo in tipos | orderBy:'descricao'"
+                                        ng-model="filtroRedeDestino.tipo">
+                                    <option value="">-- Selecione --</option>
+                                </select>
+                            </div>
+
+                            <div class="span1">
+                                <label for="nivel">
+                                    <strong>nivel:</strong>
+                                </label>
+                            </div>
+                            <div class="span2">
+                                <select id="nivel"
+                                        ng-disabled="bloquear.acao.reencaminhamento"
+                                        ng-options="nivel.id as nivel.id for nivel in niveis | orderBy:'id'"
+                                        ng-model="filtroRedeDestino.nivel">
+                                    <option value="">-- Selecione --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span1">
+                                <label for="uf">
+                                    <strong>uf:</strong>
+                                </label>
+                            </div>
+                            <div class="span2">
+                                <select id="uf"
+                                        ng-disabled="bloquear.acao.reencaminhamento"
+                                        ng-options="uf.id as uf.noUf for uf in ufs | orderBy:'noUf'"
+                                        ng-model="filtroRedeDestino.uf">
+                                    <option value="">-- Selecione --</option>
+                                </select>
+                            </div>
+                            <div class="span1">
+                                <label for="municipio">
+                                    <strong>municipio:</strong>
+                                </label>
+                            </div>
+                            <div class="span3">
+                                <select id="municipio"
+                                        ng-disabled="bloquear.acao.reencaminhamento"
+                                        ng-options="municipio.id as municipio.nome for municipio in municipios | orderBy:'nome'"
+                                        ng-model="filtroRedeDestino.municipio">
+                                    <option value="">-- Selecione --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="span1">
+                                &nbsp;
+                            </div>
+                            <div class="span8">
+                                <label><a ng-class="{'inactive' : bloquear.acao.reencaminhamento}"
+                                          ng-click="abrirModalLocaisEncaminhamento()">visualizar locais
+                                    encaminhamentos</a></label>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <div class="row">
+                            <div class="span2">
+                                <label for="nomeDestino" class="obrigatorio">
+                                    <strong>nome destino:</strong>
+                                </label>
+                            </div>
+                            <div class="span5">
+                                <input type="text"
+                                       ng-model="nomeOuvidoria"
+                                       validator="[required]"
+                                       id="nomeDestino"
+                                       disabled/>
+                            </div>
+                            <span ng-if="filtro.possuiAcesso!=undefined"> 
+                                <div class="span1">
+                                    <label for="acesso">
+                                        <strong>acesso:</strong>
+                                    </label>
+                                </div>
+                                <div class="span2">
+                                    <input type="text"
+                                           id="acesso"
+                                           ng-model="acesso"
+                                           disabled/>
+                                </div>
+                            </span>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="span12">
+                                <label class="obrigatorio"><strong>comentario parecer:</strong></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span12">
+                                <textarea class="pre-scrollable text-area"
+                                          name="parecerDemanda"
+                                          id="parecerDemanda"
+                                          validator="[required]"
+                                          ng-model="filtro.comentarioParecer"
+                                          maxlength="4000"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="span3">
+                                <label for="responsavelAcompanhamento">
+                                    <strong>responsavel acompanhamento:</strong>
+                                </label>
+                            </div>
+                            <div class="span9">
+                                <input type="text"
+                                       id="responsavelAcompanhamento"
+                                       ng-model="demanda.usuarioView.nome"
+                                       disabled/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Analisar Demanda -->
+
+        <div class="span12" ng-if="acao == 'A' ">
+            <label> <strong>classificacao: </strong> {{demanda.classificacaoDemanda.descricao}}</label>
+            <label> <strong>tipificacao: </strong> <span class="tamanho-12">{{tipificacaoDemanda}}</span> </label>
+            <label> <strong>demanda: </strong> <a ng-click="mostrarModalDemanda()">visualizar demanda</a></label>
+
+
+            <div class="row">
+                <div class="span12">
+                    <label><strong>teor demanda:</strong></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <textarea class="pre-scrollable text-area" name="teorDemanda" id="teorDemanda" disabled>{{demanda.teorDemanda}}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span12">
+                    <label class="obrigatorio"><strong>comentario parecer:</strong></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <textarea class="pre-scrollable text-area"
+                              name="parecerDemanda"
+                              id="parecerDemandaAnalise"
+                              validator="[required]"
+                              ng-model="demanda.parecerDemanda"
+                              maxlength="4000">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="span12">
+            <fieldset class="filder">
+                <div class="row">
+                    <div class="span4">
+                        <label>
+                            <a ng-class="{'inactive' : bloquear.acao.reencaminhamento}"
+                               ng-click="visualizarAnexarArquivo=!visualizarAnexarArquivo; showAnexarArquivos()">
+                                anexar arquivo
+                                <span ng-if="visualizarAnexarArquivo" class="ms-icone-desce-triangulo"
+                                      style="vertical-align: middle"/>
+                                <span ng-if="!visualizarAnexarArquivo" class="ms-icone-sobe-triangulo"
+                                      style="vertical-align: middle"/>
+                            </a>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- anexar arquivo -->
+                <ng-include ng-if="visualizarAnexarArquivo"
+                            src="'app/pages/tratar-demanda/views/anexarArquivos.tpl.html'"/>
+
+            </fieldset>
+        </div>
+
+
+        <!-- Inicio botoes -->
+        <div class="span12" ng-if="acao == 'E' ">
+            <div class="row">
+                <div class="span12 margin-top">
+                    <div class="btn-form-right">
+                        <span>
+							<button type="button"
+                                    class="btn"
+                                    ng-click="abrirModalHistoricoDeTramite()">
+                                    historico tramite
+                            </button>
+						</span>
+                        <span> 
+						    <button type="button" class="btn btn-primary"
+                                    ng-disabled="bloquearEncaminhamento || maximoEncaminhamento || aprovacaoGestor"
+                                    ng-click="adicionarEncaminhamento()">
+                                <labe>adicionar encaminhamento</label>
+                            </button>
+						</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Inicio botoes -->
+
+        <div class="row" ng-if="acao == 'A'">
+            <div class="span12">
+                <br/>
+
+                <div class="btn-form-right">
+                    <button type="button" class="btn btn-default" ng-click="emAnaliseAnalisarDemanda()">em analise
+                    </button>
+                    <button type="button" class="btn btn-danger" ng-click="cancelarAnalisarDemanda()">Cancelar</button>
+                    <button type="button" tooltip="{{'fechar-demanda'}}" class="btn btn-primary"
+                            ng-click="fecharDemanda()">fechar demanda
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fim botoes -->
+
+
+        <div class="span12">
+            <div class="span6 text-center margin-top-double" style="float: right;" ng-if="acao == 'E'">
+                <label id="mensagemProvidencia"/>
+                <label id="mensagemEnviadaParaAprovacao"/>
+            </div>
+        </div>
+
+    </div>
+</div>

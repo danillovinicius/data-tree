@@ -1,0 +1,42 @@
+<div class="modal-content" style="height:100%;">
+
+  <div class="modal-header">
+
+      <button type="button"
+              class="close"
+              ng-click="fechar()"
+              data-dismiss="modal"
+              tooltip="{{'MH020' | translate}}"
+              aria-hidden="true"
+              aria-label="Fechar">
+       &times;
+    </button>
+  <h4 class="modal-title">Confirmação</h4>
+
+</div>
+
+<div class="modal-body">
+  <label>{{mensagem}}</label>
+</div>
+
+<div class="modal-footer">
+
+  <div class="row">
+
+    <div class="span12">
+      <div class="btn-form-right">
+        <span>
+          <a class="btn btn-sm btn-primary" ng-click="confirmar();">
+            Ok
+          </a>
+        </span>
+        <span>
+          <a class="btn btn-sm" ng-click="fechar()">
+            {{'MH057' | translate}}
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+</div>

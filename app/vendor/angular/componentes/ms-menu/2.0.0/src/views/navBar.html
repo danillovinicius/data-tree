@@ -1,0 +1,20 @@
+<ul class="nav">
+	<li ng-repeat="menu in menuData" ng-class="{dropdown: menu.children}">
+	  	<a ui-sref="{{ menu.route }}" href="#/{{ menu.route }}">{{ menu.name }}</a>
+	  
+	  	<a ng-if="{{ menu.children.length }}" 
+		  data-toggle="dropdown" 
+		  class="dropdown-toggle" 
+		  href="#"
+		  >
+	  		{{ menu.name }}<span class="ms-icone-seta-unica-baixo"></span>
+	 	</a>
+	 	
+	 	<ul ng-if="{{ menu.children.length }}" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+	 		<li ng-repeat="subMenu in menu.children">
+            	<a ui-sref="{{ subMenu.route }}" href="#/{{subMenu.route}}">{{subMenu.name}}</a>
+            </li>
+	 	</ul>
+	  
+	</li>
+</ul>

@@ -1,0 +1,573 @@
+@charset "UTF-8";
+
+/* -------------|
+/* - CSS RESET
+/* ----- */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+a { outline: none; cursor: pointer;}
+legend { display: none; }
+ol, ul { list-style: none; }
+a:hover { text-decoration: underline; }
+a:active, button:active {  }
+.barra a:active, .barra button:active { position: relative; top: auto; left:-1px; }
+table { border-collapse: collapse; border-spacing: 0; }
+label { cursor: inherit; }
+
+body{
+    /*background: url("../images/bkg/background.jpg") no-repeat center top fixed;*/
+    background-color:#D1D1D1;
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+    color:#444444;
+    height:100% !important;
+    float: left;
+    width: 100%;
+}
+
+header, section, { margin-bottom: 40px; border: 1px solid red; float: left; display: block; }
+
+/* -------------|
+/* - REGRAS GERAIS
+/* ----- */
+
+/* Image Replacement */
+
+.image-replace {
+    display: block;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+/* Image Replacement para Inputs */
+
+.input-replace {
+    display: block;
+    content: "";
+    line-height: 0;
+    text-indent: -9999px;
+    cursor: pointer;
+    border: none !important;
+}
+
+.header
+, .section{
+    float: left;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+/* ---------|
+/* - HEADER
+/* ---- */
+
+.rvfs-1 p, .rvfs-1 div, .rvfs-1 td{ font-size: 97% }
+.rvfs-2 p, .rvfs-2 div, .rvfs-2 td{ font-size: 98% }
+.rvfs-3 p, .rvfs-3 div, .rvfs-3 td{ font-size: 99% }
+.rvfs-4 p, .rvfs-4 div, .rvfs-4 td{ font-size: 100% }
+.rvfs-5 p, .rvfs-5 div, .rvfs-5 td{ font-size: 101% }
+.rvfs-6 p, .rvfs-6 div, .rvfs-6 td{ font-size: 102% }
+.rvfs-7 p, .rvfs-7 div, .rvfs-7 td{ font-size: 103% }
+
+/* Barra Brasil */
+
+#barra-brasil {
+  background: url("../images/lgo/barra-brasil-v3-bgx.png") no-repeat scroll center bottom #025471;
+  overflow: hidden;
+  position: relative;
+}
+#barra-brasil .barra {
+  background: url("../images/lgo/barra-brasil-v3-bgx.gif") repeat-x scroll 0 bottom transparent;
+  display: block;
+  height: 28px;
+  margin: 0 auto;
+}
+#barra-brasil .barra ul {
+  float: right;
+  margin: 0;
+  width: 319px;
+  list-style: none;
+}
+#barra-brasil .barra ul li {
+  float: left;
+  padding-left: 25px;
+}
+#barra-brasil .ai {
+  background: url("../images/lgo/ai.png") no-repeat scroll 0 4px #025471;
+  display: block;
+  height: 28px;
+  text-indent: -10000px;
+  width: 161px;
+}
+#barra-brasil .brasilgov {
+  background: url("../images/lgo/brasil.png") no-repeat scroll 0 4px #025471;
+  display: block;
+  height: 28px;
+  text-indent: -10000px;
+  width: 108px;
+}
+#topo_geral{
+    background: #016D27;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwNjgzNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMTkyMWMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #016D27 0%, #01812E 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#016D27), color-stop(100%,#01812E));
+    background: -webkit-linear-gradient(top,  #016D27 0%,#01812E 100%);
+    background: -o-linear-gradient(top,  #016D27 0%,#01812E 100%);
+    background: -ms-linear-gradient(top,  #016D27 0%,#01812E 100%);
+    background: linear-gradient(to bottom,  #016D27 0%,#01812E 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#016D27', endColorstr='#01812E',GradientType=0 );
+    background-repeat: repeat-x;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    min-height: 88px;
+}
+.logo{
+    display: block;
+    float: left;;
+}
+.logo h1{
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.18);
+    filter: dropshadow(color=#035a13, offx=0, offy=3);
+    color: #FFFFFF;
+    font-size: 34px !important;
+    font-weight: normal;
+    line-height: 67px;
+}
+.logo h1:after{
+    content: '';
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 3px solid #fff;
+    opacity: 0.2;
+    filter:alpha(opacity20);
+}
+.titulo_sistema {
+    text-shadow: 0px 3px 5px #035a13;
+    filter: dropshadow(color=#035a13, offx=0, offy=3);
+    float: left;
+    margin-top: 20px;
+}
+.titulo_sistema span.img_separador{
+    background: url("../images/bkg/topo_barra_divisao.png") no-repeat left center;
+    float: left;
+    height: 70px;
+    margin-left: 0;
+    margin-top: -10px;
+    width: 21px;
+}
+.titulo_sistema h1 {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: normal;
+    height: auto;
+    line-height: 27px;
+    padding: 0;
+    text-shadow: none;
+    text-transform: none;
+}
+.titulo_sistema h2 {
+    color: #FFFFFF;
+    float: left;
+    font-size: 22px;
+    line-height: 47px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.titulo_sistema h3 {
+    border: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+#box_menu_top{
+    display: block;
+    float: right;
+    height: 20px;
+    margin-top: 10px;
+}
+#box_menu_top ul{
+    list-style:none;
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+#box_menu_top ul li{
+    float: left;
+    margin-left: 6px;
+}
+#box_menu_top ul li a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    margin-left: 20px;
+}
+#box_menu_top ul li a span {
+    font-size: 16px;
+    margin-right: 4px;
+    position: absolute;
+    top: -1px;
+    left: -18px;
+    opacity: 0.7;
+    transition: opacity 0.8s;
+    filter:alpha(opacity=80);
+}
+#box_menu_top ul li a:hover {
+    text-decoration:underline;
+}
+#box_menu_top ul li a:hover span {
+    opacity: 1;
+    transition: opacity 0.8s;
+    filter:alpha(opacity=80);
+}
+#box_menu_top .btn_paginainicial {
+    background-image: url("../images/ico/icon_paginainicial.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    float: left;
+}
+#box_menu_top .btn_contato {
+    background-image: url("../images/ico/icon_contato.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    float: left;
+}
+#box_menu_top .btn_sair {
+    background-image: url("../images/ico/btn_sair_logaM.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    float: left;
+}
+.usuario a{
+    display:inline-block;
+    font-size: 14px;
+    vertical-align: top;
+}
+.usuario a span{
+    color: #fff;
+    margin-right: 2px;
+    opacity: 0.7;
+    transition: opacity 0.8s;
+    filter:alpha(opacity=80);
+}
+.usuario a:hover{
+    text-decoration: none;
+}
+.usuario a:hover span{
+    opacity: 1;
+    transition: opacity 0.8s;
+    filter:alpha(opacity=80);
+}
+.usuario a span.ms-icone-usuario:before{
+    content: "\f0ad";
+    font-family: 'ms-icones';
+    font-size: 1.1em;
+}
+.usuario span.usuarioLogado{
+    display: block;
+}
+.usuario span.perfilUsuario{
+    display: block;    
+}
+.usuario .box-usuario{
+    display: inline-block;
+}
+.usuario p{
+    float: right;
+    color: #fff;
+    font-size: 13px;
+}
+span.versao{
+    color: #fff;
+    font-size: 12px;
+}
+
+/* BOTOES ACESSIBILIDADE */
+
+.box_botoes_acessibilidade {
+    background-color: #024d29;
+    border-radius: 6px 6px 6px 6px;
+    float: left;
+    height: auto;
+    line-height: 0px;
+    margin-top: 6px;
+    padding: 0 3px;
+    -webkit-box-shadow: 1px 5px 10px 1px #00440d;
+    box-shadow: 1px 5px 10px 1px #00440d;
+}
+.box_botoes_acessibilidadeLogin {
+    background-color: #024D29;
+    border-radius: 6px 6px 6px 6px;
+    float: right;
+    height: auto;
+    line-height: 0;
+    margin-top: 6px;
+    padding: 3px;
+    width: auto;
+}
+.box_botoes_acessibilidade .fontsize-controllers{
+    float: left;
+    height: 100%;
+    margin: 0 auto;
+    padding: 2px 0 2px 2px;
+    position: relative;
+    text-align: left;
+}
+.box_botoes_acessibilidade .fontsize-controllers a {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    border-radius: inherit;
+    box-shadow: none;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bolder;
+    height: 13px;
+    line-height: normal;
+    margin: -2px 1px 0 0;
+    padding: 0;
+    text-shadow: 0 1px 6px rgba(255,255,255,0.35);
+    vertical-align: top;
+    width: 18px;
+}
+.box_botoes_acessibilidade .fontsize-controllers .btn-group{
+    padding: 3px;
+}
+.box_botoes_acessibilidade .contraste{
+    float: left;
+    margin: 5px 5px 2px 0;
+    cursor: pointer;
+}
+.box_botoes_acessibilidade .contraste span{
+    color: #fff;
+    font-size: 13px;
+}
+#box_info_usuario{
+    height: auto;
+    position: relative;
+    float:right;
+}
+#box_info_usuario_tempo{
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    padding: 5px 0;
+    margin-right: 15px;
+    text-align: right;
+}
+#wrapper-clock-count{
+    float: left;
+}
+#box_info_usuario_tempo_acabando{
+    background-image:url('../images/topo_bg_tempo_acabando.jpg');
+    color: #FFFFFF;
+    float: left;
+    font-size: 12px;
+    height: 40px;
+    margin-right: 10px;
+    padding: 5px 10px 5px 0;
+    text-align: right;
+    width: 97px;
+}
+#box_info_usuario_pc{
+    float: left;
+    margin-right: 5px;
+    padding-top: 14px;
+}
+#box_info_usuario_status{
+    float: left;
+    margin-right: 10px;
+    padding-top: 18px;
+}
+#box_info_usuario_sair{
+    float: left;
+    padding-top: 12px;
+    padding-left: 18px;
+}
+
+/* ----------|
+/* - FOOTER
+/* ----- */
+
+#BoxRodapePrincipal{
+   background: #024762;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzA2NDA2MCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDYxN2MiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #024762 0%, #034F6D 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#024762), color-stop(100%,#034F6D));
+    background: -webkit-linear-gradient(top,  #024762 0%,#034F6D 100%);
+    background: -o-linear-gradient(top,  #024762 0%,#034F6D 100%);
+    background: -ms-linear-gradient(top,  #024762 0%,#034F6D 100%);
+    background: linear-gradient(to bottom,  #024762 0%,#034F6D 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#024762', endColorstr='#034F6D',GradientType=0 );
+    border-top: 1px solid #FFCC00;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+#BoxRodape_endereco{
+    color: #FFFFFF;
+    float: left;
+    font-size: 1.2em;
+    height: auto;
+    padding: 4px 0;
+}
+#BoxRodape_endereco p{
+    font-size: 12px;
+    line-height: 16px; 
+    margin: 0;
+}
+#BoxRodape_LogoDatasus{
+    height: 43px;
+    width: 250px;
+    text-indent:-9000px;
+    background-image:url("../images/lgo/datasus_07.png");
+    background-repeat:no-repeat;
+    display:block;
+    float:right;
+    margin-top:10px;
+}
+
+.configuracao{
+    color: #fff;
+}
+.configuracao:hover{
+    color: #fff;
+}
+.configuracao:hover .usuarioLogado{
+    text-decoration: underline;
+}
+.configuracao-usuario ul{
+    margin: 5px 0;
+}
+#modal-config-user h3,
+#modal-config-user label{
+    color: #064060;
+}
+.cadastrar h3,
+.cadastrar label,
+.esqueceu-senha h3,
+.esqueceu-senha label{
+    color: #064060;
+}
+.nav-pills>.active>a,
+.nav-pills>.active>a:hover {
+    color: #005580;
+    background-color: rgba(1, 12, 119, 0.15);
+}
+li > label{
+    margin-right: 15px;
+}
+
+.filder {
+    border: 1px solid #cccccc;
+    float: left;
+    margin: 10px 0 15px 0;
+    padding:15px 0;
+    width: 100%;
+}
+.filder .row{
+    margin:0 !important;
+}
+h4 .title_table{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.tabbable .tab-content{
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.15);    
+    border-radius: 4px;
+    padding: 15px 10px;
+}
+
+.section h1, .section h2, .section h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.section h4, .section h5, .section h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+table p{
+    margin-bottom: 0;
+}
+.link-icon{
+    opacity: 0.7;
+    transition: opacity 1s;
+}
+.link-icon:hover{
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+
+
+
+
+/*Conteudo de loading*/
+.loading-container {
+    position: relative;
+}
+.loading-container .loading:before, .loading-container .loading:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 50px;
+    min-width: 50px;
+}
+.loading-container .loading:before {
+    background-color: white;
+    opacity: 0.4;
+}
+.loading-content{
+    font-size: 13px; 
+    line-height: 16px; 
+    text-align: center; 
+    padding: 8px 10px 9px; 
+    width: auto;
+    height: auto;
+    position: absolute;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    top: 20px;
+    left:50%;
+    z-index: 99999;
+    background: #ccc;
+}
+.total-registros{
+    color: #31708f;
+    background-color: #BBD7E5;
+    border-color: #bce8f1 !important;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 6px 15px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    font-size: 1.2em !important;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

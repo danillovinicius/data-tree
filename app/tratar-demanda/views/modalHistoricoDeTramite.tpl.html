@@ -1,0 +1,67 @@
+<style>
+    .tamanho-tela {
+        min-width: 70%;
+        margin-left: -35%;
+    }
+</style>
+
+<div class="modal-content" style="height:100%;">
+
+    <div class="modal-header">
+
+        <button type="button"
+                class="close"
+                ng-click="fechar()"
+                data-dismiss="modal"
+                tooltip="{{'MH020'| translate}}"
+                aria-hidden="true"
+                aria-label="Fechar">
+            &nbsp;&times;&nbsp;
+        </button>
+        
+        <h4 class="modal-title">{{'historico-de-tramite' | translate}}</h4>
+        
+    </div>
+
+    <div class="modal-body">
+        <div class="span12">
+                
+            <div>
+                <form>
+                    <div class="row">
+                        <div class='span12 top2'>
+                            <div ng-bind-html="htmlString"
+                                  ng-disabled="true" ></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+       
+       
+       
+        </div>
+    </div>
+    
+  	<div class="modal-footer">
+		<div class="row">
+      		 <!-- Inicio botoes -->
+                <div class="span12">
+                    <div class="row">
+                        <div class="span12 margin-top">
+                            <div class="btn-form-right">
+                                <span>
+                                    <button class="btn btn-primary" 
+                                            type="button" 
+                                            tooltip="{{'MH020' | translate}}" 
+                                            ng-click="fechar()">
+                                        {{'MH020' | translate}}
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!-- Fim botoes -->
+      </div>
+    </div>
+</div>

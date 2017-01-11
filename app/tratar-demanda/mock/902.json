@@ -1,0 +1,101 @@
+{
+  "resultado": {
+    "id": 902,
+    "classificacaoDemanda": {
+      "id": 1,
+      "descricao": "Denúncia"
+    },
+    "rede": {
+      "id": 4,
+      "sigla": "DOGES",
+      "ouvidoria": {
+        "id": 520,
+        "nomeOuvidoria": "Departamento de Ouvidoria Geral do SUS",
+        "numeroTelefonDivulgacao": "13645678",
+        "entidadeOrgaoOuvidor": {
+          "id": 1063,
+          "nome": "Ministério da Saúde",
+          "prefeituraGoverno": {
+            "id": 569,
+            "email": "camilla.araruna@ctis.com.br",
+            "nome": "TesteCamilla01",
+            "nomePrefeituraGoverno": "TesteCamilla0100",
+            "esferaAdministrativa": {
+              "id": "02",
+              "descricao": "ESTADUAL",
+              "stAtivo": "S"
+            }
+          }
+        },
+        "nome": "Departamento de Ouvidoria Geral do SUS",
+        "tipoPesquisaOuvidoria": false
+      }
+    },
+    "teorDemanda": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec porta nulla ligula, nec interdum nulla dapibus ut. Quisque bibendum mauris diam, sed sollicitudin diam vehicula sed. Vestibulum sagittis lacus vitae dui convallis, at egestas diam blandit. Duis tincidunt hendrerit dictum. Aliquam finibus, dolor id euismod efficitur, risus velit dignissim dui, quis dignissim diam eros at risus. Phasellus odio mauris, fringilla ac condimentum viverra, aliquam ac velit.",
+    "sigilo": "N",
+    "imediato": "N",
+    "observacao": "Integer tristique pharetra bibendum. Phasellus luctus neque a lorem scelerisque, quis euismod magna tincidunt. Vestibulum dapibus nisl ac lectus dapibus, a imperdiet turpis hendrerit. Curabitur efficitur luctus luctus. Pellentesque tristique, lorem at var",
+    "numeroProtocolo": "2017010600000101",
+    "dataCadastro": 1483722457000,
+    "statusDemanda": {
+      "id": 4,
+      "descricao": "Em andamento"
+    },
+    "ativo": "S",
+    "atendimento": {
+      "id": 1093,
+      "usuarioCadastro": {
+        "id": 10600,
+        "email": "simone.carvalho@ctis.com.br",
+        "nome": "Simone Ribeiro Carvalho de Oliveira",
+        "ativo": "S"
+      },
+      "dataCadastro": 1483722406000,
+      "numeroAtendimento": "20170106000001",
+      "origem": "br.gov.saude.ouvidorsus.entidades.Origem@b248664",
+      "situacaoAtendimento": {
+        "id": "1",
+        "descricao": "Novo"
+      },
+      "senha": "BI64X1",
+      "possuiDemandaSigilosa": false,
+      "origemModuloInternet": false
+    },
+    "usuarioCadastroDemanda": {
+      "id": 10600,
+      "email": "simone.carvalho@ctis.com.br",
+      "nome": "Simone Ribeiro Carvalho de Oliveira",
+      "ativo": "S"
+    },
+    "redeAtual": {
+      "id": 4,
+      "sigla": "DOGES",
+      "ouvidoria": {
+        "id": 520,
+        "nomeOuvidoria": "Departamento de Ouvidoria Geral do SUS",
+        "numeroTelefonDivulgacao": "13645678",
+        "entidadeOrgaoOuvidor": {
+          "id": 1063,
+          "nome": "Ministério da Saúde",
+          "prefeituraGoverno": {
+            "id": 569,
+            "email": "camilla.araruna@ctis.com.br",
+            "nome": "TesteCamilla01",
+            "nomePrefeituraGoverno": "TesteCamilla0100",
+            "esferaAdministrativa": {
+              "id": "02",
+              "descricao": "ESTADUAL",
+              "stAtivo": "S"
+            }
+          }
+        },
+        "nome": "Departamento de Ouvidoria Geral do SUS",
+        "tipoPesquisaOuvidoria": false
+      }
+    },
+    "dataSituacao": 1483723546000,
+    "dataLimiteDemanda": 1483927200000,
+    "quantidadeDemandasFechadas": 0,
+    "quantidadeDemandasAbertas": 0
+  }
+}

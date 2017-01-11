@@ -1,0 +1,16 @@
+HOW TO 
+
+Instalando o GULP global (caso não tenha instalado ainda)
+npm install -g gulp
+
+
+Instalando o gulp no repositorio atual e identificando as dependendias de dev
+npm install gulp --save-dev
+
+Instalar os plugins que serão utilizados:
+npm install del gulp-ruby-sass gulp-minify-css gulp-imagemin gulp-cache gulp-autoprefixer gulp-concat --save-dev
+
+Isto criará uma pasta chamada node_modules dentro do checkout. NÃO VERSIONE ESTA PASTA
+
+executar o deploy minificado para a pasta dist
+gulp deploy-design

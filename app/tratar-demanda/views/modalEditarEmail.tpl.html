@@ -1,0 +1,79 @@
+<style>
+  .modal-editar-email {
+  	min-width: 80%; !important;
+    max-height: 95%  !important;
+    left: 34%;
+  }
+</style>
+
+
+<div class="modal-content" ng-init="init();">
+  <div class="modal-header" style="border: none;">
+    <a class="close" ng-click="fechar();"
+       style="margin-bottom: 1%; margin-top: -1%"
+       tooltip="{{'MH020'  | translate }}">
+       &times;
+     </a>
+  </div>
+  <div class="row">
+      <div class="span12">
+        <div class="span12">
+          <ms-alert></ms-alert>
+        </div>
+      </div>
+  </div>
+
+	<div class="modal-body">
+
+    <div class="row">
+      <div class='span12 top2'>
+        <form name="form">
+          <textarea ms-ckeditor="ckOptions" ng-model="email.resposta" ng-trim="false"/>
+        </form>
+      </div>
+    </div>
+
+    <div class="span12" style="maging-bottom: 1%; maging-top: 1%;">
+  		<div class="row">
+  			<div class="span12">
+  				<label class="negrito" style="margin-top: 1%">{{'label-anexos' | translate}}</label>
+  			</div>
+  			<div class="span12">
+  				<div ng-repeat="arquivo in arquivos">
+  					<div style="border-bottom: 1px solid #ccc !Important; padding-bottom: 1%; padding-top: 1%; margin-bottom: 1% !important;">
+  						<div class="span8">
+  							<a tooltip="{{'MH026' | translate}}" ng-href="{{getUrlDownload(arquivo.id)}}"><label>{{arquivo.nomeArquivo}}</label></a>
+  						</div>
+  						<div class="span4">
+  							<button type="button" class="pull-right close" tooltip="{{'MH003' | translate}}" ng-click="removerArquivo(arquivo)">
+  								&times;
+  							</button>
+  						</div>
+  						</br>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+
+	</div>
+</div>
+
+<div class="modal-footer">
+  <div class="btn-form-right">
+    <span>
+      <a class="btn"
+         ng-click="cancelar();"
+         tooltip="{{'MH057' | translate}}">
+         {{'MH057' | translate}}
+       </a>
+     </span>
+     <span>
+      <a class="btn btn-primary"
+         ng-click="enviar();"
+         tooltip="{{'MH067' | translate}}">
+         {{'MH067' | translate}}
+       </a>
+    </span>
+	</div>
+</div>

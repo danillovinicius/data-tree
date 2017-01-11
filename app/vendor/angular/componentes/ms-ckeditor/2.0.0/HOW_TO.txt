@@ -1,0 +1,15 @@
+HOW TO 
+
+Instalando o GULP global (caso n�o tenha instalado ainda)
+npm install -g gulp
+
+
+Instalando o gulp no repositorio atual e identificando as dependendias de dev
+npm install gulp --save-dev
+
+
+instalar os plugins necess�rios
+npm install gulp-concat gulp-uglify gulp-jshint gulp-ngdoc --save-dev
+
+Executar a tarefa:
+gulp ms-ckeditor

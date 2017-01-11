@@ -1,0 +1,417 @@
+@charset "UTF-8";
+
+/* Estilos gerais */
+.sr-only {
+    /* Utilizado para mostrar apenas nos leitores de tela */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+    /* Utilizado para mostrar apenas nos leitores de tela */
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+}
+
+.nome-campo-light {
+    font-size: 1.2em;
+    width: 100%;
+    margin-left: 0;
+}
+
+h3 {
+    border-bottom: 1px solid #333333;
+}
+
+.icon-align {
+    margin-left: -11px;
+    margin-right: -3px;
+    margin-top: 32px;
+}
+
+.espacamento-topo10 {
+    margin-bottom: 10px;
+}
+
+.tabs-left > .nav-tabs {
+    white-space: normal;
+    margin-right: -1px;
+}
+
+.margin-left20 {
+    margin-left: 20px;
+}
+
+hr {
+    border-color: #DDDDDD !important;
+}
+
+.marg-top-10 {
+    margin-top: 10px;
+}
+
+.marg-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-top-double {
+    margin-top: 2em !important;
+}
+
+.margin-bottom-double {
+    margin-bottom: 2em !important;
+}
+
+.margin-top {
+    margin-top: 1em !important;
+}
+
+.margin-bottom {
+    margin-bottom: 1em !important;
+}
+
+.margin-left {
+    margin-left: 1em !important;
+}
+
+.margin-right {
+    margin-right: 1em !important;
+}
+
+.fielder-fab {
+    border: 1px solid #CCCCCC;
+    float: left;
+    margin: 10px 0 15px;
+    padding: 15px 15px;
+    width: 100%;
+    border-radius: 4px;
+
+}
+
+.error {
+    border: 1px solid #b94a48 !important;
+    background-color: #fee !important;
+}
+
+.obrigatorio {
+    position: relative;
+}
+
+.obrigatorio:after {
+    color: #a94442;
+    content: '\2731';
+    font-size: 13px;
+    margin-left: 0.2em;
+    position: absolute;
+    font-weight: normal;
+}
+
+.negrito {
+    font-weight: bold;
+}
+
+.fonte-pequena {
+    font-size: 10px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+/* Define que os inputs de checkbox e radio serão inline por padrão  */
+input[type=radio], input[type=radio] + label,
+input[type=checkbox], input[type=checkbox] + label {
+    display: inline !important;
+    width: auto;
+}
+
+input[type=radio] + label,
+input[type=checkbox] + label {
+    padding-right: 1em;
+}
+
+/* Use para dar o espaço de uma label no topo de um elemento.
+    Ex.: um botão na mesma linha que outros campos do formulário */
+.espacamento-label-top {
+    margin-top: 23px;
+}
+
+/* Para consertar um conflito de classes .header no cabeçalho da ng-table */
+.ng-table tr th.header {
+    float: none;
+    margin-bottom: auto;
+    width: auto;
+}
+
+/* Classes utilitárias que existem no Bootstrap 2.3.2 e não existem no 2.0.4 */
+
+.text-left, .ms-grid tr td.text-left {
+    text-align: left !important;
+}
+
+.text-center, .ms-grid tr td.text-center {
+    text-align: center !important;
+}
+
+.text-right, .ms-grid tr td.text-right {
+    text-align: right !important;
+}
+
+.text-justified, .ms-grid tr td.text-justified {
+    text-align: justify !important;
+}
+
+#BoxMenuPrincipal {
+    margin-bottom: 1em;
+}
+
+/* Aumentando o tamanho dos ícones dentro dos input-group-addon*/
+.input-group-addon [class^="icon-"],
+.input-group-addon [class*=" icon-"] {
+    font-size: 1.3em;
+}
+
+.first-line-indent {
+    text-indent: 2em;
+}
+
+legend {
+    display: block;
+    width: initial;
+    margin-bottom: 0px;
+    font-size: 16.5px;
+    line-height: 27px;
+    color: #333;
+    border: 0;
+    border-bottom: none;
+    margin-left: 20px;
+}
+
+.lengendOuvidor {
+    width: auto;
+    font-variant: normal;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0 1em;
+}
+
+.form-nostyle {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ajustes da nova Barra do Governo*/
+div#wrapper-barra-brasil {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 960px;
+    height: 100%
+}
+
+/* Telas */
+
+/* Configuração do Questionário de Ouvidoria */
+.configuracao-questionario ul.questoes > li > label {
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.configuracao-questionario ul.alternativas > li > label {
+    color: #666666;
+    cursor: pointer;
+}
+
+.configuracao-questionario h3 {
+    margin-top: 0;
+}
+
+.configuracao-questionario .mensagem-rascunho {
+    margin-right: 1em;
+    color: #666;
+}
+
+/* Cadastro de ouvidoria - informações legais */
+.informacoes-legais {
+
+}
+
+.informacoes-legais .possui-base-legal {
+    margin-bottom: 2em;
+}
+
+/*.informacoes-legais ul.arquivos {
+	margin:0;
+	padding:0;
+	width:40em;
+}
+.informacoes-legais ul.arquivos li {
+	background-color:white;
+	margin:0.5em 0;
+	padding:0 1em;
+	line-height:2.1em;
+	font-size:1.2em;
+	border:solid 0.1em #f0f0f0;
+}*/
+
+/* Informações do usuário */
+.informacoes-usuario p {
+    font-size: 1.1em;
+}
+
+.informacoes-usuario .nome-campo,
+.visualizar-registro .nome-campo,
+.consultar-ficha-cadastro .nome-campo,
+.visualizar-ficha-cadastro .nome-campo, .nome-campo {
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 100%;
+    margin-left: 0;
+}
+
+/* Registrar ficha de cadastro */
+.registrar-ficha-cadastro .nome-campo,
+.visualizar-membro-ficha .nome-campo {
+    font-weight: bold;
+}
+
+/* Configuração de exibição das ações da tabela de membros */
+.registrar-ficha-cadastro .tabela-membros .acao-visualizar-membro {
+    /* Aqui mostra */
+}
+
+.registrar-ficha-cadastro .tabela-membros .acao-alterar-membro {
+    /* Aqui mostra */
+}
+
+.registrar-ficha-cadastro .tabela-membros .acao-remover-membro {
+    /* Aqui mostra */
+}
+
+.manter-membro-ficha .tabela-membros .acao-visualizar-membro {
+    display: none; /* Aqui não mostra */
+}
+
+.manter-membro-ficha .tabela-membros .acao-alterar-membro {
+    display: none; /* Aqui não mostra */
+}
+
+.manter-membro-ficha .tabela-membros .acao-remover-membro {
+    /* Aqui mostra */
+}
+
+/* Cadastro de capacitação - Agendamento */
+.manter-capacitacao .agendamento-capacitacao {
+    background-color: rgb(180, 180, 200);
+    border-color: rgba(255, 255, 255, 0.5);
+    opacity: 0.85;
+}
+
+.no-margin-left {
+    margin-left: 0px !important;
+}
+
+.alinha-botao-top {
+    vertical-align: top;
+}
+
+.over {
+    max-height: 60px;
+    overflow: hidden;
+    text-align: justify;
+}
+
+.over.visualizar {
+    max-height: 90px;
+}
+
+.oneLine {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.background-legenda-demanda-atrasada {
+    background-color: #FFF3B6;
+}
+
+.background-legenda-demanda-nova-atrasada {
+    background-color: gainsboro;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+
+    src: url('../fonts/glyphicons-halflings-regular.eot');
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-chevron-left:before {
+    content: "\e079";
+}
+
+.glyphicon-chevron-right:before {
+    content: "\e080";
+}
+
+.hand {
+    cursor: pointer;
+}
+
+.gray-hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.text-area {
+    max-height: 100px;
+    height: 100px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.padding-top {
+    padding-top: 20px;
+}
+
+.backgrond-rodape-tabela {
+  background-color: rgba(204, 204, 204, 0.6) !Important;
+}
+
+.inactive {
+   color: #ccc;
+   pointer-events: none;
+   cursor: default;
+ }
+
+ .underline {
+   text-decoration: underline !Important;
+ }

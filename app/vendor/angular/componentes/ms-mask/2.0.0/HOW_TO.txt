@@ -1,0 +1,15 @@
+HOW TO 
+
+Instalando o GULP global (caso não tenha instalado ainda)
+npm install -g gulp
+
+
+Instalando o gulp no repositorio atual e identificando as dependendias de dev
+npm install gulp --save-dev
+
+
+instalar os plugins necessários
+npm install gulp-concat gulp-uglify gulp-jshint --save-dev
+
+Executar a tarefa:
+gulp ms-mask ms-mask-min

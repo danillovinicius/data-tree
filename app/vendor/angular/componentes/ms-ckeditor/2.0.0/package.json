@@ -1,0 +1,13 @@
+{
+  "author": "arquitetura.datasus@saude.gov.br",
+  "name": "ms-ckeditor",
+  "version": "2.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.9",
+    "gulp-uglify": "~1.0.1",
+    "gulp-concat": "~2.4.1",
+    "gulp-jshint": "~1.8.5",
+    "gulp-ngdocs": "~0.1.3"
+  }
+}

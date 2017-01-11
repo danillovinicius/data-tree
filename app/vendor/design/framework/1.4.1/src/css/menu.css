@@ -1,0 +1,130 @@
+/* MENU PRINCIPAL */
+
+.f-nav {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#BoxMenuPrincipal .container{
+    position: relative;
+    min-height: 31px;
+}
+#BoxMenuPrincipal{
+    background-color: #064060;
+    border-top: 1px solid #64A3CB;
+    display: block;
+    height: auto;
+    margin: auto;
+    width: 100%;
+}
+#BoxMenuPrincipal_alinhamento{
+    height: auto;
+    min-height:31px;
+    margin: auto;
+    width: 950px;
+    display: block;
+}
+.boxmenu{
+    width: 1095px;
+}
+.statusprojeto{
+    display: none;
+    box-shadow: 0px 1px 12px 0px #666;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    position: absolute;
+    bottom: -50px;
+    padding: 2px 10px;
+    right: 0px;
+}
+.statusprojeto.ativo{
+    display: block;
+}
+
+ms-nav-menu{
+    float: left;
+    width: 100%;
+}
+ms-nav-menu ul{
+    list-style-type: none;
+    position: absolute;
+    z-index: 4;
+    padding: 0;
+    margin: 0;
+}
+ms-nav-menu ul li{
+    float: left;
+}
+ms-nav-menu ul li a{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 15px;
+    line-height: 20px;
+    display: block;
+}
+ms-nav-menu ul li a:hover{
+    color: #fff;
+    background-color: #002D3F;
+    text-decoration: none;
+}
+ms-nav-menu ul li ul{
+    background-color: #004059;
+    position: absolute;
+    visibility: hidden;
+    padding: 0;
+    margin: 0 !important;
+    top: inherit !important;
+    white-space: nowrap;
+}
+ms-nav-menu ul li ul li{
+    clear: both;
+    position: relative;
+    width: 100%;
+}
+ms-nav-menu ul li ul li a{
+    display: block;
+}
+ms-nav-menu ul li:hover > ul{
+    visibility: visible;
+}
+ms-nav-menu ul li ul li ul.sub_menu-box{
+    margin-left: 100% !important;
+    top: 0 !important;
+}
+ms-nav-menu ul li:hover{
+    background-color: #004059;
+}
+ms-nav-menu [class^="ms-icone-"],
+ms-nav-menu [class*=" ms-icone-"]{
+    margin-right: 5px;
+}
+ms-nav-menu .ms-icone-seta-unica-direita:before {
+    content: "\f0da";
+}
+ms-nav-menu ul li ul li ul{
+    border-left:1px solid #002D3F;
+}
+ms-nav-menu ul li ul .menu-text {
+    margin-right: 8px;
+}
+
+ms-nav-menu ul li ul a {
+    padding-right: 25px;
+}
+ms-nav-menu ul li ul .ms-icone-seta-unica-baixo {
+    margin-left: 5px;
+    margin-right: 0;
+
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    padding: 0;
+
+}
+ms-nav-menu ul li ul .ms-icone-seta-unica-baixo:before {
+    content: "\f105";
+
+}

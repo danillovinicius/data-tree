@@ -1,0 +1,234 @@
+<div class="container autocompleCustom" ui-view>
+
+    <div class="row" ng-init="init()">
+        <div class="span12">
+            <strong class="title">Tramitar Demanda</strong>
+        </div>
+    </div>
+    <div class="span12 box conteudo-box">
+        <fieldset class="filder">
+            <legend><strong>Tipificar Demanda</strong></legend>
+            <div class="span12">
+                <div class="span4">
+                    <label><strong>Protocolo Demanda:</strong></label>
+                </div>
+                <div class="span4">
+                    <label><strong>Classificacao:</strong></label>
+                </div>
+                <div class="span4">
+                    <label><strong>Situacao demanda:</strong></label>
+                </div>
+            </div>
+            <div class="span12">
+                <div class="span4">
+                    <label>{{demanda.numeroProtocolo}}</label>
+                </div>
+                <div class="span4">
+                    <label>{{demanda.classificacaoDemanda.descricao}}</label>
+                </div>
+                <div class="span4">
+                    <label>{{demanda.statusDemanda.descricao}}</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="filder" ng-show="modoVisualizacao">
+            <legend><strong>Tipificacao</strong></legend>
+            <div class="span12">
+                <div class="span2">
+                    <label>Assunto:</label>
+                </div>
+                <div class="span4">
+                    <select ng-disabled="true">
+                        <option value="">{{tipificacaoDemanda.assunto}}</option>
+                    </select>
+                </div>
+
+                <span ng-if="showFarmaco">
+	                <div class="span2">
+	                    <label for="farmaco">farmaco:</label>
+	                </div>
+	                <div class="span4">
+                        <select ng-disabled="true">
+                            <option value="">{{tipificacaoDemanda.farmaco.descricao}}</option>
+                        </select>
+	                </div>
+                 </span>
+            </div>
+
+            <div class="span12">
+                <div class="span2">
+                    <label>Sub assunto 1:</label>
+                </div>
+                <div class="span4">
+                    <select ng-disabled="true">
+                        <option value="">{{tipificacaoDemanda.subAssunto1}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="span12">
+                <div class="span2">
+                    <label>Sub assunto 2:</label>
+                </div>
+                <div class="span4">
+                    <select ng-disabled="true">
+                        <option value="">{{tipificacaoDemanda.subAssunto2}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="span12">
+                <div class="span2">
+                    <label>sub-assunto 3:</label>
+                </div>
+                <div class="span4">
+                    <select ng-disabled="true">
+                        <option value="">{{tipificacaoDemanda.subAssunto3}}</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="filder" ng-show="!modoVisualizacao">
+            <legend><strong>tipificacao</strong></legend>
+            <div class="span12">
+                <div class="span2">
+                    <label for="assunto">assunto:</label>
+                </div>
+                <div class="span4">
+                    <select id="assunto" name="assunto" ng-model="tipificacaoDemanda.assunto"
+                            ng-disabled="!demanda.tipificacaoEditavel || statusDemandaFechada"
+                            ng-change="assuntoOnSelect();
+                                        limparSubAssunto(['subAssunto1','subAssunto2', 'subAssunto3']);
+                                        limparLista(['listaSubAssuntos1','listaSubAssuntos2','listaSubAssuntos3']);
+                                        pesquisarSubAssuntoTipificacao('listaSubAssuntos1', 1);"
+                            ng-options="a as a.descricao for a in assuntos">
+                        <option value="">{{assuntos.length > 0 ? 'Selecione...' : ''}}</option>
+                    </select>
+                </div>
+                <span ng-if="showFarmaco">
+	                <div class="span2">
+	                    <label for="farmaco">farmaco:</label>
+	                </div>
+	                <div class="span4">
+	                    <select id="farmaco" name="farmaco" ng-model="tipificacaoDemanda.farmaco.id"
+                                ng-disabled="!demanda.tipificacaoEditavel || statusDemandaFechada"
+                                ng-options="f.id as f.descricao for f in farmacos | orderBy:'descricao'">
+                            <option value="">{{farmacos.length > 0 ? 'Selecione...' : ''}}</option>
+	                    </select>
+	                </div>
+                 </span>
+            </div>
+
+            <div class="span12">
+                <div class="span2">
+                    <label for="subAssunto1">sub-assunto 1:</label>
+                </div>
+                <div class="span4">
+                    <select id="subAssunto1" name="subAssunto1" ng-model="tipificacaoDemanda.subAssunto1"
+                            ng-disabled="_.isUndefined(tipificacaoDemanda.assunto) || !demanda.tipificacaoEditavel || statusDemandaFechada"
+                            ng-change="limparLista(['listaSubAssuntos2','listaSubAssuntos3']);
+                                        limparSubAssunto(['subAssunto2', 'subAssunto3']);
+                                        pesquisarSubAssuntoTipificacao('listaSubAssuntos2', 2);
+                                        pesquisarSePossuiCampoTipificacaoComplementar();"
+                            ng-options="s1 for s1 in listaSubAssuntos1">
+                        <option value="">{{listaSubAssuntos1.length > 0 ? 'Selecione...' : ''}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="span12">
+                <div class="span2">
+                    <label for="subAssunto2">sub-assunto 2:</label>
+                </div>
+                <div class="span4">
+                    <select id="subAssunto2" name="subAssunto2" ng-model="tipificacaoDemanda.subAssunto2"
+                            ng-disabled="_.isUndefined(tipificacaoDemanda.subAssunto1) || !demanda.tipificacaoEditavel || statusDemandaFechada"
+                            ng-change="limparLista(['listaSubAssuntos3']);
+                                        limparSubAssunto(['subAssunto3']);
+                                        pesquisarSubAssuntoTipificacao('listaSubAssuntos3', 3);
+                                        pesquisarSePossuiCampoTipificacaoComplementar();"
+                            ng-options="s2 for s2 in listaSubAssuntos2">
+                        <option value="">{{listaSubAssuntos2.length > 0 ? 'Selecione...' : ''}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="span12">
+                <div class="span2">
+                    <label for="subAssunto3">sub-assunto 3:</label>
+                </div>
+                <div class="span4">
+                    <select id="subAssunto3" name="subAssunto3" ng-model="tipificacaoDemanda.subAssunto3"
+                            ng-disabled="_.isUndefined(tipificacaoDemanda.subAssunto2) || !demanda.tipificacaoEditavel || statusDemandaFechada"
+                            ng-change="pesquisarSePossuiCampoTipificacaoComplementar()"
+                            ng-options="s3 for s3 in listaSubAssuntos3">
+                        <option value="">{{listaSubAssuntos3.length > 0 ? 'Selecione...' : ''}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="span12" ng-if="demanda.tipificacaoEditavel && !statusDemandaFechada">
+                <div class="btn-form-right">
+                    <span>
+                        <button type="button" class="btn btn-primary"
+                                ng-click="buscarCamposTipificacaoComplementar()"
+                                ng-disabled="(!demanda.tipificacaoEditavel || statusDemandaFechada || mostarCamposTipificacao)"
+                                ng-show="possuiCampoTipificacao">para complementar demanda
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="filder" ng-if="mostarCamposTipificacao">
+            <legend><strong>tipificacao complementar</strong></legend>
+
+            <div class="span12" ng-repeat="campo in camposTipificados | filter:{situacaoEnum : 'S'}">
+
+                <div class="span3">
+                    <label for="complementar_{{campo.id}}">{{campo.nome}}:</label>
+                </div>
+
+                <div class="span3">
+                    <input type="text"
+                           id="complementar_{{campo.id}}"
+                           ng-change="tipificacaoComplementarGenericoAutoComplete(campo)"
+                           ng-blur="blurTipificacaoComplementar(campo)"
+                           ng-model="tipificacaoComplementar[campo.id]"
+                           ng-disabled="!demanda.tipificacaoEditavel || statusDemandaFechada"
+                           typeahead-on-select="addTipificacaoComplentar($item, campo)"
+                           typeahead="a.descricao for a in listaTipificacaoComplementar['' + campo.id] | filter:$viewValue"/>
+                </div>
+
+                <div class="span2" ng-if="campo.orderCampo == 2">
+                    <button class="btn btn-sm"
+                            ng-disabled="!demanda.tipificacaoEditavel || statusDemandaFechada"
+                            ng-show="botaoNovoNome"
+                            ng-click="adicionarNovoNome(campo)">
+                        <span class="ms-icone-mais-circulo"></span>
+                    </button>
+                </div>
+
+            </div>
+        </fieldset>
+
+        <div class="span12">
+            <div class="row">
+                <div class="span12 margin-top">
+                    <div class="btn-form-right">
+						<span>
+							<button type="button" class="btn" ng-click="cancelar()">Cancelar</button>
+						</span>
+                        <span>
+						    <button type="button" class="btn btn-primary"
+                                    ng-click="proximo()">
+                                Proximo
+
+                            </button>
+						</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
