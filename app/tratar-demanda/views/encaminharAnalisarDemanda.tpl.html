@@ -32,39 +32,53 @@
     </div>
     <div class="span12 box conteudo-box">
 
-        <div id="centerpanel" class="span12" style="overflow: hidden; padding: 0px; margin: 0px; border: 0px;">
-            <div bp-org-diagram
-                 data-options="myOptions"
-                 data-on-highlight-changed="onMyHighlightChanged()"
-                 data-on-cursor-changed="onMyCursorChanged()"
-                 style="height: 430px;">
+        <div id="centerpanel" class="span12" style="overflow: hidden; padding: 0px; margin: 1px; border: 0px;">
+            <div bp-org-diagram data-options="tree" style="height: 430px;">
             </div>
         </div>
-
 
         <div class="span12">
             <hr class="gray-hr">
         </div>
 
         <div class="span12">
-        <h3>{{myOptions.cursorItem}}</h3>
-        <p>Highlight: {{myOptions.highlightItem}}</p>
-
-            <div class="span12" ng-repeat="item in myOptions.items">
+            <h3>{{tree.cursorItem}}</h3>
+            <p>Highlight: {{tree.highlightItem}}</p>
+            <!--<div class="span12" ng-repeat="item in myOptions.items">-->
                 <!--<p>Highlight: {{item | json}}</p>-->
-            </div>
+            <!--</div>-->
 
-        <button ng-click="setCursorItem(200)">Cursor</button>
-        <!--<button ng-click="$parent.setHighlightItem(item.id)">Highlight</button>-->
-        <!--<button ng-click="$parent.deleteItem($index)">Delete</button>-->
-        <!--<button ng-click="$parent.addItem($index + 1, item.id)">Add Child</button>-->
-        <!--<button ng-click="addItem(0, null)">New</button>-->
+            <!--<button ng-click="setCursorItem(200)">Cursor</button>-->
+            <!--<button ng-click="$parent.setHighlightItem(item.id)">Highlight</button>-->
+            <!--<button ng-click="$parent.deleteItem($index)">Delete</button>-->
+            <!--<button ng-click="$parent.addItem($index + 1, item.id)">Add Child</button>-->
+            <!--<button ng-click="addItem(0, null)">New</button>-->
 
-        <div ng-repeat="item in myOptions.items">
-            <p>{{item.status}}</p>
+            <!--<div ng-repeat="item in myOptions.items">-->
+                <!--<p>{{item.status}}</p>-->
+            <!--</div>-->
         </div>
+        <div class="span6">
+            <lu>
+                <p><b>Layout</b></p>
+                <li>Nome Rede</li>
+                <li>Sigla</li>
+                <li>statusEncaminhamentoDemanda</li>
+                <li>Anexo se existir</li>
+                <li>Data Encaminhamento</li>
+                <li>Tipo Encaminhamento</li>
+                <li>Nivel</li>
+            </lu>
         </div>
-
+        <div class="span6">
+            <lu>
+                <p><b>Açoes</b></p>
+                <li>Excluir Encaminhamento</li>
+                <li>Em Analise</li>
+                <li>Solicitar Resposta</li>
+                <li>Tipo Encaminhamento</li>
+            </lu>
+        </div>
 
         <div class="span12" style="background: white">
             <fieldset class="filder">

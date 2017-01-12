@@ -3,40 +3,46 @@
 angular.module('BasicPrimitives', [], function ($compileProvider) {
     $compileProvider.directive('bpOrgDiagram', function ($compile) {
         function link(scope, element, attrs) {
+
             var itemScopes = [];
-
             var config = new primitives.orgdiagram.Config();
-            angular.extend(config, scope.options);
+            var chart = {};
 
-            config.onItemRender = onTemplateRender;
-            config.onCursorChanged = onCursorChanged;
-            config.onHighlightChanged = onHighlightChanged;
-            config.onButtonClick = onButtonClick;
+            scope.$on('TreeConfigurationCompleted', function (ev, args) {
 
-            var chart = jQuery(element).orgDiagram(config);
+                angular.extend(config, scope.$parent.tree);
+                config.onItemRender = onTemplateRender;
+                config.onCursorChanged = onCursorChanged;
+                config.onHighlightChanged = onHighlightChanged;
 
-            scope.$watch('options.highlightItem', function (newValue, oldValue) {
-                var highlightItem = chart.orgDiagram("option", "highlightItem");
-                if (highlightItem != newValue) {
-                    chart.orgDiagram("option", {highlightItem: newValue});
-                    chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.PositonHighlight);
-                }
-            });
+                chart = jQuery(element).orgDiagram(config);
 
-            scope.$watch('options.cursorItem', function (newValue, oldValue) {
-                var cursorItem = chart.orgDiagram("option", "cursorItem");
-                if (cursorItem != newValue) {
-                    chart.orgDiagram("option", {cursorItem: newValue});
+
+                scope.$watch('options.highlightItem', function (newValue, oldValue) {
+                    var highlightItem = chart.orgDiagram("option", "highlightItem");
+                    if (highlightItem != newValue) {
+                        chart.orgDiagram("option", {highlightItem: newValue});
+                        chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.PositonHighlight);
+                    }
+                });
+
+                scope.$watch('options.cursorItem', function (newValue, oldValue) {
+                    var cursorItem = chart.orgDiagram("option", "cursorItem");
+                    if (cursorItem != newValue) {
+                        chart.orgDiagram("option", {cursorItem: newValue});
+                        chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
+                    }
+                });
+
+                scope.$watchCollection('options.items', function (items) {
+                    chart.orgDiagram("option", {items: items});
                     chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
-                }
-            });
+                });
 
-            scope.$watchCollection('options.items', function (items) {
-                chart.orgDiagram("option", {items: items});
-                chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
             });
 
             function onTemplateRender(event, data) {
+                console.log("onTemplateRender");
                 var itemConfig = data.context;
 
                 switch (data.renderingMode) {
@@ -52,18 +58,10 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                         break;
                     case primitives.common.RenderingMode.Update:
                         /* Update widgets here */
-                        // var itemScope = data.element.contents().scope();
-                        // itemScope.itemConfig = itemConfig;
+                        var itemScope = data.element.contents().scope();
+                        itemScope.itemConfig = itemConfig;
                         break;
                 }
-
-                data.element.find("[name=titleBackground]").css({"background": itemConfig.style});
-
-            }
-
-            function onButtonClick(e, data) {
-                scope.onButtonClick(e, data);
-                scope.$apply();
             }
 
             function onCursorChanged(e, data) {
@@ -111,57 +109,60 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
 
     .constant('path', "tratar-demanda/mock/")
 
-    .controller('View1Ctrl', ['$scope', 'demandaService','treeService', function ($scope, demandaService, treeService) {
-        $scope.demanda = {};
+    .controller('View1Ctrl', ['$scope', 'demandaService', 'treeService', '$log',
+        function ($scope, demandaService, treeService, $log) {
 
-        demandaService.get('500').success(function (response) {
-            montarArvore(response.resultado);
-        });
+            $scope.demanda = {};
+            $scope.index = 10;
+            $scope.Message = "";
+            $scope.tree = {};
 
-        $scope.index = 10;
-        $scope.Message = "";
+            demandaService.get('500').success(function (response) {
+                treeService.setupTree(response.resultado)
+                    .then(function (tree) {
+                        $scope.tree = tree;
+                    }, function (reason) {
+                        $log.warn(reason);
+                    });
+            });
 
-        function montarArvore(encaminhamentos){
-            $scope.myOptions = treeService.setupTree(encaminhamentos);
-        }
+            $scope.onButtonClick = function (e, data) {
+                console.log(e);
+                console.log(data);
+            };
 
-        $scope.onButtonClick = function (e, data) {
-            console.log(e);
-            console.log(data);
-        };
+            $scope.setCursorItem = function (item) {
+                $scope.tree.cursorItem = item;
+            };
 
-        $scope.setCursorItem = function (item) {
-            $scope.myOptions.cursorItem = item;
-        };
+            $scope.setHighlightItem = function (item) {
+                $scope.tree.highlightItem = item;
+            };
 
-        $scope.setHighlightItem = function (item) {
-            $scope.myOptions.highlightItem = item;
-        };
+            $scope.deleteItem = function (index) {
+                $scope.tree.items.splice(index, 1);
+            };
 
-        $scope.deleteItem = function (index) {
-            $scope.myOptions.items.splice(index, 1);
-        };
+            $scope.addItem = function (index, parent) {
+                var id = $scope.index++;
+                $scope.tree.items.splice(index, 0, new primitives.orgdiagram.ItemConfig({
+                    id: id,
+                    parent: parent,
+                    title: "New title " + id,
+                    description: "New description " + id,
+                    image: "bower_components/basic-primitive-demo/images/photos/b.png"
+                }));
+            };
 
-        $scope.addItem = function (index, parent) {
-            var id = $scope.index++;
-            $scope.myOptions.items.splice(index, 0, new primitives.orgdiagram.ItemConfig({
-                id: id,
-                parent: parent,
-                title: "New title " + id,
-                description: "New description " + id,
-                image: "bower_components/basic-primitive-demo/images/photos/b.png"
-            }));
-        };
+            $scope.onMyCursorChanged = function () {
+                $scope.Message = "onMyCursorChanged";
+            };
 
-        $scope.onMyCursorChanged = function () {
-            $scope.Message = "onMyCursorChanged";
-        };
+            $scope.onMyHighlightChanged = function () {
+                $scope.Message = "onMyHighlightChanged";
+            };
 
-        $scope.onMyHighlightChanged = function () {
-            $scope.Message = "onMyHighlightChanged";
-        };
-
-    }])
+        }])
 
     .factory('demandaService', function ($http, path) {
         return {
@@ -171,7 +172,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         };
     })
 
-    .filter('treeColor',["StatusTreeEnum", function (StatusTreeEnum) {
+    .filter('treeColor', ["StatusTreeEnum", function (StatusTreeEnum) {
         return function (status) {
             switch (status) {
                 case StatusTreeEnum.ENCAMINHADO.descricao :
@@ -207,7 +208,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         CONCLUIDO: {id: 6, descricao: 'Concluído', color: "#303F9F"}
     })
 
-    .factory('treeService',['$filter',  function ($filter) {
+    .factory('treeService', ['$filter', '$q', '$rootScope', function ($filter, $q, $rootScope) {
 
         function getCursorTemplate() {
             var result = new primitives.orgdiagram.TemplateConfig();
@@ -283,7 +284,6 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 + '<div name="title" class="bp-item bp-title" style="top: 3px; left: 6px; width: 208px; height: 18px;">{{itemConfig.title}}</div>'
                 + '</div>'
                 + '<div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;">'
-                + '<img name="photo" src="{{itemConfig.image}}" style="height: 60px; width:50px;" />'
                 + '</div>'
                 + '<div><button ng-click="onButtonClick()"></button></div>'
                 + '<div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;">{{itemConfig.phone}}</div>'
@@ -313,15 +313,15 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             }));
 
             //TODO refatorar criaçao nodes
-            angular.forEach(array, function(item, idx){
-                var letter= item.redeDestino.sigla[0];
-                tree.push( new primitives.orgdiagram.ItemConfig({
+            angular.forEach(array, function (item, idx) {
+                var letter = item.redeDestino.sigla[0];
+                tree.push(new primitives.orgdiagram.ItemConfig({
                     id: item.id,
-                    parent: item.redeOrigem.id,
+                    parent: item.co_encaminhamento_anterior,
                     title: item.redeDestino.sigla,
                     description: item.redeDestino.nome,
                     email: "email@saude.gov.com",
-                    image: "bower_components/basic-primitive-demo/images/photos/"+letter.toLowerCase()+".png",
+                    image: "bower_components/basic-primitive-demo/images/photos/" + letter.toLowerCase() + ".png",
                     itemTitleColor: $filter('treeColor')(item.statusEncaminhamentoDemanda.descricao)
                 }))
             });
@@ -329,10 +329,6 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             return tree;
         }
 
-        /**
-         * Inicializa a arvore de encaminhamentos
-         * @param encaminhamentos realizados para a demanda.
-         */
         function setupTree(encaminhamentos) {
             var options = new primitives.orgdiagram.Config();
             options.items = montarEncaminhamento(encaminhamentos);
@@ -344,29 +340,25 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             options.defaultTemplateName = "CursorTemplate";
             return options;
         }
-        
+
         return {
             setupTree: function (encaminhamentos) {
-                jQuery(document).ready(function () {
-                    var options = new primitives.orgdiagram.Config();
-                    options.hasSelectorCheckbox = primitives.common.Enabled.False;
-                    options.hasButtons = primitives.common.Enabled.False;
-                    options.onMouseClick = onMouseClick;
-                    options.templates = [getCursorTemplate()];
-                    options.defaultTemplateName = "CursorTemplate";
+                var deferred = $q.defer();
 
-                    var items = montarEncaminhamento(encaminhamentos);
+                if (encaminhamentos) {
+                    // setTimeout(function () {
+                    var tree = setupTree(encaminhamentos);
+                    deferred.resolve(tree);
+                    $rootScope.$broadcast('TreeConfigurationCompleted', {data: '$rootScope.broadcast'});
+                    // }, 5000);
+                } else {
+                    deferred.reject("Lista encaminhamentos invalida:\n " + encaminhamentos);
+                }
 
-                    options.items = items;
-                    options.cursorItem = 0;
-
-                    jQuery("#centerpanel").orgDiagram(options);
-                });
-
+                return deferred.promise;
             }
         }
-    }])
-;
+    }]);
 
 /**
  * TODO supportsSVG supportsCanvas

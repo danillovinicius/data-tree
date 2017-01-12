@@ -2,6 +2,7 @@
   "resultado": [
     {
       "id": 481,
+      "co_encaminhamento_anterior": 4,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -24,6 +25,7 @@
     },
     {
       "id": 483,
+      "co_encaminhamento_anterior": 4,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -46,6 +48,7 @@
     },
     {
       "id": 484,
+      "co_encaminhamento_anterior": 4,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -68,6 +71,7 @@
     },
     {
       "id": 485,
+      "co_encaminhamento_anterior": 4,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -90,6 +94,7 @@
     },
     {
       "id": 482,
+      "co_encaminhamento_anterior": 4,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -107,6 +112,29 @@
       "statusEncaminhamentoDemanda": {
         "id": 1,
         "descricao": "Encaminhado"
+      },
+      "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
+    },
+    {
+      "id": 522,
+      "co_encaminhamento_anterior": 481,
+      "redeOrigem": {
+        "id": 79,
+        "sigla": "OHFAII",
+        "nome": "Ouvidoria Hospital Federal 2 do Acre II"
+      },
+      "redeDestino": {
+        "id": 82,
+        "sigla": "SOHFAII",
+        "nome": "Secretaria do Hospital Federal 2 do Acre II"
+      },
+      "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 5,
+        "descricao": "Respondido"
       },
       "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
     }
