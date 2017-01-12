@@ -2,7 +2,7 @@
   "resultado": [
     {
       "id": 481,
-      "co_encaminhamento_anterior": 4,
+      "encaminhamentoAnterior": null,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -25,7 +25,7 @@
     },
     {
       "id": 483,
-      "co_encaminhamento_anterior": 4,
+      "encaminhamentoAnterior": null,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -48,7 +48,7 @@
     },
     {
       "id": 484,
-      "co_encaminhamento_anterior": 4,
+      "encaminhamentoAnterior": null,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -71,7 +71,7 @@
     },
     {
       "id": 485,
-      "co_encaminhamento_anterior": 4,
+      "encaminhamentoAnterior": null,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -94,7 +94,7 @@
     },
     {
       "id": 482,
-      "co_encaminhamento_anterior": 4,
+      "encaminhamentoAnterior": null,
       "redeOrigem": {
         "id": 4,
         "sigla": "DOGES",
@@ -117,7 +117,7 @@
     },
     {
       "id": 522,
-      "co_encaminhamento_anterior": 481,
+      "encaminhamentoAnterior": 481,
       "redeOrigem": {
         "id": 79,
         "sigla": "OHFAII",

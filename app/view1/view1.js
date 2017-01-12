@@ -10,13 +10,13 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
 
             scope.$on('TreeConfigurationCompleted', function (ev, args) {
 
-                angular.extend(config, scope.$parent.tree);
+                // angular.extend(config, scope.$parent.tree);
+                angular.extend(config, args.options);
                 config.onItemRender = onTemplateRender;
                 config.onCursorChanged = onCursorChanged;
                 config.onHighlightChanged = onHighlightChanged;
 
                 chart = jQuery(element).orgDiagram(config);
-
 
                 scope.$watch('options.highlightItem', function (newValue, oldValue) {
                     var highlightItem = chart.orgDiagram("option", "highlightItem");
@@ -58,8 +58,9 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                         break;
                     case primitives.common.RenderingMode.Update:
                         /* Update widgets here */
-                        var itemScope = data.element.contents().scope();
-                        itemScope.itemConfig = itemConfig;
+                        // var itemScope = data.element.contents().scope();
+                        var itemScope = data.element.contents();
+                        // itemScope.itemConfig = itemConfig;
                         break;
                 }
             }
@@ -199,6 +200,13 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         };
     }])
 
+    .filter('treeSrcImageNode', function () {
+        return function (letter) {
+            var l = letter.toLowerCase() || "a";
+            return "bower_components/basic-primitive-demo/images/photos/" + l + ".png"
+        }
+    })
+
     .constant("StatusTreeEnum", {
         ENCAMINHADO: {id: 1, descricao: 'Encaminhado', color: "#0288D1"},
         RENCAMINHADO: {id: 2, descricao: 'Reencaminhado', color: "#F57C00"},
@@ -210,82 +218,131 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
 
     .factory('treeService', ['$filter', '$q', '$rootScope', function ($filter, $q, $rootScope) {
 
-        function getCursorTemplate() {
-            var result = new primitives.orgdiagram.TemplateConfig();
-            result.name = "CursorTemplate";
+        /** ===================================================================================
+         *                      Array Nodes Tree
+         * ====================================================================================
+         */
 
-            result.itemSize = new primitives.common.Size(120, 100);
+        /**
+         * Monta o NODE da arvore conforme object esperado pelo compoente.
+         * @param node {encaminhamento realizad}
+         * @param idParent {id da rede que realizou os primeiros encaminhamentos na arvore}
+         * @returns {primitives.famdiagram.ItemConfig|primitives.orgdiagram.ItemConfig}
+         */
+        function obterNodeTree(node, idParent) {
+            return new primitives.orgdiagram.ItemConfig({
+                id: node.id,
+                parent: node.encaminhamentoAnterior || idParent,
+                title: node.redeDestino.sigla,
+                description: node.redeDestino.nome,
+                image: $filter('treeSrcImageNode')(node.redeDestino.sigla[0]),
+                itemTitleColor: $filter('treeColor')(node.statusEncaminhamentoDemanda.descricao),
+                encaminhamento: node,
+                templateName: "nodeTemplate"
+            });
+        }
+
+        /**
+         * Obtem do primeiro lancamento sem encaminhamento anterior [primeiro nivel da arvore]
+         * a informaçao da rede origem [rede que inclue os primeiros niveis da arvore]
+         * @param array
+         * @returns {{id, parent: null, title: *, description: (string|string|*|string|string), image: *, itemTitleColor: *}}
+         */
+        function obterRootNodeTree(array) {
+            var root = _.findWhere(array, {encaminhamentoAnterior: null});
+            return {
+                id: root.redeOrigem.id,
+                parent: null,
+                title: root.redeOrigem.sigla,
+                description: root.redeOrigem.nome,
+                image: $filter('treeSrcImageNode')(root.redeDestino.sigla[0]),
+                itemTitleColor: $filter('treeColor')("ROOT"),
+                templateName: "rootTemplate"
+            };
+        }
+
+        /**
+         * Recebe a lista de encaminhamentos processando inicialmente o root da arvore
+         * @param array
+         * @returns {Array}
+         */
+        function montarEncaminhamento(array) {
+            var tree = [];
+            var root = obterRootNodeTree(array);
+            tree.push(root);
+
+            angular.forEach(array, function (item) {
+                tree.push(obterNodeTree(item, root.id));
+            });
+
+            tree.push(new primitives.orgdiagram.ItemConfig({
+                id: 500,
+                parent: 522,
+                title: "Scott Aasrud",
+                description: "VP, Public Sector",
+                image: $filter('treeSrcImageNode')("a"),
+                phone: "(123) 456-78-90",
+                email: "itema@org.com",
+                templateName: "nodeTemplate",
+                href: "#",
+                itemTitleColor: primitives.common.Colors.Black
+            }))
+            return tree;
+        }
+
+
+        /** ===================================================================================
+         *                      Templates Tree
+         * ====================================================================================
+         */
+        function getNodeTemplate() {
+            var result = new primitives.orgdiagram.TemplateConfig();
+            result.name = "nodeTemplate";
+            result.itemSize = new primitives.common.Size(180, 120);
             result.minimizedItemSize = new primitives.common.Size(3, 3);
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
-            result.cursorPadding = new primitives.common.Thickness(3, 3, 50, 8);
 
-            var cursorTemplate = jQuery("<div></div>")
-                .css({
-                    position: "absolute",
-                    overflow: "hidden",
-                    width: (result.itemSize.width + result.cursorPadding.left + result.cursorPadding.right) + "px",
-                    height: (result.itemSize.height + result.cursorPadding.top + result.cursorPadding.bottom) + "px"
-                });
+            var itemTemplate = jQuery(
+                '<div class="bp-item bp-corner-all bt-item-frame">'
+                + '<div name="titleBackground" class="bp-item bp-corner-all bp-title-frame" style="top: 2px; left: 2px; width: 175px; height: 20px;">'
+                + '<div name="title" class="bp-item bp-title" style="top: 3px; left: 6px; width: 208px; height: 18px;">'
+                + '</div>'
+                + '</div>'
+                + '<div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;">'
+                + '<img name="photo" src="{{itemConfig.image}}" style="height:60px; width:50px;" />'
+                + '</div>'
+                + '<div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;"></div>'
+                + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a name="email" href="" target="_top"></a></div>'
+                + '<div name="description" class="bp-item" style="top: 62px; left: 56px; width: 162px; height: 36px; font-size: 10px;"></div>'
+                + '<a name="readmore" class="bp-item" style="top: 104px; left: 4px; width: 212px; height: 12px; font-size: 10px; font-family: Arial; text-align: right; font-weight: bold; text-decoration: none;">Read more ...</a>'
+                + '</div>'
+            ).css({
+                width: result.itemSize.width + "px",
+                height: result.itemSize.height + "px"
+            }).addClass("bp-item bp-corner-all bt-item-frame");
 
-            var cursorBorder = jQuery("<div></div>")
-                .css({
-                    width: (result.itemSize.width + result.cursorPadding.left + 1) + "px",
-                    height: (result.itemSize.height + result.cursorPadding.top + 1) + "px"
-                }).addClass("bp-item bp-corner-all bp-cursor-frame");
-            cursorTemplate.append(cursorBorder);
-
-            var bootStrapVerticalButtonsGroup = jQuery("<div></div>")
-                .css({
-                    position: "absolute",
-                    overflow: "hidden",
-                    top: result.cursorPadding.top + "px",
-                    left: (result.itemSize.width + result.cursorPadding.left + 10) + "px",
-                    width: "35px",
-                    height: (result.itemSize.height + 1) + "px"
-                }).addClass("btn-group btn-group-vertical");
-
-            bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="info" type="button"><i class="icon-info-sign"></i></button>');
-            bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="edit" type="button"><i class="icon-edit"></i></button>');
-            bootStrapVerticalButtonsGroup.append('<button class="btn btn-small" data-buttonname="remove" type="button"><i class="icon-remove"></i></button>');
-
-            cursorTemplate.append(bootStrapVerticalButtonsGroup);
-
-            result.cursorTemplate = cursorTemplate.wrap('<div>').parent().html();
+            result.itemTemplate = itemTemplate.wrap('<div>').parent().html();
 
             return result;
         }
 
-        function onMouseClick(event, data) {
-            var target = jQuery(event.originalEvent.target);
-            if (target.hasClass("btn") || target.parent(".btn").length > 0) {
-                var button = target.hasClass("btn") ? target : target.parent(".btn");
-                var buttonname = button.data("buttonname");
-
-                var message = "User clicked '" + buttonname + "' button for item '" + data.context.title + "'.";
-                message += (data.parentItem != null ? " Parent item '" + data.parentItem.title + "'" : "");
-                alert(message);
-
-                data.cancel = true;
-            }
-        }
-
-        function getTemplate() {
+        function getRootTemplate() {
             var result = new primitives.orgdiagram.TemplateConfig();
-            result.name = "contactTemplate";
+            result.name = "rootTemplate";
 
-            result.itemSize = new primitives.common.Size(500, 100);
+            result.itemSize = new primitives.common.Size(280, 100);
             result.minimizedItemSize = new primitives.common.Size(5, 5);
             result.minimizedItemCornerRadius = 5;
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
             var itemTemplate = jQuery(
                 '<div class="bp-item bp-corner-all bt-item-frame">'
-                + '<div name="titleBackground" class="bp-item bp-corner-all bp-title-frame" style="background:{{itemTitleColor}};top: 2px; left: 2px; width: 216px; height: 20px;">'
-                + '<div name="title" class="bp-item bp-title" style="top: 3px; left: 6px; width: 208px; height: 18px;">{{itemConfig.title}}</div>'
+                + '<div name="titleBackgrond" class="bp-item bp-corner-all bp-title-frame" style="background:black; top: 2px; left: 2px; width: 275px; height: 25px;">'
+                + '<div name="title" class="bp-item bp-title" style="text-align:center; top: 3px; width: 275px; height: 18px;"><b>{{itemConfig.title}}</b></div>'
                 + '</div>'
                 + '<div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;">'
+                + '<img name="photo" src="{{itemConfig.image}}" style="height:60px; width:50px;" />'
                 + '</div>'
-                + '<div><button ng-click="onButtonClick()"></button></div>'
                 + '<div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;">{{itemConfig.phone}}</div>'
                 + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a name="email" href="mailto::{{itemConfig.email}}" target="_top">{{itemConfig.email}}</a></div>'
                 + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a ng-click= "onButtonClick()" name="email">--- Link ---</a></div>'
@@ -299,45 +356,18 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             return result;
         }
 
-        function montarEncaminhamento(array) {
-            var tree = [];
-
-            //TODO configurar ROOT
-            tree.push(new primitives.orgdiagram.ItemConfig({
-                id: 4,
-                parent: null,
-                title: "DOGES",
-                description: "Departamento Geral do SUS",
-                image: "bower_components/basic-primitive-demo/images/photos/d.png",
-                itemTitleColor: $filter('treeColor')("root")
-            }));
-
-            //TODO refatorar criaçao nodes
-            angular.forEach(array, function (item, idx) {
-                var letter = item.redeDestino.sigla[0];
-                tree.push(new primitives.orgdiagram.ItemConfig({
-                    id: item.id,
-                    parent: item.co_encaminhamento_anterior,
-                    title: item.redeDestino.sigla,
-                    description: item.redeDestino.nome,
-                    email: "email@saude.gov.com",
-                    image: "bower_components/basic-primitive-demo/images/photos/" + letter.toLowerCase() + ".png",
-                    itemTitleColor: $filter('treeColor')(item.statusEncaminhamentoDemanda.descricao)
-                }))
-            });
-
-            return tree;
-        }
-
+        /** ===================================================================================
+         *                      Config Options TREE
+         * ====================================================================================
+         */
         function setupTree(encaminhamentos) {
             var options = new primitives.orgdiagram.Config();
             options.items = montarEncaminhamento(encaminhamentos);
             options.cursorItem = 0;
             options.highlightItem = 0;
-            options.templates = [getCursorTemplate()];
-
-            options.onMouseClick = onMouseClick;
-            options.defaultTemplateName = "CursorTemplate";
+            options.templates = [getNodeTemplate(), getRootTemplate()];
+            options.defaultTemplateName = "nodeTemplate";
+            options.hasSelectorCheckbox = primitives.common.Enabled.False;
             return options;
         }
 
@@ -346,11 +376,9 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 var deferred = $q.defer();
 
                 if (encaminhamentos) {
-                    // setTimeout(function () {
-                    var tree = setupTree(encaminhamentos);
-                    deferred.resolve(tree);
-                    $rootScope.$broadcast('TreeConfigurationCompleted', {data: '$rootScope.broadcast'});
-                    // }, 5000);
+                    var options = setupTree(encaminhamentos);
+                    deferred.resolve(options);
+                    $rootScope.$broadcast('TreeConfigurationCompleted', {options: options});
                 } else {
                     deferred.reject("Lista encaminhamentos invalida:\n " + encaminhamentos);
                 }

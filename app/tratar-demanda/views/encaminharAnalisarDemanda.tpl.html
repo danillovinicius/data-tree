@@ -32,52 +32,53 @@
     </div>
     <div class="span12 box conteudo-box">
 
-        <div id="centerpanel" class="span12" style="overflow: hidden; padding: 0px; margin: 1px; border: 0px;">
+
+        <div id="centerpanel" class="span12" style="background: white; overflow: hidden; padding: 0px; margin: 1px; border: 0px;">
             <div bp-org-diagram data-options="tree" style="height: 430px;">
             </div>
         </div>
 
-        <div class="span12">
-            <hr class="gray-hr">
+        <div id="basicdiagram">
         </div>
+
 
         <div class="span12">
-            <h3>{{tree.cursorItem}}</h3>
-            <p>Highlight: {{tree.highlightItem}}</p>
-            <!--<div class="span12" ng-repeat="item in myOptions.items">-->
-                <!--<p>Highlight: {{item | json}}</p>-->
-            <!--</div>-->
+            <fieldset class="filder">
+                <legend class="lengendOuvidor"></legend>
 
-            <!--<button ng-click="setCursorItem(200)">Cursor</button>-->
-            <!--<button ng-click="$parent.setHighlightItem(item.id)">Highlight</button>-->
-            <!--<button ng-click="$parent.deleteItem($index)">Delete</button>-->
-            <!--<button ng-click="$parent.addItem($index + 1, item.id)">Add Child</button>-->
-            <!--<button ng-click="addItem(0, null)">New</button>-->
+                <div class="span12">
+                    <hr class="gray-hr">
+                </div>
 
-            <!--<div ng-repeat="item in myOptions.items">-->
-                <!--<p>{{item.status}}</p>-->
-            <!--</div>-->
-        </div>
-        <div class="span6">
-            <lu>
-                <p><b>Layout</b></p>
-                <li>Nome Rede</li>
-                <li>Sigla</li>
-                <li>statusEncaminhamentoDemanda</li>
-                <li>Anexo se existir</li>
-                <li>Data Encaminhamento</li>
-                <li>Tipo Encaminhamento</li>
-                <li>Nivel</li>
-            </lu>
-        </div>
-        <div class="span6">
-            <lu>
-                <p><b>Açoes</b></p>
-                <li>Excluir Encaminhamento</li>
-                <li>Em Analise</li>
-                <li>Solicitar Resposta</li>
-                <li>Tipo Encaminhamento</li>
-            </lu>
+                <div class="row">
+                    <div class="span4">
+                        <h3>{{tree.cursorItem}}</h3>
+                        <p>Highlight: {{tree.highlightItem}}</p>
+                    </div>
+
+                    <div class="span4">
+                        <lu>
+                            <p><b>Layout</b></p>
+                            <li>Nome Rede</li>
+                            <li>Sigla</li>
+                            <li>statusEncaminhamentoDemanda</li>
+                            <li>Anexo se existir</li>
+                            <li>Data Encaminhamento</li>
+                            <li>Tipo Encaminhamento</li>
+                            <li>Nivel</li>
+                        </lu>
+                    </div>
+                    <div class="span4">
+                        <lu>
+                            <p><b>Açoes</b></p>
+                            <li>Excluir Encaminhamento</li>
+                            <li>Em Analise</li>
+                            <li>Solicitar Resposta</li>
+                            <li>Tipo Encaminhamento</li>
+                        </lu>
+                    </div>
+                </div>
+            </fieldset>
         </div>
 
         <div class="span12" style="background: white">
@@ -92,14 +93,7 @@
                             {{solicitar-resposta}}
                         </label>
                     </div>
-                    {{nodeSelecionado.bloquearCamposDepoisDeSalvar}}
                 </legend>
-
-                <div class="row">
-                    <div class="span12">
-                        <div id="mensagemNaoAprovacao"/>
-                    </div>
-                </div>
 
                 <div class="span12">
                     <div class="radio inline">
@@ -139,9 +133,6 @@
                     <hr class="gray-hr">
                 </div>
                 <div class="row span12">
-                    <div class="pull-right">
-                        <label>1</label>
-                    </div>
                     <div>
                         <label><strong>Ouvidoria Federal do Hospital Sara de Brasilia</strong></label>
                     </div>
