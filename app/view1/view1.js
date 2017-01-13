@@ -55,6 +55,7 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                             itemScope.$apply();
                         }
                         itemScopes.push(itemScope);
+                        //$compile(markup)($scope).appendTo(angular.element("#appendHere"));
                         break;
                     case primitives.common.RenderingMode.Update:
                         /* Update widgets here */
@@ -63,6 +64,8 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                         // itemScope.itemConfig = itemConfig;
                         break;
                 }
+
+                //TODO CaseButtonsInCursorTemplate botoes habilitados por permissao;
             }
 
             function onCursorChanged(e, data) {
@@ -236,9 +239,10 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 title: node.redeDestino.sigla,
                 description: node.redeDestino.nome,
                 image: $filter('treeSrcImageNode')(node.redeDestino.sigla[0]),
-                itemTitleColor: $filter('treeColor')(node.statusEncaminhamentoDemanda.descricao),
+                itemTitleColor: primitives.common.Colors.Gray,
                 encaminhamento: node,
-                templateName: "nodeTemplate"
+                groupTitle: node.statusEncaminhamentoDemanda.descricao,
+                groupTitleColor: $filter('treeColor')(node.statusEncaminhamentoDemanda.descricao)
             });
         }
 
@@ -277,16 +281,15 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             return tree;
         }
 
-
         /** ===================================================================================
-         *                      Templates Tree
+         *                      Connector Annotation Config Tree
          * ====================================================================================
          */
 
         //TODO implementar
         function getConnectorAnnotationConfig() {
             return new primitives.orgdiagram.ConnectorAnnotationConfig({
-                fromItem: 481,
+                fromItem: 482,
                 toItem: 522,
                 label: "<div class='bp-badge' style='width:20px; height:20px;background-color:red; color: white;'>1</div>",
                 labelSize: new primitives.common.Size(80, 30),
@@ -299,7 +302,6 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             })
         }
 
-
         /** ===================================================================================
          *                      Templates Tree
          * ====================================================================================
@@ -307,26 +309,33 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         function getNodeTemplate() {
             var result = new primitives.orgdiagram.TemplateConfig();
             result.name = "nodeTemplate";
-            result.itemSize = new primitives.common.Size(180, 120);
+            result.itemSize = new primitives.common.Size(185, 136);
             result.minimizedItemSize = new primitives.common.Size(3, 3);
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
+
+            var buttons = [];
+            buttons.push(new primitives.orgdiagram.ButtonConfig("delete", "ui-icon-trash", "Excluir Encaminhamento"));
+            buttons.push(new primitives.orgdiagram.ButtonConfig("resposta", "ui-icon-arrowreturn-1-s", "Solicitar Resposta"));//ui-icon-note
+            buttons.push(new primitives.orgdiagram.ButtonConfig("tipo", "ui-icon-transferthick-e-w", "Alterar Tipo Encaminhamento"));
+            buttons.push(new primitives.orgdiagram.ButtonConfig("analise", "ui-icon-notice", "Colocar em analise"));
+            buttons.push(new primitives.orgdiagram.ButtonConfig("responder", "ui-icon-contact", "Responder Demanda"));
+            result.buttons = buttons;
 
             var itemTemplate = jQuery(''
                 + '<div class="bp-item bp-corner-all bt-item-frame">'
                 + ' <div name="titleBackground" class="bp-item bp-corner-all bp-title-frame node-title-frame" style="background:{{itemConfig.itemTitleColor}};">'
                 + '     <div name="title" class="bp-item bp-title node-title-item" >{{itemConfig.title}}</div>'
                 + ' </div>'
-                + ' <div class="bp-item bp-photo-frame node-photo-frame">'
-                + '     <img name="photo" class="node-photo" src="{{itemConfig.image}}"/>'
+                + '<div name="title" class="bp-item" style="top: 26px; left: 7px; width: 162px; height: 36px;"><b>{{itemConfig.description}}</b></div>'
+                + '<div name="phone" class="bp-item" style="top: 62px; left: 6px; width: 162px; height: 18px;"><b>Tipo:</b> Providencia</div>'
+                + '<div name="email" class="bp-item" style="top: 80px; left: 6px; width: 162px; height: 18px;"><b>Encaminhado:</b> 12/01/2017</div>'
+                + '<div name="descr" class="bp-item" style="top: 98px; left: 6px; width: 162px; height: 18px;"><b>Solicitar Resposta:</b> Sim</div>'
+                + '<div name="descr" class="bp-item" style="top: 116px; left: 6px; width: 162px; height: 18px;">Anexos 2</div>'
                 + ' </div>'
-                + '<div class="bp-item node-info-name">{{itemConfig.description}}</div>'
-                + '<div class="bp-item node-info-name">{{itemConfig.description}}</div>'
-                + '</div>'
             ).css({
                 width: result.itemSize.width + "px",
                 height: result.itemSize.height + "px"
             }).addClass("bp-item bp-corner-all bt-item-frame");
-
             result.itemTemplate = itemTemplate.wrap('<div>').parent().html();
 
             return result;
@@ -335,7 +344,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         function getRootTemplate() {
             var result = new primitives.orgdiagram.TemplateConfig();
             result.name = "rootTemplate";
-            result.itemSize = new primitives.common.Size(280, 100);
+            result.itemSize = new primitives.common.Size(450, 72);
             result.minimizedItemSize = new primitives.common.Size(5, 5);
             result.minimizedItemCornerRadius = 5;
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
@@ -344,9 +353,6 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 + '<div class="bp-item bp-corner-all bt-item-frame">'
                 + ' <div name="titleBackgrond" class="bp-item bp-corner-all bp-title-frame root-title-frame">'
                 + '     <div name="title" class="bp-item bp-title root-title-item">{{itemConfig.title}}</div>'
-                + ' </div>'
-                + ' <div class="bp-item bp-photo-frame root-photo-frame">'
-                + '     <img name="photo" class="root-photo" src="{{itemConfig.image}}"/>'
                 + ' </div>'
                 + ' <div class="bp-item root-info-nome">{{itemConfig.description}}</div>'
                 + '</div>'
@@ -371,12 +377,16 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             options.defaultTemplateName = "nodeTemplate";
             options.hasSelectorCheckbox = primitives.common.Enabled.False;
             options.arrowsDirection = primitives.common.GroupByType.Children;
-            options.annotations = [getConnectorAnnotationConfig()];
+           // options.annotations = [getConnectorAnnotationConfig()]; //TODO configurar contagem encaminhamento resposta entre os node
+            options.pageFitMode = primitives.orgdiagram.PageFitMode.None;//Expandir e recolher nodes automaticamente
+            options.itemTitleSecondFontColor = primitives.common.Colors.White;//Manter titulo do status branco
+            options.onButtonClick = function (e, data) {
+                var message = "User clicked '" + data.name + "' button for item '" + data.context.title + "'.";
+                console.log(message);
+            };
 
             return options;
         }
-
-        //$compile(markup)($scope).appendTo(angular.element("#appendHere"));
 
         return {
             setupTree: function (encaminhamentos) {
