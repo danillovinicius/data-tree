@@ -255,7 +255,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 parent: null,
                 title: root.redeOrigem.sigla,
                 description: root.redeOrigem.nome,
-                image: $filter('treeSrcImageNode')(root.redeDestino.sigla[0]),
+                image: $filter('treeSrcImageNode')(root.redeOrigem.sigla[0]),
                 itemTitleColor: $filter('treeColor')("ROOT"),
                 templateName: "rootTemplate"
             };
@@ -274,20 +274,29 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             angular.forEach(array, function (item) {
                 tree.push(obterNodeTree(item, root.id));
             });
-
-            tree.push(new primitives.orgdiagram.ItemConfig({
-                id: 500,
-                parent: 522,
-                title: "Scott Aasrud",
-                description: "VP, Public Sector",
-                image: $filter('treeSrcImageNode')("a"),
-                phone: "(123) 456-78-90",
-                email: "itema@org.com",
-                templateName: "nodeTemplate",
-                href: "#",
-                itemTitleColor: primitives.common.Colors.Black
-            }))
             return tree;
+        }
+
+
+        /** ===================================================================================
+         *                      Templates Tree
+         * ====================================================================================
+         */
+
+        //TODO implementar
+        function getConnectorAnnotationConfig() {
+            return new primitives.orgdiagram.ConnectorAnnotationConfig({
+                fromItem: 481,
+                toItem: 522,
+                label: "<div class='bp-badge' style='width:20px; height:20px;background-color:red; color: white;'>1</div>",
+                labelSize: new primitives.common.Size(80, 30),
+                connectorShapeType: primitives.common.ConnectorShapeType.BothWay,
+                color: primitives.common.Colors.Red,
+                offset: 0,
+                lineWidth: 2,
+                lineType: primitives.common.LineType.Dashed,
+                selectItems: false
+            })
         }
 
 
@@ -302,19 +311,16 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             result.minimizedItemSize = new primitives.common.Size(3, 3);
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
-            var itemTemplate = jQuery(
-                '<div class="bp-item bp-corner-all bt-item-frame">'
-                + '<div name="titleBackground" class="bp-item bp-corner-all bp-title-frame" style="top: 2px; left: 2px; width: 175px; height: 20px;">'
-                + '<div name="title" class="bp-item bp-title" style="top: 3px; left: 6px; width: 208px; height: 18px;">'
-                + '</div>'
-                + '</div>'
-                + '<div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;">'
-                + '<img name="photo" src="{{itemConfig.image}}" style="height:60px; width:50px;" />'
-                + '</div>'
-                + '<div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;"></div>'
-                + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a name="email" href="" target="_top"></a></div>'
-                + '<div name="description" class="bp-item" style="top: 62px; left: 56px; width: 162px; height: 36px; font-size: 10px;"></div>'
-                + '<a name="readmore" class="bp-item" style="top: 104px; left: 4px; width: 212px; height: 12px; font-size: 10px; font-family: Arial; text-align: right; font-weight: bold; text-decoration: none;">Read more ...</a>'
+            var itemTemplate = jQuery(''
+                + '<div class="bp-item bp-corner-all bt-item-frame">'
+                + ' <div name="titleBackground" class="bp-item bp-corner-all bp-title-frame node-title-frame" style="background:{{itemConfig.itemTitleColor}};">'
+                + '     <div name="title" class="bp-item bp-title node-title-item" >{{itemConfig.title}}</div>'
+                + ' </div>'
+                + ' <div class="bp-item bp-photo-frame node-photo-frame">'
+                + '     <img name="photo" class="node-photo" src="{{itemConfig.image}}"/>'
+                + ' </div>'
+                + '<div class="bp-item node-info-name">{{itemConfig.description}}</div>'
+                + '<div class="bp-item node-info-name">{{itemConfig.description}}</div>'
                 + '</div>'
             ).css({
                 width: result.itemSize.width + "px",
@@ -329,24 +335,20 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         function getRootTemplate() {
             var result = new primitives.orgdiagram.TemplateConfig();
             result.name = "rootTemplate";
-
             result.itemSize = new primitives.common.Size(280, 100);
             result.minimizedItemSize = new primitives.common.Size(5, 5);
             result.minimizedItemCornerRadius = 5;
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
-            var itemTemplate = jQuery(
-                '<div class="bp-item bp-corner-all bt-item-frame">'
-                + '<div name="titleBackgrond" class="bp-item bp-corner-all bp-title-frame" style="background:black; top: 2px; left: 2px; width: 275px; height: 25px;">'
-                + '<div name="title" class="bp-item bp-title" style="text-align:center; top: 3px; width: 275px; height: 18px;"><b>{{itemConfig.title}}</b></div>'
-                + '</div>'
-                + '<div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;">'
-                + '<img name="photo" src="{{itemConfig.image}}" style="height:60px; width:50px;" />'
-                + '</div>'
-                + '<div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;">{{itemConfig.phone}}</div>'
-                + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a name="email" href="mailto::{{itemConfig.email}}" target="_top">{{itemConfig.email}}</a></div>'
-                + '<div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a ng-click= "onButtonClick()" name="email">--- Link ---</a></div>'
-                + '<div name="description" class="bp-item" style="top: 62px; left: 56px; width: 162px; height: 36px; font-size: 10px;">{{itemConfig.description}}</div>'
+            var itemTemplate = jQuery(''
+                + '<div class="bp-item bp-corner-all bt-item-frame">'
+                + ' <div name="titleBackgrond" class="bp-item bp-corner-all bp-title-frame root-title-frame">'
+                + '     <div name="title" class="bp-item bp-title root-title-item">{{itemConfig.title}}</div>'
+                + ' </div>'
+                + ' <div class="bp-item bp-photo-frame root-photo-frame">'
+                + '     <img name="photo" class="root-photo" src="{{itemConfig.image}}"/>'
+                + ' </div>'
+                + ' <div class="bp-item root-info-nome">{{itemConfig.description}}</div>'
                 + '</div>'
             ).css({
                 width: result.itemSize.width + "px",
@@ -368,8 +370,13 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             options.templates = [getNodeTemplate(), getRootTemplate()];
             options.defaultTemplateName = "nodeTemplate";
             options.hasSelectorCheckbox = primitives.common.Enabled.False;
+            options.arrowsDirection = primitives.common.GroupByType.Children;
+            options.annotations = [getConnectorAnnotationConfig()];
+
             return options;
         }
+
+        //$compile(markup)($scope).appendTo(angular.element("#appendHere"));
 
         return {
             setupTree: function (encaminhamentos) {

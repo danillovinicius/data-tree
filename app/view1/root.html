@@ -1,0 +1,23 @@
+<div class="bp-item bp-corner-all bt-item-frame" style="width: 280px; height: 100px;">
+    <div name="titleBackgrond" class="bp-item bp-corner-all bp-title-frame"
+         style="background:black; top: 2px; left: 2px; width: 275px; height: 25px;">
+        <div name="title" class="bp-item bp-title" style="text-align:center; top: 3px; width: 275px; height: 18px;"><b>{{itemConfig.title}}</b>
+        </div>
+    </div>
+    <div class="bp-item bp-photo-frame" style="top: 26px; left: 2px; width: 50px; height: 60px;"><img name="photo"
+                                                                                                      src="{{itemConfig.image}}"
+                                                                                                      style="height:60px; width:50px;">
+    </div>
+    <div name="phone" class="bp-item" style="top: 26px; left: 56px; width: 162px; height: 18px; font-size: 12px;">
+        {{itemConfig.phone}}
+    </div>
+    <div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a name="email"
+                                                                                                        href="mailto::{{itemConfig.email}}"
+                                                                                                        target="_top">{{itemConfig.email}}</a>
+    </div>
+    <div class="bp-item" style="top: 44px; left: 56px; width: 162px; height: 18px; font-size: 12px;"><a
+            ng-click="onButtonClick()" name="email">--- Link ---</a></div>
+    <div name="description" class="bp-item" style="top: 62px; left: 56px; width: 162px; height: 36px; font-size: 10px;">
+        {{itemConfig.description}}
+    </div>
+</div>
