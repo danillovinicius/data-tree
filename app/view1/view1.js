@@ -1,6 +1,7 @@
 /*Global primitives*/
 'use strict';
 angular.module('BasicPrimitives', [], function ($compileProvider) {
+
     $compileProvider.directive('bpOrgDiagram', function ($compile) {
         function link(scope, element, attrs) {
 
@@ -10,21 +11,11 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
 
             scope.$on('TreeConfigurationCompleted', function (ev, args) {
 
-                // angular.extend(config, scope.$parent.tree);
                 angular.extend(config, args.options);
                 config.onItemRender = onTemplateRender;
                 config.onCursorChanged = onCursorChanged;
-                config.onHighlightChanged = onHighlightChanged;
 
                 chart = jQuery(element).orgDiagram(config);
-
-                scope.$watch('options.highlightItem', function (newValue, oldValue) {
-                    var highlightItem = chart.orgDiagram("option", "highlightItem");
-                    if (highlightItem != newValue) {
-                        chart.orgDiagram("option", {highlightItem: newValue});
-                        chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.PositonHighlight);
-                    }
-                });
 
                 scope.$watch('options.cursorItem', function (newValue, oldValue) {
                     var cursorItem = chart.orgDiagram("option", "cursorItem");
@@ -34,6 +25,13 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                     }
                 });
 
+                function onCursorChanged(e, data) {
+                    scope.options.cursorItem = data.context ? data.context.id : null;
+                    scope.nodeSelected = data.context ? data.context : null;
+                    //scope.onCursorChanged();
+                    scope.$apply();
+                }
+
                 scope.$watchCollection('options.items', function (items) {
                     chart.orgDiagram("option", {items: items});
                     chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
@@ -42,7 +40,6 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
             });
 
             function onTemplateRender(event, data) {
-                console.log("onTemplateRender");
                 var itemConfig = data.context;
 
                 switch (data.renderingMode) {
@@ -68,18 +65,6 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                 //TODO CaseButtonsInCursorTemplate botoes habilitados por permissao;
             }
 
-            function onCursorChanged(e, data) {
-                scope.options.cursorItem = data.context ? data.context.id : null;
-                scope.onCursorChanged();
-                scope.$apply();
-            }
-
-            function onHighlightChanged(e, data) {
-                scope.options.highlightItem = data.context ? data.context.id : null;
-                scope.onHighlightChanged();
-                scope.$apply();
-            }
-
             element.on('$destroy', function () {
                 /* destroy items scopes */
                 for (var index = 0; index < scope.length; index++) {
@@ -93,9 +78,8 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
 
         return {
             scope: {
-                options: '=options',
-                onCursorChanged: '&onCursorChanged',
-                onHighlightChanged: '&onHighlightChanged'
+                options: '=',
+                nodeSelected:'='
             },
             link: link
         };
@@ -120,6 +104,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             $scope.index = 10;
             $scope.Message = "";
             $scope.tree = {};
+            $scope.nodeSelected = {};
 
             demandaService.get('500').success(function (response) {
                 treeService.setupTree(response.resultado)
