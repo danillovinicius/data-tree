@@ -12,8 +12,38 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
             scope.$on('TreeConfigurationCompleted', function (ev, args) {
 
                 angular.extend(config, args.options);
-                config.onItemRender = onTemplateRender;
-                config.onCursorChanged = onCursorChanged;
+
+                config.onItemRender = function (event, data) {
+                    var itemConfig = data.context;
+
+                    switch (data.renderingMode) {
+                        case primitives.common.RenderingMode.Create:
+                            var itemScope = scope.$new();
+                            itemScope.itemConfig = itemConfig;
+                            $compile(data.element.contents())(itemScope);
+                            if (!scope.$parent.$$phase) {
+                                itemScope.$apply();
+                            }
+                            itemScopes.push(itemScope);
+                            break;
+                        case primitives.common.RenderingMode.Update:
+                            // var itemScope = data.element.contents().scope();
+                            var itemScope = data.element.contents();
+                            // itemScope.itemConfig = itemConfig;
+                            break;
+                    }
+                };
+
+                config.onButtonClick = function (event, data) {
+                    scope.$parent[data.name](event, data);
+                    scope.$apply();
+                };
+
+                config.onCursorChanged = function (event, data) {
+                    scope.options.cursorItem = data.context ? data.context.id : null;
+                    scope.nodeSelected = data.context ? data.context : null;
+                    scope.$apply();
+                };
 
                 chart = jQuery(element).orgDiagram(config);
 
@@ -25,45 +55,12 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                     }
                 });
 
-                function onCursorChanged(e, data) {
-                    scope.options.cursorItem = data.context ? data.context.id : null;
-                    scope.nodeSelected = data.context ? data.context : null;
-                    //scope.onCursorChanged();
-                    scope.$apply();
-                }
-
                 scope.$watchCollection('options.items', function (items) {
                     chart.orgDiagram("option", {items: items});
                     chart.orgDiagram("update", primitives.orgdiagram.UpdateMode.Refresh);
                 });
-
             });
 
-            function onTemplateRender(event, data) {
-                var itemConfig = data.context;
-
-                switch (data.renderingMode) {
-                    case primitives.common.RenderingMode.Create:
-                        /* Initialize widgets here */
-                        var itemScope = scope.$new();
-                        itemScope.itemConfig = itemConfig;
-                        $compile(data.element.contents())(itemScope);
-                        if (!scope.$parent.$$phase) {
-                            itemScope.$apply();
-                        }
-                        itemScopes.push(itemScope);
-                        //$compile(markup)($scope).appendTo(angular.element("#appendHere"));
-                        break;
-                    case primitives.common.RenderingMode.Update:
-                        /* Update widgets here */
-                        // var itemScope = data.element.contents().scope();
-                        var itemScope = data.element.contents();
-                        // itemScope.itemConfig = itemConfig;
-                        break;
-                }
-
-                //TODO CaseButtonsInCursorTemplate botoes habilitados por permissao;
-            }
 
             element.on('$destroy', function () {
                 /* destroy items scopes */
@@ -79,7 +76,7 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
         return {
             scope: {
                 options: '=',
-                nodeSelected:'='
+                nodeSelected: '='
             },
             link: link
         };
@@ -102,7 +99,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
 
             $scope.demanda = {};
             $scope.index = 10;
-            $scope.Message = "";
+            $scope.message = "";
             $scope.tree = {};
             $scope.nodeSelected = {};
 
@@ -128,10 +125,6 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 $scope.tree.highlightItem = item;
             };
 
-            $scope.deleteItem = function (index) {
-                $scope.tree.items.splice(index, 1);
-            };
-
             $scope.addItem = function (index, parent) {
                 var id = $scope.index++;
                 $scope.tree.items.splice(index, 0, new primitives.orgdiagram.ItemConfig({
@@ -143,12 +136,36 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 }));
             };
 
-            $scope.onMyCursorChanged = function () {
-                $scope.Message = "onMyCursorChanged";
+            /**
+             * Ações dos botões dos itens da arvore;
+             */
+
+            $scope.deleteItem = function (event, data) {
+                var id = $scope.index++;
+                $scope.tree.items.push(new primitives.orgdiagram.ItemConfig({
+                    id: id,
+                    parent: data.context.id,
+                    title: "New title " + id,
+                    description: "New description " + id,
+                    image: "bower_components/basic-primitive-demo/images/photos/b.png"
+                }));
+                //$scope.tree.items.splice(index, 1);
             };
 
-            $scope.onMyHighlightChanged = function () {
-                $scope.Message = "onMyHighlightChanged";
+            $scope.solicitaResposta = function () {
+                console.log("solicitaResposta");
+            };
+
+            $scope.alteraTipoEncaminhamento = function () {
+                console.log("alteraTipoEncaminhamento");
+            };
+
+            $scope.emAnalise = function () {
+                console.log("emAnalise");
+            };
+
+            $scope.responder = function () {
+                console.log("responder");
             };
 
         }])
@@ -198,7 +215,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
     .constant("StatusTreeEnum", {
         ENCAMINHADO: {id: 1, descricao: 'Encaminhado', color: "#0288D1"},
         RENCAMINHADO: {id: 2, descricao: 'Reencaminhado', color: "#F57C00"},
-        EM_ANALISE: {id: 3, descricao: 'Em Análise', color: "#FFD600"},
+        EM_ANALISE: {id: 3, descricao: 'Em Análise', color: "#FFCC00"},
         DEVOLVIDO: {id: 4, descricao: 'Devolvido', color: "#D50000"},
         RESPONDIDO: {id: 5, descricao: 'Respondido', color: "#388E3C"},
         CONCLUIDO: {id: 6, descricao: 'Concluído', color: "#303F9F"}
@@ -224,8 +241,11 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 title: node.redeDestino.sigla,
                 description: node.redeDestino.nome,
                 image: $filter('treeSrcImageNode')(node.redeDestino.sigla[0]),
+                label: "<div class='bp-badge' style='width:10px; height:10px;background-color:red; color: white;'>5</div>Aguardando aprovação",
                 itemTitleColor: primitives.common.Colors.Gray,
                 encaminhamento: node,
+                isActive : node.id === 481,
+                //isVisible: true, //TODO implementar nodes que devem ser ocultos
                 groupTitle: node.statusEncaminhamentoDemanda.descricao,
                 groupTitleColor: $filter('treeColor')(node.statusEncaminhamentoDemanda.descricao)
             });
@@ -245,6 +265,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 title: root.redeOrigem.sigla,
                 description: root.redeOrigem.nome,
                 image: $filter('treeSrcImageNode')(root.redeOrigem.sigla[0]),
+                isActive : false,
                 itemTitleColor: $filter('treeColor')("ROOT"),
                 templateName: "rootTemplate"
             };
@@ -288,7 +309,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         }
 
         /** ===================================================================================
-         *                      Templates Tree
+         *                      Templates Encaminhar Analisar Demanda
          * ====================================================================================
          */
         function getNodeTemplate() {
@@ -299,10 +320,17 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
             var buttons = [];
-            buttons.push(new primitives.orgdiagram.ButtonConfig("delete", "ui-icon-trash", "Excluir Encaminhamento"));
-            buttons.push(new primitives.orgdiagram.ButtonConfig("resposta", "ui-icon-arrowreturn-1-s", "Solicitar Resposta"));//ui-icon-note
-            buttons.push(new primitives.orgdiagram.ButtonConfig("tipo", "ui-icon-transferthick-e-w", "Alterar Tipo Encaminhamento"));
-            buttons.push(new primitives.orgdiagram.ButtonConfig("analise", "ui-icon-notice", "Colocar em analise"));
+            /**
+             * Propiedade name do button utilizada para identificação da function
+             * com mesmo nome a ser executada no scopo injetado.
+             *
+             * new primitives.orgdiagram.ButtonConfig("deleteItem", "ui-icon-trash", "Excluir Encaminhamento"));
+             * $scope.deleteItem = function(){...};
+             */
+            buttons.push(new primitives.orgdiagram.ButtonConfig("deleteItem", "ui-icon-trash", "Excluir Encaminhamento"));
+            buttons.push(new primitives.orgdiagram.ButtonConfig("solicitaResposta", "ui-icon-arrowreturn-1-s", "Solicitar Resposta"));//ui-icon-note
+            buttons.push(new primitives.orgdiagram.ButtonConfig("alteraTipoEncaminhamento", "ui-icon-transferthick-e-w", "Alterar Tipo Encaminhamento"));
+            buttons.push(new primitives.orgdiagram.ButtonConfig("emAnalise", "ui-icon-notice", "Colocar em analise"));
             buttons.push(new primitives.orgdiagram.ButtonConfig("responder", "ui-icon-contact", "Responder Demanda"));
             result.buttons = buttons;
 
@@ -362,14 +390,9 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             options.defaultTemplateName = "nodeTemplate";
             options.hasSelectorCheckbox = primitives.common.Enabled.False;
             options.arrowsDirection = primitives.common.GroupByType.Children;
-           // options.annotations = [getConnectorAnnotationConfig()]; //TODO configurar contagem encaminhamento resposta entre os node
+            // options.annotations = [getConnectorAnnotationConfig()]; //TODO configurar contagem encaminhamento resposta entre os node
             options.pageFitMode = primitives.orgdiagram.PageFitMode.None;//Expandir e recolher nodes automaticamente
             options.itemTitleSecondFontColor = primitives.common.Colors.White;//Manter titulo do status branco
-            options.onButtonClick = function (e, data) {
-                var message = "User clicked '" + data.name + "' button for item '" + data.context.title + "'.";
-                console.log(message);
-            };
-
             return options;
         }
 
@@ -389,7 +412,3 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             }
         }
     }]);
-
-/**
- * TODO supportsSVG supportsCanvas
- */

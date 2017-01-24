@@ -104,17 +104,17 @@
 
         <div class="span12">
             <fieldset class="filder">
-                <legend class="lengendOuvidor"></legend>
-                <div class="span12">
-                    <hr class="gray-hr">
-                </div>
-                <div class="row">
-                    <div class="span4">
-                        <h3>{{tree.cursorItem}}</h3>
-                        <pre>{{nodeSelected.encaminhamento | json}}</pre>
-                        <p>Highlight: {{tree.highlightItem}}</p>
-                    </div>
-                </div>
+                <legend class="lengendOuvidor">{{message}}</legend>
+                <!--<div class="span12">-->
+                    <!--<hr class="gray-hr">-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="span4">-->
+                        <!--<h3>{{tree.cursorItem}}</h3>-->
+                        <!--<pre>{{nodeSelected.encaminhamento | json}}</pre>-->
+                        <!--<p>Highlight: {{tree.highlightItem}}</p>-->
+                    <!--</div>-->
+                <!--</div>-->
             </fieldset>
         </div>
 
@@ -126,7 +126,7 @@
                             <input type="checkbox"
                                    ng-change="alterarSolicitacaoResposta(nodeSelecionado.node);"
                                    ng-model="respostaSolicitada"
-                                   ng-checked="nodeSelecionado.node.solicitaResposta == 'S'"/>
+                                   ng-checked="nodeSelected.encaminhamento.solicitaResposta == 'S'"/>
                             {{solicitar-resposta}}
                         </label>
                     </div>
@@ -140,7 +140,7 @@
                         <label class="inline hand">
                             <input type="radio"
                                    name="tipoEncaminhamento"
-                                   ng-model="nodeSelecionado.node.tipoEncaminhamento"
+                                   ng-model="nodeSelected.encaminhamento.tipoEncaminhamento"
                                    value="P"
                                    ng-change="alterarTipoEncaminhamento(nodeSelecionado.node)"/>
                             {{'Providencia'}}
@@ -151,7 +151,7 @@
                         <label class="inline hand">
                             <input type="radio"
                                    name="tipoEncaminhamento"
-                                   ng-model="nodeSelecionado.node.tipoEncaminhamento"
+                                   ng-model="nodeSelected.encaminhamento.tipoEncaminhamento"
                                    value="C"
                                    ng-change="alterarTipoEncaminhamento(nodeSelecionado.node)"/>
                             {{'Conhecimento'}}
@@ -171,23 +171,17 @@
                 </div>
                 <div class="row span12">
                     <div>
-                        <label><strong>Ouvidoria Federal do Hospital Sara de Brasilia</strong></label>
+                        <label><strong>{{nodeSelected.encaminhamento.redeDestino.nome}}</strong></label>
                     </div>
                     <div class="row">
-                        <label>Responsável: Phillip da Silva e Sousa</label>
+                        <label>Responsável: {{nodeSelected.encaminhamento.usuarioResponsavel}}</label>
                     </div>
                 </div>
                 <div class="span12">
                     <hr class="gray-hr">
                 </div>
                 <div class="span12 quebraTexto">
-                    <label>Phasellus vel metus ut purus vulputate efficitur. Aliquam vel dolor mollis, sollicitudin erat
-                        non, fermentum ipsum. In est nibh, ullamcorper vitae scelerisque quis, accumsan at diam. Etiam
-                        nec porttitor mauris. Morbi id tortor magna. Donec sit amet tortor id libero fermentum
-                        fermentum. Donec sit amet leo massa. Maecenas ut volutpat mauris. Quisque malesuada, augue sed
-                        porttitor euismod, ligula enim condimentum nisi, vel laoreet lorem sem ac eros. Proin porttitor
-                        in justo id facilisis. Fusce pretium, felis vitae vulputate auctor, lorem urna lobortis turpis,
-                        non tincidunt ipsum purus eu diam.</label>
+                    <label>{{nodeSelected.encaminhamento.comentarioParecer}}</label>
                 </div>
                 <div class="span12">
                     <hr class="gray-hr">
