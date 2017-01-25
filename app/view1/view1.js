@@ -42,6 +42,7 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                 config.onCursorChanged = function (event, data) {
                     scope.options.cursorItem = data.context ? data.context.id : null;
                     scope.nodeSelected = data.context ? data.context : null;
+                    console.log(data.context);
                     scope.$apply();
                 };
 
@@ -61,14 +62,10 @@ angular.module('BasicPrimitives', [], function ($compileProvider) {
                 });
             });
 
-
             element.on('$destroy', function () {
-                /* destroy items scopes */
                 for (var index = 0; index < scope.length; index++) {
                     itemScopes[index].$destroy();
                 }
-
-                /* destory jQuery UI widget instance */
                 chart.remove();
             });
         }
@@ -102,8 +99,12 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             $scope.message = "";
             $scope.tree = {};
             $scope.nodeSelected = {};
+            $scope.encaminhamentos = [];
+            $scope.dataEncaminhamento = new Date();
 
             demandaService.get('500').success(function (response) {
+                $scope.encaminhamentos = response.resultado;
+
                 treeService.setupTree(response.resultado)
                     .then(function (tree) {
                         $scope.tree = tree;
@@ -245,7 +246,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 itemTitleColor: primitives.common.Colors.Gray,
                 encaminhamento: node,
                 isActive : node.id === 481,
-                //isVisible: true, //TODO implementar nodes que devem ser ocultos
+                //isVisible: false, //TODO implementar nodes que devem ser ocultos
                 groupTitle: node.statusEncaminhamentoDemanda.descricao,
                 groupTitleColor: $filter('treeColor')(node.statusEncaminhamentoDemanda.descricao)
             });
@@ -295,7 +296,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         //TODO implementar
         function getConnectorAnnotationConfig() {
             return new primitives.orgdiagram.ConnectorAnnotationConfig({
-                fromItem: 482,
+                fromItem: 481,
                 toItem: 522,
                 label: "<div class='bp-badge' style='width:20px; height:20px;background-color:red; color: white;'>1</div>",
                 labelSize: new primitives.common.Size(80, 30),
@@ -310,22 +311,24 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
 
         /** ===================================================================================
          *                      Templates Encaminhar Analisar Demanda
+         *
+         * Propiedade name do button utilizada para identificação da function
+         * com mesmo nome a ser executada no scopo injetado.
+         *
+         * new primitives.orgdiagram.ButtonConfig("deleteItem", "ui-icon-trash", "Excluir Encaminhamento"));
+         * $scope.deleteItem = function(){...};
          * ====================================================================================
          */
-        function getNodeTemplate() {
+        function getNodeTemplate(actions) {
             var result = new primitives.orgdiagram.TemplateConfig();
             result.name = "nodeTemplate";
             result.itemSize = new primitives.common.Size(185, 136);
             result.minimizedItemSize = new primitives.common.Size(3, 3);
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
-            var buttons = [];
+             var buttons = []; //actions ||  []//TODO actions >> açoes da tela como parametros...
             /**
-             * Propiedade name do button utilizada para identificação da function
-             * com mesmo nome a ser executada no scopo injetado.
-             *
-             * new primitives.orgdiagram.ButtonConfig("deleteItem", "ui-icon-trash", "Excluir Encaminhamento"));
-             * $scope.deleteItem = function(){...};
+
              */
             buttons.push(new primitives.orgdiagram.ButtonConfig("deleteItem", "ui-icon-trash", "Excluir Encaminhamento"));
             buttons.push(new primitives.orgdiagram.ButtonConfig("solicitaResposta", "ui-icon-arrowreturn-1-s", "Solicitar Resposta"));//ui-icon-note
@@ -343,7 +346,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 + '<div name="phone" class="bp-item" style="top: 62px; left: 6px; width: 162px; height: 18px;"><b>Tipo:</b> Providencia</div>'
                 + '<div name="email" class="bp-item" style="top: 80px; left: 6px; width: 162px; height: 18px;"><b>Encaminhado:</b> 12/01/2017</div>'
                 + '<div name="descr" class="bp-item" style="top: 98px; left: 6px; width: 162px; height: 18px;"><b>Solicitar Resposta:</b> Sim</div>'
-                + '<div name="descr" class="bp-item" style="top: 116px; left: 6px; width: 162px; height: 18px;">Anexos 2</div>'
+                + '<div name="descr" class="bp-item" style="top: 116px; left: 6px; width: 162px; height: 18px;"><a>Anexos 2</a></div>'
                 + ' </div>'
             ).css({
                 width: result.itemSize.width + "px",
@@ -390,7 +393,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             options.defaultTemplateName = "nodeTemplate";
             options.hasSelectorCheckbox = primitives.common.Enabled.False;
             options.arrowsDirection = primitives.common.GroupByType.Children;
-            // options.annotations = [getConnectorAnnotationConfig()]; //TODO configurar contagem encaminhamento resposta entre os node
+             //options.annotations = [getConnectorAnnotationConfig()]; //TODO configurar contagem encaminhamento resposta entre os node
             options.pageFitMode = primitives.orgdiagram.PageFitMode.None;//Expandir e recolher nodes automaticamente
             options.itemTitleSecondFontColor = primitives.common.Colors.White;//Manter titulo do status branco
             return options;

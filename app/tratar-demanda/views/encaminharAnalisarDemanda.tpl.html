@@ -82,6 +82,26 @@
         font-size: 12px;
     }
 
+    #sidebar-wrapper {
+        height: 100%;
+        padding: 50px 0 0px 0;
+        position: fixed;
+        border-right: 1px solid gray;
+    }
+
+    #sidebar {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #sidebar .list-group-item {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+    }
+
 </style>
 
 <div class="container" ui-view ng-hide="mostrarModal">
@@ -94,7 +114,8 @@
 
     <div class="span12 box conteudo-box">
 
-        <div id="centerpanel" class="span12" style="background: white; overflow: hidden; padding: 0px; margin: 1px; border: 0px;">
+        <div id="arvore-encaminhamentos" class="span12"
+             style="background: white; overflow: hidden; padding: 0px; margin: 1px; border: 0px;">
             <div bp-org-diagram
                  data-options="tree"
                  data-node-selected="nodeSelected"
@@ -103,140 +124,122 @@
         </div>
 
         <div class="span12">
-            <fieldset class="filder">
-                <legend class="lengendOuvidor">{{message}}</legend>
-                <!--<div class="span12">-->
-                    <!--<hr class="gray-hr">-->
-                <!--</div>-->
-                <!--<div class="row">-->
-                    <!--<div class="span4">-->
-                        <!--<h3>{{tree.cursorItem}}</h3>-->
-                        <!--<pre>{{nodeSelected.encaminhamento | json}}</pre>-->
-                        <!--<p>Highlight: {{tree.highlightItem}}</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </fieldset>
+            <hr class="gray-hr">
         </div>
 
-        <div class="span12" style="background: white">
-            <fieldset class="filder">
-                <legend class="lengendOuvidor">
-                    <div class="checkbox inline">
-                        <label class="hand">
-                            <input type="checkbox"
-                                   ng-change="alterarSolicitacaoResposta(nodeSelecionado.node);"
-                                   ng-model="respostaSolicitada"
-                                   ng-checked="nodeSelected.encaminhamento.solicitaResposta == 'S'"/>
-                            {{solicitar-resposta}}
-                        </label>
-                    </div>
-                </legend>
+        <div id="painel-encaminhamentos">
+            <!--<div class="" style="overflow: hidden; padding: 0px; margin: 1px; border: 0px;">-->
+            <div class="span5">
+                <table class="table ms-grid">
+                    <thead>
+                    <tr>
+                        <th colspan="1">
+                            Encaminhamentos
+                        </th>
+                        <th>Anexos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="e in encaminhamentos ">
+                        <!--| filter: {id: nodeSelected.id}-->
+                        <td>
+                            <p class="pull-left">{{dataEncaminhamento | date:'dd/MM/yyyy'}}</p>
+                            <div class="pull-left">
+                                <a>
+                                    <p>{{e.statusEncaminhamentoDemanda.descricao}} por: {{e.usuarioResponsavel}}
+                                </a>
+                            </div>
 
-                <div class="span12">
-                    <div class="radio inline">
-                        <label class="inline">{{'Tipo Encaminhamento'}}:</label>
-                    </div>
-                    <div class="radio inline">
-                        <label class="inline hand">
-                            <input type="radio"
-                                   name="tipoEncaminhamento"
-                                   ng-model="nodeSelected.encaminhamento.tipoEncaminhamento"
-                                   value="P"
-                                   ng-change="alterarTipoEncaminhamento(nodeSelecionado.node)"/>
-                            {{'Providencia'}}
-                        </label>
-                    </div>
+                        </td>
+                        <td>
+                            <div>
+                                0
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    <div class="radio inline">
-                        <label class="inline hand">
-                            <input type="radio"
-                                   name="tipoEncaminhamento"
-                                   ng-model="nodeSelected.encaminhamento.tipoEncaminhamento"
-                                   value="C"
-                                   ng-change="alterarTipoEncaminhamento(nodeSelecionado.node)"/>
-                            {{'Conhecimento'}}
-                        </label>
-                    </div>
-                    <div class="inline pull-right hand" ng-if="!nodeSelecionado.bloquearCampos">
+            <div class="span7" style="background: white">
+                <fieldset class="filder">
+                    <legend class="lengendOuvidor">
+                        <div class="checkbox inline">
+                            <label class="hand">
+                                <input type="checkbox"
+                                       ng-change="alterarSolicitacaoResposta(nodeSelecionado.node);"
+                                       ng-model="respostaSolicitada"
+                                       ng-checked="nodeSelected.encaminhamento.solicitaResposta == 'S'"/>
+                                {{solicitar-resposta}}
+                            </label>
+                        </div>
+                    </legend>
 
-                        <button type="button"
-                                ng-click="removeEncaminhamento(nodeSelecionado)">
-                            <span class="btn ms-icone-lixeira"> </span>
-                        </button>
 
+                    <div class="span12">
+                        <hr class="gray-hr">
                     </div>
-                </div>
-                <div class="span12">
-                    <hr class="gray-hr">
-                </div>
-                <div class="row span12">
-                    <div>
-                        <label><strong>{{nodeSelected.encaminhamento.redeDestino.nome}}</strong></label>
+                    <div class="row span12">
+                        <div>
+                            <label><strong>{{nodeSelected.encaminhamento.redeDestino.nome}}</strong></label>
+                        </div>
+                        <div class="row">
+                            <label>Responsável: {{nodeSelected.encaminhamento.usuarioResponsavel}}</label>
+                        </div>
                     </div>
-                    <div class="row">
-                        <label>Responsável: {{nodeSelected.encaminhamento.usuarioResponsavel}}</label>
+                    <div class="span12">
+                        <hr class="gray-hr">
                     </div>
-                </div>
-                <div class="span12">
-                    <hr class="gray-hr">
-                </div>
-                <div class="span12 quebraTexto">
-                    <label>{{nodeSelected.encaminhamento.comentarioParecer}}</label>
-                </div>
-                <div class="span12">
-                    <hr class="gray-hr">
-                </div>
-                <div class="span12">
-                    <div class="row">
-                        <label>{{nodeSelecionado.node.arquivos.length + ' ' + 'anexos'}}</label>
+                    <div class="span12 quebraTexto">
+                        <label>{{nodeSelected.encaminhamento.comentarioParecer}}</label>
                     </div>
-                    <div class="row">
-                        <table class="table table-hover">
-                            <tbody>
-                            <tr ng-if="!nodeSelecionado.node.arquivos ||nodeSelecionado.node.arquivos.length <= 0">
-                                <td colspan="2"><label> Nenhum arquivo encontrado</label></td>
-                            </tr>
-                            <tr ng-repeat="arquivo in nodeSelecionado.node.arquivos">
-                                <td>
-                                    <a ng-if="arquivo.id"
-                                       tooltip="{{MH205}}"
-                                       ng-href="{{getUrlDownload(arquivo.id)}}">
-                                        <label>{{arquivo.nomeArquivoComExtensao}}</label>
-                                    </a>
+                    <div class="span12">
+                        <hr class="gray-hr">
+                    </div>
+                    <div class="span12">
+                        <div class="row">
+                            <label>{{nodeSelecionado.node.arquivos.length + ' ' + 'anexos'}}</label>
+                        </div>
+                        <div class="row">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr ng-if="!nodeSelecionado.node.arquivos ||nodeSelecionado.node.arquivos.length <= 0">
+                                    <td colspan="2"><label> Nenhum arquivo encontrado</label></td>
+                                </tr>
+                                <tr ng-repeat="arquivo in nodeSelecionado.node.arquivos">
+                                    <td>
+                                        <a ng-if="arquivo.id"
+                                           tooltip="{{MH205}}"
+                                           ng-href="{{getUrlDownload(arquivo.id)}}">
+                                            <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                                        </a>
 
-                                    <a ng-if="!arquivo.id"
-                                       ng-click="downloadArquivo(arquivo)"
-                                       tooltip="{{MH205}}">
-                                        <label>{{arquivo.nomeArquivoComExtensao}}</label>
-                                    </a>
-                                </td>
-                                <td ng-if="!nodeSelecionado.bloquearCampos">
-                                    <button type="button"
-                                            class="close"
-                                            ng-click="removerArquivo(arquivo)"
-                                            aria-hidden="true"
-                                            aria-label="Fechar">&times;
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                                        <a ng-if="!arquivo.id"
+                                           ng-click="downloadArquivo(arquivo)"
+                                           tooltip="{{MH205}}">
+                                            <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                                        </a>
+                                    </td>
+                                    <td ng-if="!nodeSelecionado.bloquearCampos">
+                                        <button type="button"
+                                                class="close"
+                                                ng-click="removerArquivo(arquivo)"
+                                                aria-hidden="true"
+                                                aria-label="Fechar">&times;
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="span12">
-                    <div class="pull-right">
-                        <button type="button"
-                                ng-disabled="!nodeSelecionado.exiteResposta"
-                                ng-click="responder(nodeSelecionado.node);" class="btn btn-primary">
-                            {{'Responder Demanda'}}
-                        </button>
-                        <button type="button" ng-click="gerarDocumentoEncaminhamento(nodeSelecionado.node)"
-                                ng-disabled="nodeSelecionado.bloquearCampos" class="btn btn-default">
-                            {{'Gerar Documento Encaminhamento'}}
-                        </button>
-                    </div>
-                </div>
-            </fieldset>
+                </fieldset>
+
+            </div>
+            <!--<pre>{{encaminhamentos[0] | json}}</pre>-->
         </div>
     </div>
 </div>
+
+
+
