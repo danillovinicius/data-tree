@@ -99,6 +99,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
             $scope.message = "";
             $scope.tree = {};
             $scope.nodeSelected = {};
+            $scope.encaminhamentoSelected = {};
             $scope.encaminhamentos = [];
             $scope.dataEncaminhamento = new Date();
 
@@ -112,6 +113,10 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                         $log.warn(reason);
                     });
             });
+
+            $scope.selecionaEncaminhamento = function (encaminhamento) {
+                $scope.encaminhamentoSelected = encaminhamento;
+            };
 
             $scope.onButtonClick = function (e, data) {
                 console.log(e);
@@ -322,7 +327,7 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
         function getNodeTemplate(actions) {
             var result = new primitives.orgdiagram.TemplateConfig();
             result.name = "nodeTemplate";
-            result.itemSize = new primitives.common.Size(185, 136);
+            result.itemSize = new primitives.common.Size(175, 118);
             result.minimizedItemSize = new primitives.common.Size(3, 3);
             result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
@@ -346,7 +351,6 @@ angular.module('myApp.view1', ['ngRoute', 'BasicPrimitives'])
                 + '<div name="phone" class="bp-item" style="top: 62px; left: 6px; width: 162px; height: 18px;"><b>Tipo:</b> Providencia</div>'
                 + '<div name="email" class="bp-item" style="top: 80px; left: 6px; width: 162px; height: 18px;"><b>Encaminhado:</b> 12/01/2017</div>'
                 + '<div name="descr" class="bp-item" style="top: 98px; left: 6px; width: 162px; height: 18px;"><b>Solicitar Resposta:</b> Sim</div>'
-                + '<div name="descr" class="bp-item" style="top: 116px; left: 6px; width: 162px; height: 18px;"><a>Anexos 2</a></div>'
                 + ' </div>'
             ).css({
                 width: result.itemSize.width + "px",

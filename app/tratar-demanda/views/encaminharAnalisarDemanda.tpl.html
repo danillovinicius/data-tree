@@ -82,29 +82,77 @@
         font-size: 12px;
     }
 
-    #sidebar-wrapper {
-        height: 100%;
-        padding: 50px 0 0px 0;
-        position: fixed;
-        border-right: 1px solid gray;
+    /*ENCAMINHAMENTOS*/
+
+    .encaminhamentos-table {
+        padding: 5px;
+        background: white;
+        height: 420px;
+        max-height: 420px;
+        overflow: auto;
+        overflow-y: scroll;
     }
 
-    #sidebar {
+    .encaminhamentos-painel {
+        padding: 5px;
+        margin-bottom: 2px;
         position: relative;
+    }
+
+    .encaminhamentos-painel:hover {
+        background-color: white;
+    }
+
+    .encaminhamentos-painel a span {
+        position: absolute;
+        width: 100%;
         height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .listagem-encaminhamentos {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .painel-leitura-encaminhamentos {
+        background: white;
+        padding: 0px;
+    }
+
+    .painel-leitura {
+        padding: 0px;
+        background: white;
+        height: 420px;
+        max-height: 420px;
+        overflow: auto;
+    }
+
+    #arvore-encaminhamentos {
+        background: white;
         overflow: hidden;
+        padding: 0px;
+        border: 0px;
     }
 
-    #sidebar .list-group-item {
-        border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
+    .filder-arvore-encaminhamentos {
+        /*!*padding-top: 0px;*!verificar titulo*/
+        padding-bottom: 0px
     }
 
+    .filder-encaminhamentos {
+        /*!*padding-top: 0px;*!verificar titulo*/
+        background: white;
+        padding-bottom: 0px
+    }
+    .well-selected {
+        background: #D1D1D1!important;
+    }
 </style>
 
-<div class="container" ui-view ng-hide="mostrarModal">
+<div class="container" ui-view>
 
     <div class="row">
         <div class="span12">
@@ -114,130 +162,107 @@
 
     <div class="span12 box conteudo-box">
 
-        <div id="arvore-encaminhamentos" class="span12"
-             style="background: white; overflow: hidden; padding: 0px; margin: 1px; border: 0px;">
-            <div bp-org-diagram
+        <fieldset class="filder">
+            <legend><strong>Informações da Demanda</strong></legend>
+
+            <div class="row">
+                <div class="span4">
+                    <div class="control-group">
+                        <label><strong>Prazo Resposta: </strong><span class="tamanho-12"> {{dataEncaminhamento | date:'dd/MM/yyyy'}}</span></label>
+                    </div>
+                </div>
+                <div class="span4">
+                    <label><strong>Pioridade: </strong><span class="tamanho-12"> Alta</span></label>
+                </div>
+                <div class="span4">
+                    <label><strong>Classificação: </strong><span class="tamanho-12"> Informação</span></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span12">
+                    <label> <strong>Tipificacao: </strong><span class="tamanho-12">ZIKA > ZIKA VIRUS > Aedes (Stegomyia) aegypt > Doença</span></label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="filder filder-arvore-encaminhamentos">
+            <legend>Árvore de Encaminhamentos</legend>
+            <div id="arvore-encaminhamentos"
+                 bp-org-diagram
                  data-options="tree"
                  data-node-selected="nodeSelected"
                  style="height: 430px;">
             </div>
-        </div>
+        </fieldset>
 
-        <div class="span12">
-            <hr class="gray-hr">
-        </div>
-
-        <div id="painel-encaminhamentos">
-            <!--<div class="" style="overflow: hidden; padding: 0px; margin: 1px; border: 0px;">-->
-            <div class="span5">
-                <table class="table ms-grid">
-                    <thead>
-                    <tr>
-                        <th colspan="1">
-                            Encaminhamentos
-                        </th>
-                        <th>Anexos</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="e in encaminhamentos ">
-                        <!--| filter: {id: nodeSelected.id}-->
-                        <td>
-                            <p class="pull-left">{{dataEncaminhamento | date:'dd/MM/yyyy'}}</p>
-                            <div class="pull-left">
-                                <a>
-                                    <p>{{e.statusEncaminhamentoDemanda.descricao}} por: {{e.usuarioResponsavel}}
-                                </a>
+        <fieldset class="filder filder-encaminhamentos">
+            <legend><strong>Encaminhamentos</strong></legend>
+            <div id="painel-encaminhamentos">
+                <div class="span5 listagem-encaminhamentos">
+                    <div class="encaminhamentos-table">
+                        <div ng-repeat="e in encaminhamentos "
+                             ng-class="e.id === encaminhamentoSelected.id ? 'well encaminhamentos-painel well-selected' : 'well encaminhamentos-painel'">
+                            <div class="caption" style="padding: 0">
+                                <label>{{e.statusEncaminhamentoDemanda.descricao}} por:
+                                    <small class="pull-right text-muted">{{dataEncaminhamento | date:'dd/MM/yyyy'}}
+                                    </small>
+                                    <br/>
+                                    <small><b>{{e.redeOrigem.nome}}</b></small>
+                                </label>
+                                <label>Responsável:<br/>
+                                    <small>{{e.usuarioResponsavel}}</small>
+                                    <span class="pull-right text-muted">
+                                        <i class="icon icon-download-alt"></i>5 Anexos
+                                    </span>
+                                </label>
+                                <a ng-click="selecionaEncaminhamento(e)"><span></span></a>
                             </div>
-
-                        </td>
-                        <td>
-                            <div>
-                                0
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="span7" style="background: white">
-                <fieldset class="filder">
-                    <legend class="lengendOuvidor">
-                        <div class="checkbox inline">
-                            <label class="hand">
-                                <input type="checkbox"
-                                       ng-change="alterarSolicitacaoResposta(nodeSelecionado.node);"
-                                       ng-model="respostaSolicitada"
-                                       ng-checked="nodeSelected.encaminhamento.solicitaResposta == 'S'"/>
-                                {{solicitar-resposta}}
+                        </div>
+                    </div>
+                </div>
+                <div class="span7 painel-leitura-encaminhamentos" ng-show="encaminhamentoSelected.id === undefined">
+                    <div class="painel-leitura">
+                        <div class="encaminhamentos-painel">
+                            <a ng-click=""><span></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="span7 painel-leitura-encaminhamentos" ng-show="encaminhamentoSelected.id !== undefined">
+                    <div class="painel-leitura">
+                        <div class="row span12">
+                            <label>
+                                <strong>{{encaminhamentoSelected.redeDestino.nome}}</strong>
+                                <small class="pull-right"><label>{{dataEncaminhamento | date:'dd/MM/yyyy'}}</label>
+                                </small>
+                                <br/>
                             </label>
                         </div>
-                    </legend>
-
-
-                    <div class="span12">
-                        <hr class="gray-hr">
-                    </div>
-                    <div class="row span12">
-                        <div>
-                            <label><strong>{{nodeSelected.encaminhamento.redeDestino.nome}}</strong></label>
+                        <div class="span12">
+                            <hr class="gray-hr">
                         </div>
-                        <div class="row">
-                            <label>Responsável: {{nodeSelected.encaminhamento.usuarioResponsavel}}</label>
-                        </div>
-                    </div>
-                    <div class="span12">
-                        <hr class="gray-hr">
-                    </div>
-                    <div class="span12 quebraTexto">
-                        <label>{{nodeSelected.encaminhamento.comentarioParecer}}</label>
-                    </div>
-                    <div class="span12">
-                        <hr class="gray-hr">
-                    </div>
-                    <div class="span12">
-                        <div class="row">
-                            <label>{{nodeSelecionado.node.arquivos.length + ' ' + 'anexos'}}</label>
-                        </div>
-                        <div class="row">
-                            <table class="table table-hover">
-                                <tbody>
-                                <tr ng-if="!nodeSelecionado.node.arquivos ||nodeSelecionado.node.arquivos.length <= 0">
-                                    <td colspan="2"><label> Nenhum arquivo encontrado</label></td>
-                                </tr>
-                                <tr ng-repeat="arquivo in nodeSelecionado.node.arquivos">
-                                    <td>
-                                        <a ng-if="arquivo.id"
-                                           tooltip="{{MH205}}"
-                                           ng-href="{{getUrlDownload(arquivo.id)}}">
-                                            <label>{{arquivo.nomeArquivoComExtensao}}</label>
-                                        </a>
+                        <div class="row span12">
 
-                                        <a ng-if="!arquivo.id"
-                                           ng-click="downloadArquivo(arquivo)"
-                                           tooltip="{{MH205}}">
-                                            <label>{{arquivo.nomeArquivoComExtensao}}</label>
-                                        </a>
-                                    </td>
-                                    <td ng-if="!nodeSelecionado.bloquearCampos">
-                                        <button type="button"
-                                                class="close"
-                                                ng-click="removerArquivo(arquivo)"
-                                                aria-hidden="true"
-                                                aria-label="Fechar">&times;
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div class="row">
+                                <label>
+                                    Responsável: {{encaminhamentoSelected.usuarioResponsavel}}
+                                    <small class="pull-right"><a><i class="icon icon-download-alt"></i>
+                                        {{2 + ' ' + 'anexos'}}
+                                    </a></small>
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
+                        <div class="span12">
+                            <hr class="gray-hr">
+                        </div>
+                        <div class="span12 quebraTexto">
+                            <label>{{encaminhamentoSelected.comentarioParecer}}</label>
+                        </div>
 
+                    </div>
+                </div>
             </div>
-            <!--<pre>{{encaminhamentos[0] | json}}</pre>-->
-        </div>
+        </fieldset>
     </div>
 </div>
 
