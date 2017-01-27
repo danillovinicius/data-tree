@@ -1,0 +1,63 @@
+<div id="painel-encaminhamentos">
+    <div class="span5 listagem-encaminhamentos">
+        <div class="encaminhamentos-table">
+            <div ng-repeat="e in encaminhamentos "
+                 ng-class="e.id === encaminhamentoSelected.id ? 'well encaminhamentos-painel well-selected' : 'well encaminhamentos-painel'">
+                <div class="caption" style="padding: 0">
+                    <label>{{e.statusEncaminhamentoDemanda.descricao}} por:
+                        <small class="pull-right text-muted">{{dataEncaminhamento | date:'dd/MM/yyyy'}}
+                        </small>
+                        <br/>
+                        <small><b>{{e.redeOrigem.nome}}</b></small>
+                    </label>
+                    <label>Responsável:<br/>
+                        <small>{{e.usuarioResponsavel}}</small>
+                        <span class="pull-right text-muted">
+                                        <i class="icon icon-download-alt"></i>5 Anexos
+                                    </span>
+                    </label>
+                    <a ng-click="selecionaEncaminhamento(e)"><span></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="span7 painel-leitura-encaminhamentos" ng-show="encaminhamentoSelected.id === undefined">
+        <div class="painel-leitura">
+            <div class="encaminhamentos-painel">
+                <a ng-click=""><span></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="span7 painel-leitura-encaminhamentos" ng-show="encaminhamentoSelected.id !== undefined">
+        <div class="painel-leitura">
+            <div class="row span12">
+                <label>
+                    <strong>{{encaminhamentoSelected.redeDestino.nome}}</strong>
+                    <small class="pull-right"><label>{{dataEncaminhamento | date:'dd/MM/yyyy'}}</label>
+                    </small>
+                    <br/>
+                </label>
+            </div>
+            <div class="span12">
+                <hr class="gray-hr">
+            </div>
+            <div class="row span12">
+                <div class="row">
+                    <label>
+                        Responsável: {{encaminhamentoSelected.usuarioResponsavel}}
+                        <small class="pull-right"><a><i class="icon icon-download-alt"></i>
+                            {{2 + ' ' + 'anexos'}}
+                        </a></small>
+                    </label>
+                </div>
+            </div>
+            <div class="span12">
+                <hr class="gray-hr">
+            </div>
+            <div class="span12 quebraTexto">
+                <label>{{encaminhamentoSelected.comentarioParecer}}</label>
+            </div>
+
+        </div>
+    </div>
+</div>
