@@ -104,9 +104,9 @@ app.controller('View1Ctrl', ['$scope', 'demandaService', 'treeService', '$log',
         $scope.dataEncaminhamento = new Date();
 
         demandaService.get('500').success(function (response) {
-            $scope.encaminhamentos = response.resultado;
+            $scope.encaminhamentos = [];//response.resultado;
 
-            treeService.setupTree(response.resultado)
+             treeService.setupTree([])//response.resultado
                 .then(function (tree) {
                     $scope.tree = tree;
                 }, function (reason) {
@@ -338,7 +338,7 @@ app.factory('treeService', ['$filter', '$q', '$rootScope', function ($filter, $q
         buttons.push(new primitives.orgdiagram.ButtonConfig("responder", "ui-icon-contact", "Responder Demanda"));
         result.buttons = buttons;
 
-        var itemTemplate = jQuery(''
+        var itemTemplate = angular.element(''
             + '<div class="bp-item bp-corner-all bt-item-frame">'
             + ' <div name="titleBackground" class="bp-item bp-corner-all bp-title-frame node-title-frame" style="background:{{itemConfig.itemTitleColor}};">'
             + '     <div name="title" class="bp-item bp-title node-title-item" >{{itemConfig.title}}</div>'
@@ -402,7 +402,7 @@ app.factory('treeService', ['$filter', '$q', '$rootScope', function ($filter, $q
         setupTree: function (encaminhamentos) {
             var deferred = $q.defer();
 
-            if (encaminhamentos) {
+            if (angular.isArray(encaminhamentos) && encaminhamentos.length > 0) {
                 var options = setupTree(encaminhamentos);
                 deferred.resolve(options);
                 $rootScope.$broadcast('TreeConfigurationCompleted', {options: options});

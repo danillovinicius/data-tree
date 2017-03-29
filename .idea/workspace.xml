@@ -2,12 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="075927e3-aa09-40aa-a27a-10c114288db0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/bower_components/angular/1.2.22/angular-route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/bower_components/angular/1.2.22/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/jquery-ouvidor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/jquery-ui-1.10.4.custom.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/mail.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/mail2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/controllers/encaminharAnalisarDemandaController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/controllers/responderFecharDemandaController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/controllers/tratarDemandaController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalAnexarArquivos.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalConfirmacaoController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalConfirmacaoEncaminhamentoPendenteRespostaController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalEditarEmailController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalEncaminhamentoRedeSemAcesso.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalEncaminharDemanda.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalHistoricoDeTramite.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalLocaisEncaminhamento.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalPreviaEmailController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalPreviaEmailEncaminhamento.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalPreviaEmailFecharDemanda.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalPreviaEmailFecharDemandaController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/modals/modalReaproveitarAnexo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/nls/en_EN.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/nls/pt_BR.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/routes/tratarDemandaRoute.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/service/arquivosUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/service/arvoreUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/service/encaminhamentoDemandaService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/service/tramiteUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/service/tratarDemandaService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/tratar-demanda.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/anexarArquivos.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalAnexarArquivos.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalConfirmacao.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalConfirmacaoEncaminhamentoPendenteResposta.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalEditarEmail.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalEncaminhamentoRedeSemAcesso.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalEncaminharDemanda.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalHistoricoDeTramite.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalLocaisEncaminhamento.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalPreviaEmailEncaminhamento.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalPreviaEmailFechamento.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalPreviaEmailFecharDemanda.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/modalReaproveitrarAnexo.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/responderFecharDemanda.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/develop/tratar-demanda/views/tratarDemanda.tpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/tratar-demanda/mock/411.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html" afterPath="$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/tratar-demanda/mock/500.json" afterPath="$PROJECT_DIR$/app/tratar-demanda/mock/500.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html" afterPath="$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view1/view1.js" afterPath="$PROJECT_DIR$/app/view1/view1.js" />
     </list>
     <ignored path="data-tree.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,95 +77,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="46" column="42" lean-forward="false" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view1.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
-              <caret line="103" column="14" lean-forward="true" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="14" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#535#1492#0" expanded="false" />
-                <element signature="e#1557#1753#0" expanded="false" />
-                <element signature="e#1820#2038#0" expanded="false" />
-                <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-                <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-                <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-                <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-                <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-                <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-                <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-                <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-                <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-                <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-                <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-                <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-                <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-                <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-                <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-                <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="38" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view2.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view2/view2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="33" lean-forward="true" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="painelEncaminhamentosDemanda.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="encaminharAnalisarDemanda.tpl.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="183" column="9" lean-forward="false" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="9" />
+            <state relative-caret-position="275">
+              <caret line="187" column="18" lean-forward="true" selection-start-line="187" selection-start-column="18" selection-end-line="187" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular-route.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/bower_components/angular/1.2.22/angular-route.js">
+      <file leaf-file-name="view1.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+            <state relative-caret-position="216">
+              <caret line="404" column="81" lean-forward="false" selection-start-line="404" selection-start-column="81" selection-end-line="404" selection-end-column="81" />
               <folding>
-                <element signature="e#0#104#0" expanded="false" />
+                <element signature="e#102#3198#0" expanded="false" />
+                <element signature="e#609#1474#0" expanded="false" />
+                <element signature="e#3332#3491#0" expanded="false" />
+                <marker date="1490791440336" expanded="true" signature="8940:8999" ph="..." />
+                <marker date="1490791440336" expanded="true" signature="11276:11335" ph="..." />
+                <marker date="1490791440336" expanded="true" signature="13593:13634" ph="..." />
+                <marker date="1490791440336" expanded="true" signature="13826:13875" ph="..." />
+                <marker date="1490791440336" expanded="true" signature="13974:14023" ph="..." />
+                <marker date="1490791440336" expanded="true" signature="14113:14162" ph="..." />
+                <marker date="1490791440336" expanded="true" signature="14258:14307" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view1/view1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -145,6 +136,19 @@
       <find>treeSrcImageNode</find>
       <find>orgDiagram</find>
       <find>templateRequestProvider</find>
+      <find>ui-button</find>
+      <find>|</find>
+      <find>selecionarEncaminahmento</find>
+      <find>alterarTipoEncaminhamento</find>
+      <find>removeEncaminhamento</find>
+      <find>element</find>
+      <find>highlightItem</find>
+      <find>481</find>
+      <find>Devolv</find>
+      <find>482</find>
+      <find>filder-arvore-encaminhamentos</find>
+      <find>demandaService</find>
+      <find>getRootTempla</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,27 +164,25 @@
       <list>
         <option value="$PROJECT_DIR$/app/view2/view2.html" />
         <option value="$PROJECT_DIR$/app/view2/view2.js" />
-        <option value="$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html" />
-        <option value="$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html" />
         <option value="$PROJECT_DIR$/app/bower_components/angular/1.2.22/ng-route.js" />
         <option value="$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/jquery-ouvidor.js" />
-        <option value="$PROJECT_DIR$/app/view1/view1.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/tratar-demanda/mock/411.json" />
+        <option value="$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html" />
+        <option value="$PROJECT_DIR$/app/tratar-demanda/mock/500.json" />
+        <option value="$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html" />
+        <option value="$PROJECT_DIR$/app/view1/view1.js" />
       </list>
     </option>
+  </component>
+  <component name="Jenkins.Settings">
+    <option name="lastSelectedView" value="All" />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
@@ -205,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -325,7 +328,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
+              <option name="myItemId" value="mock" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -351,284 +354,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="directives" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basic-primitive-demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basic-primitive-demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jquery" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basic-primitive-demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basic-primitive-demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angularjs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-route" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-route" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-route.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="1.2.22" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistoryKey" value="CaseButtonsInCursorTemplate&#9;FILE&#9;file:///Users/danilolima/Develop/WebstormProjects/data-tree/template/CaseButtonsInCursorTemplate.html" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -637,9 +372,23 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/develop" />
       <recent name="$PROJECT_DIR$/app/bower_components/angular/1.2.22" />
       <recent name="$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1063,7 +812,27 @@
       <workItem from="1485384999933" duration="1135000" />
       <workItem from="1485457532558" duration="3060000" />
       <workItem from="1485512577177" duration="20125000" />
-      <workItem from="1485777429188" duration="5893000" />
+      <workItem from="1485777429188" duration="7133000" />
+      <workItem from="1485795286533" duration="2046000" />
+      <workItem from="1485951445988" duration="1768000" />
+      <workItem from="1485964456539" duration="2980000" />
+      <workItem from="1485970155037" duration="3610000" />
+      <workItem from="1486040671905" duration="675000" />
+      <workItem from="1486127053755" duration="48000" />
+      <workItem from="1486127995855" duration="699000" />
+      <workItem from="1486147543948" duration="839000" />
+      <workItem from="1486376677047" duration="746000" />
+      <workItem from="1486462897873" duration="1782000" />
+      <workItem from="1486488824953" duration="2207000" />
+      <workItem from="1486491805719" duration="336000" />
+      <workItem from="1486493193179" duration="604000" />
+      <workItem from="1486574424075" duration="2682000" />
+      <workItem from="1486746299639" duration="740000" />
+      <workItem from="1489608951320" duration="111000" />
+      <workItem from="1489690739167" duration="610000" />
+      <workItem from="1490118920078" duration="899000" />
+      <workItem from="1490702854601" duration="1179000" />
+      <workItem from="1490790821388" duration="624000" />
     </task>
     <task id="LOCAL-00001" summary="Selecao de node na arvore">
       <created>1484786985840</created>
@@ -1076,7 +845,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38255000" />
+    <option name="totallyTimeSpent" value="64680000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="0" width="1600" height="900" extended-state="6" />
@@ -1096,15 +865,14 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32849604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32585752" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33113456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24226804" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19716495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1113,6 +881,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1142,230 +911,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="87" lean-forward="false" selection-start-line="54" selection-start-column="87" selection-end-line="54" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="114" column="11" lean-forward="true" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#535#1492#0" expanded="false" />
-            <element signature="e#1557#1753#0" expanded="false" />
-            <element signature="e#1820#2038#0" expanded="false" />
-            <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-            <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-            <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/jquery-1.9.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/controllers/encaminharAnalisarDemandaController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/primitives.latest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144846">
-          <caret line="8047" column="13" lean-forward="true" selection-start-line="8047" selection-start-column="13" selection-end-line="8047" selection-end-column="13" />
-          <folding>
-            <marker date="1481757376000" expanded="true" signature="631054:631060" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="32" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2052">
-          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#535#1492#0" expanded="false" />
-            <element signature="e#1557#1753#0" expanded="false" />
-            <element signature="e#1820#2038#0" expanded="false" />
-            <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-            <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-            <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2700">
-          <caret line="150" column="27" lean-forward="false" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4806">
-          <caret line="267" column="0" lean-forward="true" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view2/view2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2052">
-          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#535#1492#0" expanded="false" />
-            <element signature="e#1557#1753#0" expanded="false" />
-            <element signature="e#1820#2038#0" expanded="false" />
-            <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-            <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-            <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/primitives.latest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7751" column="13" lean-forward="false" selection-start-line="7751" selection-start-column="13" selection-end-line="7751" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="108" column="40" lean-forward="false" selection-start-line="108" selection-start-column="40" selection-end-line="108" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="117" column="32" lean-forward="false" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#535#1492#0" expanded="false" />
-            <element signature="e#1557#1753#0" expanded="false" />
-            <element signature="e#1820#2038#0" expanded="false" />
-            <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-            <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-            <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/CaseButtonsInCursorTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1385,28 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#535#1492#0" expanded="false" />
-            <element signature="e#1557#1753#0" expanded="false" />
-            <element signature="e#1820#2038#0" expanded="false" />
-            <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-            <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-            <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1421,7 +944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="112" column="52" lean-forward="false" selection-start-line="112" selection-start-column="52" selection-end-line="112" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1437,28 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="241" column="34" lean-forward="false" selection-start-line="241" selection-start-column="34" selection-end-line="241" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#535#1492#0" expanded="false" />
-            <element signature="e#1557#1753#0" expanded="false" />
-            <element signature="e#1820#2038#0" expanded="false" />
-            <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-            <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-            <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1480,13 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="100" column="46" lean-forward="false" selection-start-line="100" selection-start-column="46" selection-end-line="100" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view2/view2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1522,7 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1530,17 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="26200" column="21" lean-forward="false" selection-start-line="26200" selection-start-column="21" selection-end-line="26200" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/controllers/encaminharAnalisarDemandaController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1548,17 +1029,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html">
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/jquery-ouvidor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="183" column="9" lean-forward="false" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="9" />
-          <folding />
+        <state relative-caret-position="72">
+          <caret line="4" column="2520" lean-forward="false" selection-start-line="4" selection-start-column="2520" selection-end-line="4" selection-end-column="2520" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/angular-route/angular-route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/primitives.latest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12458" column="0" lean-forward="true" selection-start-line="12458" selection-start-column="0" selection-end-line="12458" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1566,9 +1057,145 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/css/images/ui-bg_flat_10_000000_40x100.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/css/images/ui-bg_glass_100_f6f6f6_1x400.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/images/icons-36-black.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/images/icon-search-black.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/images/ajax-loader.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/images/icons-18-white.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/images/icons-36-white.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/images/icons-18-black.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/css/primitives.latest.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/ui-lightness/jquery-ui-1.10.2.custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="1163" column="34" lean-forward="false" selection-start-line="1163" selection-start-column="34" selection-end-line="1163" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/develop/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7686">
+          <caret line="436" column="80" lean-forward="false" selection-start-line="436" selection-start-column="54" selection-end-line="436" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/develop/tratar-demanda/controllers/encaminharAnalisarDemandaController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12510">
+          <caret line="695" column="64" lean-forward="false" selection-start-line="695" selection-start-column="60" selection-end-line="695" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/DemoHighlightAndAnnotations.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12942">
+          <caret line="719" column="20" lean-forward="false" selection-start-line="719" selection-start-column="20" selection-end-line="719" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/CaseSelectedItems.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="936">
+          <caret line="52" column="38" lean-forward="false" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/CaseAngularJSOrganizationalChartDirective.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2880">
+          <caret line="160" column="25" lean-forward="false" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="103" lean-forward="false" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="103" />
           <folding>
-            <element signature="e#0#104#0" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/mock/500.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4572">
+          <caret line="254" column="6" lean-forward="false" selection-start-line="254" selection-start-column="6" selection-end-line="254" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/mock/411.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="37" column="38" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="37" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view1/view1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1580,66 +1207,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/jquery/jquery-ouvidor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="2520" lean-forward="false" selection-start-line="4" selection-start-column="2520" selection-end-line="4" selection-end-column="2520" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/angular-route/angular-route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="46" column="42" lean-forward="false" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+        <state relative-caret-position="198">
+          <caret line="32" column="27" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/basic-primitive-demo/js/primitives.latest.js">
+    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/controllers/responderFecharDemandaController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12458" column="0" lean-forward="true" selection-start-line="12458" selection-start-column="0" selection-end-line="12458" selection-end-column="0" />
+        <state relative-caret-position="-864">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1481757376000" expanded="true" signature="631054:631060" ph="&amp;nbsp;" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
+    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/controllers/tratarDemandaController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="103" column="14" lean-forward="true" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="14" />
+        <state relative-caret-position="90">
+          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#535#1492#0" expanded="false" />
-            <element signature="e#1557#1753#0" expanded="false" />
-            <element signature="e#1820#2038#0" expanded="false" />
-            <marker date="1485789608094" expanded="false" signature="2183:2523" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="2600:2773" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="3332:3491" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6278:6283" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6341:6454" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="6527:7460" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7508:7676" ph="{...}" />
-            <marker date="1485789608094" expanded="false" signature="7711:8124" ph="{...}" />
-            <marker date="1485789608094" expanded="true" signature="8930:8989" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="11266:11325" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13574:13615" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13807:13856" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="13955:14004" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14094:14143" ph="..." />
-            <marker date="1485789608094" expanded="true" signature="14239:14288" ph="..." />
-            <marker date="1485789608094" expanded="false" signature="17311:17497" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/controllers/encaminharAnalisarDemandaController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1651,11 +1251,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/directives/templates/painelEncaminhamentosDemanda.html">
+    <entry file="file://$PROJECT_DIR$/app/view2/view2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/tratar-demanda/views/encaminharAnalisarDemanda.tpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="187" column="18" lean-forward="true" selection-start-line="187" selection-start-column="18" selection-end-line="187" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view1/view1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="404" column="81" lean-forward="false" selection-start-line="404" selection-start-column="81" selection-end-line="404" selection-end-column="81" />
+          <folding>
+            <element signature="e#102#3198#0" expanded="false" />
+            <element signature="e#609#1474#0" expanded="false" />
+            <element signature="e#3332#3491#0" expanded="false" />
+            <marker date="1490791440336" expanded="true" signature="8940:8999" ph="..." />
+            <marker date="1490791440336" expanded="true" signature="11276:11335" ph="..." />
+            <marker date="1490791440336" expanded="true" signature="13593:13634" ph="..." />
+            <marker date="1490791440336" expanded="true" signature="13826:13875" ph="..." />
+            <marker date="1490791440336" expanded="true" signature="13974:14023" ph="..." />
+            <marker date="1490791440336" expanded="true" signature="14113:14162" ph="..." />
+            <marker date="1490791440336" expanded="true" signature="14258:14307" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

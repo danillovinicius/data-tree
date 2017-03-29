@@ -1,0 +1,117 @@
+<style>
+    .top1 {
+        padding-top: 1%
+    }
+</style>
+
+<div class="row top1">
+    <div class="span1">
+        <label for="arquivo">
+            <strong>{{'arquivo' | translate}}:</strong>
+        </label>
+    </div>
+    <div class="span4">
+        <input type="file"
+                ng-file-select="addFileEncaminhamento($files)"
+                ng-model="arquivoTemporario"
+                id="file-input"/>
+    </div>
+
+    <div class="btn-form-left" ng-if="acao == 'E'">
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-click="salvarArquivo()">{{'adicionar' | translate}}</button>
+
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-click="abrirModalReaproveitarAnexo()">{{'reaproveitar' | translate}}</button>
+    </div>
+
+    <div class="row span12 top1">
+
+
+
+        <table class="table ms-grid" ng-if="acao == 'A'">
+            <thead>
+                <th class="text-center">{{'nome-arquivo' | translate}}</th>
+                <th class="text-center">{{'acoes' | translate}}</th>
+            </thead>
+            <tbody>
+                <tr ng-if="!demanda.arquivos || demanda.arquivos.length <= 0">
+                    <td colspan="2">Nenhum arquivo encontrado</td>
+                </tr>
+                <tr ng-repeat="arquivo in demanda.arquivos">
+                        <td>
+                            <a tooltip="{{'MH026' | translate}}"
+                                ng-href="{{getUrlDownload(arquivo.id)}}">
+                                <label>{{arquivo.nomeArquivo}}</label>
+                            </a>
+                         </td>
+                         <td>
+                            <a class='btn btn-sm'
+                                tooltip="{{'MH003' | translate}}"
+                                ng-click="removerArquivoAnalisar(arquivo)">
+                            <span class="ms-icone-lixeira"/>
+                            </a>
+                        </td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <table class="table ms-grid" ng-if="acao == 'E'">
+            <thead>
+                <th class="text-center">{{'tipo-arquivo' | translate}}</th>
+                <th class="text-center">{{'nome-arquivo' | translate}}</th>
+                <th class="text-center">{{'acoes' | translate}}</th>
+            </thead>
+            <tbody>
+                <tr ng-if="!filtro.arquivos || filtro.arquivos.length <= 0">
+                    <td colspan="3">Nenhum arquivo encontrado</td>
+                </tr>
+                <tr ng-repeat="arquivo in filtro.arquivos">
+                     <td>
+                         <label>
+                             {{arquivo.tipoArquivo.indexOf('image') == -1 ? 'documento' : 'imagem' | translate }}
+                         </label>
+                        <td>
+                            <a ng-if="arquivo.id"
+                                tooltip="{{'MH205' | translate}}"
+                                ng-href="{{getUrlDownload(arquivo.id)}}">
+                                <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                            </a>
+
+                                <a ng-if="!arquivo.id"
+                                   ng-click="downloadArquivo(arquivo)"
+                                   tooltip="{{'MH205' | translate}}">
+                                <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                            </a>
+                         </td>
+                    <td>
+                        <a class='btn btn-sm'
+                            tooltip="{{'MH003' | translate}}" "
+                            ng-click="removerArquivoAnexados(arquivo)">
+                           <span class="ms-icone-lixeira"/>
+                        </a>
+
+                        <a class='btn btn-sm'
+                            tooltip="{{'MH177' | translate}}" "
+                            ng-click="compartilharArquivos(arquivo)">
+                           <span class="ms-icone-responder"/>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="span12 top1" ng-if="acao == 'E'">
+        <label>
+            {{getTotalArquivoUtilizado()}}
+        </label>
+    </div>
+
+</div>

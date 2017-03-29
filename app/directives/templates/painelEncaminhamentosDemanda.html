@@ -1,3 +1,13 @@
+<style>
+    #parent {
+        line-height: 200px;
+    }
+
+    #parent img {
+        vertical-align: middle;
+    }
+</style>
+
 <div id="painel-encaminhamentos">
     <div class="span5 listagem-encaminhamentos">
         <div class="encaminhamentos-table">
@@ -24,7 +34,10 @@
     <div class="span7 painel-leitura-encaminhamentos" ng-show="encaminhamentoSelected.id === undefined">
         <div class="painel-leitura">
             <div class="encaminhamentos-painel">
-                <a ng-click=""><span></span></a>
+                <div style="padding-left: 42%;  opacity: 0.5;" id="parent">
+                    <img src="mail2.png" height="120" width="120"/>
+                </div>
+                <label style="    text-align: center; display: block;">Selecione um encaminhamento para visualizar</label>
             </div>
         </div>
     </div>

@@ -1,0 +1,285 @@
+<style>
+    .tamanho-tela {
+        min-width: 69%;
+        margin-left: -33%;
+        margin-top: 3%;
+    }
+    
+</style>
+
+<div class="modal-content" style="height:100%;">
+
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="fechar()" data-dismiss="modal" tooltip="{{'MH020'| translate}}" aria-hidden="true" aria-label="Fechar">
+            &times;
+        </button>
+        <h4 class="modal-title">{{'envio-manual' | translate}}</h4>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="span12">
+                <ms-alert></ms-alert>
+            </div>
+        </div>
+
+        <form name="$parent.form">
+            
+            <div class="row">
+                <div class="span12">
+                    <div class="span6">
+                        <h4 class="modal-title">{{'documentos' | translate}}</h4>
+                        <div style="margin-top:2%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row margin-top">
+                <div class="span12">
+                    <div class="span4">
+                        <label for="nomeRede">
+                            <strong>{{'nome-rede' | translate}}:</strong>
+                        </label>
+                    </div>
+                    <div class="span6">
+                        <input type="text" 
+                               id="nomeRede" 
+                               ng-model="filtro.ouvidoria.nome" 
+                               disabled/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="span12">
+                    <div class="span4">
+                        <label for="responsavel-pelo-destino">
+                            <strong>{{'responsavel-pelo-destino' | translate}}:</strong>
+                        </label>
+                    </div>
+                    <div class="span6" tooltip="{{'MH208' | translate}}" >
+                        <input type="text" 
+                               ng-model="filtro.usuarioResponsavel.nome"
+                               id="responsavel-pelo-destino"
+                               disabled/>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="span12">
+                    <div class="span4">
+                        <label for="cargo-funcao">
+                            <strong>{{'cargo-funcao' | translate}}:</strong>
+                        </label>
+                    </div>
+                    <div class="span6">
+                        <input type="text" 
+                               ng-model="filtroDocumento.cargoFuncao"
+                               tooltip="{{'MH209' | translate}}"
+                               id="cargo-funcao"/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="span12">
+                    <div class="span4">
+                        <label for="tipoDocumento" class="obrigatorio">
+                            <strong>{{'tipo-documento' | translate}}:</strong>
+                        </label>
+                    </div>
+                    <div class="span6">
+                        <select id="tipoDocumento" 
+                                ng-model="filtroDocumento.tipoDocumentoOficial"
+                                validator="[required]"
+                                ng-change="alterarTipoDocumento()"
+                                ng-options="documento as documento.descricao for documento in tipoDocumentosGerados">>
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="span12">
+                    <div class="span4">
+                        <label for="numeoDocumentoEncaminhado" class="obrigatorio">
+                            <strong>{{'numero-documento-encaminhado' | translate}}:</strong>
+                        </label>
+                    </div>
+                    <div class="span6">
+                        <input type="text" ng-model="filtroDocumento.numeroDocumento" validator="[required]" id="numeoDocumentoEncaminhado" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                 <div class="span12">
+                    <div class="span4">
+                        <label for="modeloDocumento" class="obrigatorio">
+                            <strong>{{'modelo-documento' | translate}}:</strong>
+                        </label>
+                    </div>
+                    <div class="span6">
+                        <select id="modeloDocumento"
+                                ng-model="filtroDocumento.modeloId"
+                                validator="[required]"
+                                ng-options="modelo.id as modelo.nome for modelo in modeloDocumetos">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+                 </div>
+            </div>
+            
+            <div class="row">
+                 <div class="span12">
+                    <div class="span4">
+                        &nbsp;
+                    </div>
+                    
+                    <div class="span4">
+                        <span>
+                            <a class="btn btn-sm btn-primary"
+                               type="button"
+                               ng-click="gerarModelo()"
+                               id="gerar-documento"
+                               tooltip="{{ 'gerar-documento' | translate }}">
+                                {{'gerar-documento'| translate}}
+                            </a>
+                        </span>
+                    </div>
+                 </div>
+            </div>
+            
+            
+            <div class="row">
+                 <div class="span12">
+                    <div class="span4">
+                        &nbsp;
+                    </div>
+                    
+                    <div class="span4">
+                        <fieldset class="filder">
+                            
+                            <span ng-if="documentoOficial">
+                                <div class="span10">
+                                    <a  ng-click="downloadArquivo(documentoOficial)"
+                                        tooltip="{{'MH205' | translate}}">
+                                        <label>{{documentoOficial.nomeArquivoComExtensao}}</label>
+                                    </a>
+                                </div>
+                                <div class="span2">
+                                    <a> <span ng-click="excluirArquivo('documentoOficial')" 
+                                              ng-if="documentoOficial" 
+                                              class="ms-icone-errado"/></a>
+                                </div>
+                            </span>
+                            
+                        </fieldset>
+                    </div>
+                 </div>
+            </div>
+           
+            
+            <div class="row">
+                <div class="span12">
+                    <div class="span4">
+                        <label><strong>{{'email-destino' | translate}}:</strong></label>
+                    </div>
+                    <div class="span6">
+                        <div class="radio inline">
+                            <label class="inline hand">
+                                <input type="radio" ng-model="acao" name="acao" ng-click="email=filtroDocumento.email" value="S"/> {{'sim'| translate}}
+                            </label>
+                        </div>
+                        <div class="radio inline">
+                            <label class="inline hand">
+                                <input type="radio" ng-model="acao" name="acao" ng-click="email=undefined" value="N"/> {{'nao'| translate}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span12">
+                    <div class="span4">
+                        &nbsp;
+                    </div>
+                    <div class="span6">
+                        <input ng-model="email"
+                               validator="[email]"
+                               type="text" ng-disabled="acao=='N'" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <label><strong>{{'arquivos'| translate}}</strong></label>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="span12">
+                    <table class="table ms-grid">
+                        <thead>
+                        <th class="text-center">{{'tipo-arquivo' | translate}}</th>
+                        <th class="text-center">{{'nome-arquivo' | translate}}</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-if="!filtro.arquivos || filtro.arquivos.length <= 0">
+                            <td colspan="2">Nenhum arquivo encontrado</td>
+                        </tr>
+                        <tr ng-repeat="arquivo in filtro.arquivos">
+                            <td>
+                                <label>
+                                    {{arquivo.tipoArquivo.indexOf('image') == -1 ? 'documento' : 'imagem' | translate }}
+                                </label>
+                            </td>
+                            <td>
+                                <a ng-if="arquivo.id" 
+                                    tooltip="{{'MH205' | translate}}"
+                                    ng-href="{{getUrlDownload(arquivo.id)}}">
+                                    <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                                </a>
+                                <a ng-if="!arquivo.id"
+                                    ng-click="downloadArquivo(arquivo)"
+                                    tooltip="{{'MH205' | translate}}">
+                                    <label>{{arquivo.nomeArquivoComExtensao}}</label>
+                                </a>
+                            </td>             
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <div class="span12">
+            <div class="row">
+                <div class="btn-form-right">
+                    <span>
+                        <a class="btn btn-sm btn-default" type="button" ng-click="fechar()" tooltip="{{ 'MH057' | translate }}">
+                            {{'MH057'| translate}}
+                        </a>
+                    </span>
+                    <span>
+                        <a class="btn btn-sm btn-primary"  
+                           ng-click="adicionarEncaminahmento()"  
+                           type="button"
+                           ng-disabled="!documentoOficial"
+                           tooltip="{{ 'MH178' | translate }}">
+                            {{'adicionar-encaminhamento'| translate}}
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

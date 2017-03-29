@@ -1,0 +1,104 @@
+{
+  "resultado": [
+    {
+      "id": 1007,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "DOGES"
+      },
+      "redeDestino": {
+        "id": 61,
+        "sigla": "OFHSB",
+        "nome": "Ouvidoria Federal do Hospital Sara de Brasilia"
+      },
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      }
+    },
+    {
+      "id": 1008,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "DOGES"
+      },
+      "redeDestino": {
+        "id": 84,
+        "sigla": "ORA",
+        "nome": "Ouvidoria Regional AC"
+      },
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      }
+    },
+    {
+      "id": 1009,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "DOGES"
+      },
+      "redeDestino": {
+        "id": 89,
+        "sigla": "OMHBA",
+        "nome": "Ouvidoria Municipal do Hospital de Bujari AC"
+      },
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      }
+    },
+    {
+      "id": 1010,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "DOGES"
+      },
+      "redeDestino": {
+        "id": 94,
+        "sigla": "OMB",
+        "nome": "Ouvidoria Municipal de BUJARI"
+      },
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      }
+    },
+    {
+      "id": 1011,
+      "redeOrigem": {
+        "id": 4,
+        "sigla": "DOGES",
+        "nome": "DOGES"
+      },
+      "redeDestino": {
+        "id": 67,
+        "sigla": "OMSG",
+        "nome": "Ouvidoria da Secretaria Municipal de Saúde do Gama"
+      },
+      "tipoEncaminhamento": "P",
+      "solicitaResposta": "S",
+      "situacaoResposta": "N",
+      "statusEncaminhamentoDemanda": {
+        "id": 1,
+        "descricao": "Encaminhado"
+      }
+    }
+  ]
+}

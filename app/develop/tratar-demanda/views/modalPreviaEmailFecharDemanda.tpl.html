@@ -1,0 +1,132 @@
+<div class="modal-content" style="height:100%;">
+
+    <div class="modal-header">
+
+        <button type="button"
+                class="close"
+                ng-click="voltar()"
+                data-dismiss="modal"
+                tooltip="{{'MH020'| translate}}"
+                aria-hidden="true"
+                aria-label="Fechar">
+            &nbsp;&times;&nbsp;
+        </button>
+        &nbsp;
+        <button type="button"
+                class="close"
+                ng-click="editarEmail()"
+                tooltip="{{'MH002'| translate}}"
+                aria-hidden="true"
+                ng-show="!editandoEmail"
+                aria-label="Fechar">
+            <span class="ms-icone-lapis">&nbsp; </span>
+        </button>
+        <h4 class="modal-title">{{'previa-email' | translate}}</h4>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div ng-show="editandoEmail">
+            <!-- INICIO ckeditor -->
+            <form>
+                <div class="row">
+                    <div class='span12 top2'>
+                        <textarea ms-ckeditor="ckOptions" id="conteudoCkOptions" ng-model="demanda.emailAoCidadao"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span12">
+                        <label><strong>Anexos</strong> </label>
+
+                        <div class="row span12">
+                            <table class="table table-hover" ng-table="arquivosEmail">
+                                <tbody>
+                                <tr ng-if="!demanda.arquivos || demanda.arquivos.length <= 0">
+                                    <td colspan="2">Nenhum arquivo encontrado</td>
+                                </tr>
+                                <tr ng-repeat="arquivo in $data">
+                                    <td>
+                                        <a ng-href="{{getUrlDownload(arquivo)}}">{{arquivo.nomeArquivo}}</a>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="close" ng-click="removerArquivoDoEmail(arquivo)" aria-hidden="true"
+                                                aria-label="Fechar">&times;
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- FIM ckeditor -->
+        </div>
+
+        <div ng-hide="editandoEmail">
+            <div class="row">
+                <div class="span12">
+                    <div class="row">
+                        <div class="span12">
+                            <p ng-bind-html="corpoEmail"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="span12">
+                    <label><strong>Anexos</strong> </label>
+
+                    <div class="row span12">
+                        <table class="table table-hover" ng-table="arquivosEmail">
+                            <tbody>
+                            <tr ng-if="!demanda.arquivos || demanda.arquivos.length <= 0">
+                                <td colspan="2">Nenhum arquivo encontrado</td>
+                            </tr>
+                            <tr ng-repeat="arquivo in $data">
+                                <td>
+                                    <a ng-href="{{getUrlDownload(arquivo)}}">{{arquivo.nomeArquivo}}</a>
+                                </td>
+                                <td>
+                                    <button type="button" class="close" ng-click="removerArquivo(arquivo)" aria-hidden="true"
+                                            aria-label="Fechar">&times;
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+
+        <div class="span12">
+            <div class="row">
+                <div class="btn-form-right">
+
+                    <button class="btn btn-sm"
+                            type="button"
+                            ng-click="fechar()"
+                            tooltip="{{ 'MH057' | translate }}">
+                        {{'MH057'| translate}}
+                    </button>
+
+                    <button class="btn btn-sm btn-primary"
+                            ng-click="fecharDemanda();"
+                            id="enviar"
+                            tooltip="Enviar"> Enviar
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

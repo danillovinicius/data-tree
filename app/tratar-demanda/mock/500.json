@@ -254,29 +254,6 @@
       "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
     },
     {
-      "id": 528,
-      "encaminhamentoAnterior": 482,
-      "redeOrigem": {
-        "id": 79,
-        "sigla": "OHFAII",
-        "nome": "Ouvidoria Hospital Federal 2 do Acre II"
-      },
-      "redeDestino": {
-        "id": 82,
-        "sigla": "SOHFAII",
-        "nome": "Posto de Saude do Hospital Federal 2 do Acre II"
-      },
-      "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
-      "tipoEncaminhamento": "P",
-      "solicitaResposta": "S",
-      "situacaoResposta": "N",
-      "statusEncaminhamentoDemanda": {
-        "id": 5,
-        "descricao": "Respondido"
-      },
-      "comentarioParecer": "Cras at magna lectus. Duis ullamcorper tellus at suscipit faucibus. Phasellus vehicula congue aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id venenatis ipsum, sit amet hendrerit nunc. Morbi eleifend dignissim sem vitae molestie. In metus dolor, accumsan viverra interdum finibus, cursus consequat est. Phasellus posuere tortor nibh, in pharetra leo accumsan vitae. Ut iaculis massa sodales, mattis magna ut, mattis dolor."
-    },
-    {
       "id": 523,
       "encaminhamentoAnterior": 522,
       "redeOrigem": {

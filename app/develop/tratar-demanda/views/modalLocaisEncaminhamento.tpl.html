@@ -1,0 +1,50 @@
+<style>
+    .tamanho-tela {
+        min-width: 70%;
+        margin-left: -30%;
+        margin-top: 3%;
+    }
+</style>
+
+<div class="modal-content" style="height:100%;">
+
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="fechar()" data-dismiss="modal" tooltip="{{'MH020'| translate}}" aria-hidden="true" aria-label="Fechar">
+            &times;
+        </button>
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+
+    <div class="modal-body">
+    
+        <div class="span12">
+            <table class="table ms-grid" style="margin-bottom:20px">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <div>{{'nome-rede'|translate}}</div>
+                        </th>
+                        <th class="text-center">
+                            <div>{{'nivel-rede'|translate}}</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="redes.length <= 0">
+                        <td colspan="2">{{'MI003' | translate}}</td>
+                    </tr>
+                    <tr ng-repeat="rede in redes" ng-if="redes.length > 0">
+                        <td><a ng-click="selecionarRede(rede)">{{(rede.isSubRede) ? rede.subrede.nome : rede.ouvidoria.nome}}</a></td>
+                        <td>{{rede.nivel}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+     <div class="modal-footer">
+        
+    </div>  
+    
+</div>
