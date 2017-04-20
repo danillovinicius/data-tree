@@ -5,8 +5,16 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.view1',
     'myApp.view2',
-    'myApp.version'
+    'myApp.view3',
+    'myApp.version',
+    'ui.bootstrap'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider.otherwise({redirectTo: '/view2'});
-}]);
+}])
+
+    .filter('translate', function () {
+        return function (value) {
+            return value;
+        }
+    });
