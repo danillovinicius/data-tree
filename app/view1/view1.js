@@ -91,8 +91,251 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.constant('path', "tratar-demanda/mock/");
 
-app.controller('View1Ctrl', ['$scope', 'demandaService', 'treeService', '$log',
-    function ($scope, demandaService, treeService, $log) {
+app.factory('validadorService', function () {
+    /**
+     * API
+
+     .optional(fn|bool)
+
+     Whether an empty value is considered valid and the validators should not be run.
+
+     .add(fn, ctx, when)
+
+     Add a new validator to the chain.
+
+     fn - the validation method
+     ctx - the validation context - optional and can be anything e.g. a message string
+     when - a validation condition - if provided, the validation method is only run when the condition is true - optional function that returns a boolean
+
+     .validate(value, callback)
+
+     Run the validation methods on a value and call the callback with the result.
+
+     Callback arguments:
+
+     err - a error thrown by a sync method or a error returned by an async validation method e.g. problems connecting to a server that performs a unique validation
+     valid - whether the value is valid or not
+     ctx - the context of the failing validation method
+
+
+     * Writing a validator
+
+     There are many existing validation methods you can make use of (e.g. validator, validation-methods or validate-date) but if you require some custom logic then it's easy to create your own.
+
+     Sync
+
+     function validator(value) {
+        //throw new Error();    //return an error
+        return true;            //return whether the value is valid
+     }
+
+     Async
+
+     function validator(value, next) {
+        //next(new Error());    //return an error
+        next(null, true);       //return whether the value is valid
+     }
+
+     * @returns {ValidatorChain}
+     * @constructor
+     */
+
+    function ValidatorChain() {
+        if (!(this instanceof ValidatorChain)) {
+            return new ValidatorChain();
+        }
+        this._validators = [];
+    }
+
+    ValidatorChain.prototype.optional = function (optional) {
+        if (arguments.length) {
+            this._optional = optional;
+            return this;
+        } else {
+            return this._optional;
+        }
+    };
+
+    ValidatorChain.prototype.add = function (fn, ctx, when) {
+        this._validators.push({
+            fn: fn,
+            ctx: ctx,
+            when: when
+        });
+        return this;
+    };
+
+    ValidatorChain.prototype.validate = function (value, callback) {
+        var self = this, count = 0, validator = null;
+
+        function next(err, valid) {
+
+            //there's an error, now we can finish
+            if (err) {
+                return callback(err, valid, validator.ctx);
+            }
+
+            //the value is invalid, now we can finish
+            if (!valid) {
+                return callback(err, valid, validator.ctx);
+            }
+
+            //check for optional
+            var optional = typeof(self._optional) === 'function' ? self._optional() : Boolean(self._optional);
+            if (optional && (value === undefined || value === null || value === [] || value === '')) {
+                return callback(err, valid);
+            }
+
+            //we've run all the validators, now we can finish
+            if (count >= self._validators.length) {
+                return callback(err, valid);
+            }
+
+            //get the next validator
+            validator = self._validators[count++];
+
+            //if the rule is conditional
+            if (validator.when && !validator.when()) {
+                return next(undefined, valid); //skip validation if the condition is not true
+            }
+
+            //run the validator
+            var fn = validator.fn;
+            if (fn.length > 1) {
+
+                //async
+                fn(value, next);
+
+            } else {
+
+                var fnError, fnValid;
+                try {
+                    fnValid = fn(value); //sync
+                } catch (err) {
+                    fnError = err;
+                }
+                next(fnError, fnValid);
+
+            }
+
+        }
+
+        setTimeout(function () {
+            next(undefined, true);
+        }, 0);
+
+        return this;
+    };
+
+    return {
+        validador: ValidatorChain
+    }
+});
+
+
+app.service('comumNegocioService', function (validadorService) {
+
+
+    this.validar = validate;
+
+    function validate(target, arrayValidators) {
+        var validador = validadorService.validador();
+
+        angular.forEach(arrayValidators, function (validator) {
+            validador.add(validator.regra, validator.mensagem)
+        });
+
+        validator.validate(target, function (err, valid, ctx) {
+            console.log(arguments);
+        });
+    }
+});
+
+var redeLogada = 4;
+
+app.service('encaminharNegocioService', function (comumNegocioService) {
+    this.redeLogadaOrigem = redeLogadaOrigem;
+    this.arvoreNaoPossuiMaisDeCincoEncaminhamentos = arvoreNaoPossuiMaisDeCincoEncaminhamentos;
+
+    function redeLogadaOrigem(param) {
+        return param.encaminhamento.id === redeLogada;
+    }
+
+    function arvoreNaoPossuiMaisDeCincoEncaminhamentos(param) {
+        return param.encaminhamentos.length === 5;
+    }
+
+});
+
+app.service('tramitarNegocioService', function (comumNegocioService, encaminharNegocioService) {
+
+    this.validarAdicionarEncaminhamentoRoot = validarAdicionarEncaminhamentoRoot;
+
+    /**
+     * TODO Valida se já foi registrado 5 encaminhamentos para a demanda (Quando for rede origem)
+     * TODO Valida se o encaminhamento do tipo conhecimento para um sistema integrado**
+     */
+    function validarAdicionarEncaminhamentoRoot(parametros, callback) {
+        var validacoes = [
+            {
+                regra: encaminharNegocioService.redeLogadaOrigem(parametros),
+                mensagem: "A rede logada não é a origem"
+            },
+            {
+                regra: encaminharNegocioService.arvoreNaoPossuiMaisDeCincoEncaminhamentos(parametros),
+                mensagem: "A rede logada não é a origem"
+            }
+        ];
+        comumNegocioService.validar(validacoes, callback);
+    }
+});
+
+
+app.controller('View1Ctrl', ['$scope', 'demandaService', 'treeService', '$log', 'tramitarNegocioService',
+    function ($scope, demandaService, treeService, $log, tramitarNegocioService) {
+
+        var encaminhamento = {
+            "id": 527,
+            "encaminhamentoAnterior": 526,
+            "redeOrigem": {"id": 79, "sigla": "OHFAII", "nome": "Ouvidoria Hospital Federal 2 do Acre II"},
+            "redeDestino": {"id": 82, "sigla": "SOHFAII", "nome": "Posto de Saude do Hospital Federal 2 do Acre II"},
+            "usuarioResponsavel": "Simone Ribeiro Carvalho de Oliveira",
+            "tipoEncaminhamento": "P",
+            "solicitaResposta": "S",
+            "situacaoResposta": "N",
+            "statusEncaminhamentoDemanda": {"id": 5, "descricao": "Respondido"},
+            "comentarioParecer": "Cras at magna lectus."
+        };
+
+        function montaParametros() {
+            return {
+                encaminhamento: encaminhamento,
+                encaminhamentos: $scope.encaminhamentos
+            };
+        }
+
+        function adicionarEncaminhamento() {
+            tramitarNegocioService.validarAdicionarEncaminhamentoRoot(
+                montaParametros(),
+                function () {
+                    $scope.encaminhamentos.push(encaminhamento);
+                    atualizarArvore($scope.encaminhamentos);
+                });
+        }
+
+        function excluirEncaminhamento() {
+            tramitarNegocioService.excluirEncaminhamento(
+                montaParametros(),
+                function () {
+                    atualizarArvore($scope.encaminhamentos);
+                }
+            )
+        }
+
+        $scope.validar = function () {
+            adicionarEncaminhamento();
+            excluirEncaminhamento();
+        };
 
         $scope.demanda = {};
         $scope.index = 10;
@@ -103,15 +346,17 @@ app.controller('View1Ctrl', ['$scope', 'demandaService', 'treeService', '$log',
         $scope.encaminhamentos = [];
         $scope.dataEncaminhamento = new Date();
 
-        demandaService.get('500').success(function (response) {
-            $scope.encaminhamentos = [];//response.resultado;
+        function atualizarArvore(encaminhamentos) {
+            treeService.setupTree(encaminhamentos).then(function (tree) {
+                $scope.tree = tree;
+            }, function (reason) {
+                $log.warn(reason);
+            });
+        }
 
-             treeService.setupTree([])//response.resultado
-                .then(function (tree) {
-                    $scope.tree = tree;
-                }, function (reason) {
-                    $log.warn(reason);
-                });
+        demandaService.get('500').success(function (response) {
+            $scope.encaminhamentos = response.resultado;
+            atualizarArvore(response.resultado);
         });
 
         $scope.selecionaEncaminhamento = function (encaminhamento) {
@@ -243,14 +488,17 @@ app.factory('treeService', ['$filter', '$q', '$rootScope', function ($filter, $q
     function obterNodeTree(node, idParent) {
         return new primitives.orgdiagram.ItemConfig({
             id: node.id,
+            label: "<div class='bp-badge' style='width:10px; height:10px;background-color:red; color: white;'>5</div>Some text annotation",
+            labelSize: new primitives.common.Size(60, 30),
+            labelPlacement: primitives.common.PlacementType.Bottom,
             parent: node.encaminhamentoAnterior || idParent,
             title: node.redeDestino.sigla,
             description: node.redeDestino.nome,
             image: $filter('treeSrcImageNode')(node.redeDestino.sigla[0]),
-            label: "<div class='bp-badge' style='width:10px; height:10px;background-color:red; color: white;'>5</div>Aguardando aprovação",
+            // label: "<div class='bp-badge' style='width:10px; height:10px;background-color:red; color: white;'>5</div>Aguardando aprovação",
             itemTitleColor: primitives.common.Colors.Gray,
             encaminhamento: node,
-            isActive: node.id === 481,
+            isActive: true, //node.id === 481,
             //isVisible: false, //TODO implementar nodes que devem ser ocultos
             groupTitle: node.statusEncaminhamentoDemanda.descricao,
             groupTitleColor: $filter('treeColor')(node.statusEncaminhamentoDemanda.descricao)
@@ -326,7 +574,7 @@ app.factory('treeService', ['$filter', '$q', '$rootScope', function ($filter, $q
     function getNodeTemplate(actions) {
         var result = new primitives.orgdiagram.TemplateConfig();
         result.name = "nodeTemplate";
-        result.itemSize = new primitives.common.Size(175, 118);
+        result.itemSize = new primitives.common.Size(175, 145);//136
         result.minimizedItemSize = new primitives.common.Size(3, 3);
         result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
@@ -343,17 +591,18 @@ app.factory('treeService', ['$filter', '$q', '$rootScope', function ($filter, $q
             + ' <div name="titleBackground" class="bp-item bp-corner-all bp-title-frame node-title-frame" style="background:{{itemConfig.itemTitleColor}};">'
             + '     <div name="title" class="bp-item bp-title node-title-item" >{{itemConfig.title}}</div>'
             + ' </div>'
-            + '<div name="title" class="bp-item" style="top: 26px; left: 7px; width: 162px; height: 36px;"><b>{{itemConfig.description}}</b></div>'
-            + '<div name="phone" class="bp-item" style="top: 62px; left: 6px; width: 162px; height: 18px;"><b>Tipo:</b> Providencia</div>'
-            + '<div name="email" class="bp-item" style="top: 80px; left: 6px; width: 162px; height: 18px;"><b>Encaminhado:</b> 12/01/2017</div>'
-            + '<div name="descr" class="bp-item" style="top: 98px; left: 6px; width: 162px; height: 18px;"><b>Solicitar Resposta:</b> Sim</div>'
-            + ' </div>'
+            + '<div class="bp-item" style="top: 26px; left: 7px; width: 162px; height: 36px;"><b>{{itemConfig.description}}</b></div>'
+            + '<div class="bp-item" style="top: 62px; left: 6px; width: 162px; height: 18px;"><b>Tipo:</b> Providencia</div>'
+            + '<div class="bp-item" style="top: 80px; left: 6px; width: 162px; height: 18px;"><b>Encaminhado:</b> 12/01/2017</div>'
+            + '<div class="bp-item" style="top: 98px; left: 6px; width: 162px; height: 18px;"><b>Solicitar Resposta:</b> Sim</div>'
+            + '<div class="bp-item" style="top: 116px; left: 6px; width:162px; height:18px; color: red;"><a href="" style="top: 1px"><i style="margin-top: -3px;" class="icon-warning-sign"></i></a> Pendente Aprovação Gestor</div>'
+            + ' </div>'//
         ).css({
             width: result.itemSize.width + "px",
             height: result.itemSize.height + "px"
         }).addClass("bp-item bp-corner-all bt-item-frame");
         result.itemTemplate = itemTemplate.wrap('<div>').parent().html();
-
+        //"<div class='bp-badge' style='width:10px; height:10px;background-color:green; color: white;'>2</div>",
         return result;
     }
 
